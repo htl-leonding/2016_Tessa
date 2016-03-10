@@ -1,0 +1,90 @@
+/*-------------------------------------
+* PopUp-Produkteingabe ohne Barcode
+---------------------------------------*/
+
+.modal-content{
+    width: 60vw;
+    height: 80vh;
+    margin-left: -10vw;
+}
+
+#content2{
+    height: 50vh;
+}
+
+.modal-title{
+    font-size: 300%;
+    text-align: center;
+}
+.modal-body{
+    height: 50vh;
+    float: left;
+    width: 100%;
+    display: block;
+    margin-top: 4vh;
+}
+#content2 .modal-body{
+    height: 13vh;
+}
+/*PopUp-body*/
+.inputtext{
+    font-size: 250%;
+    width: 25%;
+    color:dimgray;
+    position:static;
+    margin-left:15%;
+    float: left;
+}
+
+.inputs{
+    font-size: 250%;
+    width: 50%;
+    color: dimgray;
+    border-style: solid;
+    border-color: grey;
+    border-width: 3px;
+}
+
+.inputfields{
+    margin-top: 4%;
+    margin-left:41%;
+    color: white;
+}
+
+.combodate{
+    float:left;
+    font-size: 180%;
+    display: inline;
+    border-style: none;
+    margin-top: 0.5%;
+}
+.month{
+    border-color:black;
+}
+.year{
+    border-color:black;
+}
+.day{
+    border-color:black;
+}
+/*PopUp-footer*/
+.footer-buttongroup{
+    margin-right: 5vw;
+}
+
+.footer-buttongroup .button{
+    margin-top: 7vh;
+    margin-left: 1vw;
+    font-size: 180%;
+    background-color: #f9f9f9;
+    border-style: solid;
+    border-color: grey;
+    border-width: 3px;
+
+}
+.button:hover{
+    background-color:aliceblue;
+}
+.button:active{
+    background-color:aliceblue;
+}

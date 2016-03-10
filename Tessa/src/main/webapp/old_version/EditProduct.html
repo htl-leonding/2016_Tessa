@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Edit</title>
+    <script src="../js/popUp.js"></script>
+    <script src="../js/jquery-2.1.4.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../cssBootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../cssBootstrap/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="styleEditProduct.css">
+
+
+</head>
+
+<body>
+
+<div id="popupBoxOnePosition">
+    <div class="popupBoxWrapper">
+        <div class="popupBoxContent">
+            <h3>Produkt editieren</h3>
+            <div class="buttonContainer">
+                <div class="button " id = "closeButton" onclick="toggle_visibility('popupBoxOnePosition');"><p class="text textSave glyphicon glyphicon-floppy-disk"></p></div>
+                <div class="button " id = "minusButton" onclick="lower_number();"><p class="text textMinus glyphicon glyphicon-minus"></p></div>
+                <div class ="" id="contentVar">1</div>
+                <div class="button " id = "plusButton" onclick="raise_number();"><p class="text textPlus glyphicon glyphicon-plus"></p></div>
+                <div class="button " id = "deleteButton" onclick="toggle_visibility('popupBoxOnePosition');"><p class="text textDelete glyphicon glyphicon-trash"></p></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="wrapper">
+    <div href="javascript:void(0)" onclick="toggle_visibility('popupBoxOnePosition'); "class="button"><p class="glyphicon glyphicon-edit"></p></div>
+</div><!-- wrapper end -->
+
+</body>
+
+</html>
+

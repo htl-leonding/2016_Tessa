@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
+
+    <persistence-unit name="FridgePiPU" transaction-type="JTA">
+        <jta-data-source>java:jboss/datasources/FridgePiDS</jta-data-source>
+
+        <properties>
+            <property name="javax.persistence.schema-generation.database.action" value=""/>
+        </properties>
+    </persistence-unit>
+</persistence>
+<!--drop-and-create-->

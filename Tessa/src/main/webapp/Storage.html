@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script src="js/Storage.js"></script>
+        <script src="js/jquery-2.1.4.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="cssBootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="cssBootstrap/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/styleStorage.css">
+        <link rel="stylesheet" href="css/stylePopUpProductinput.css">
+        <link rel="shortcut icon" href="images/apple.png">
+        <title>Vorräte</title>
+    </head>
+    <body>
+
+        <div id="container">
+            <div id="header">
+                <span class="imgzentriert">
+                    <img src="images/tessa2.png" alt="Logo" width="23%" height="50%">
+                </span>
+            </div>
+
+            <div id="body">
+                <div id="bodyMenue">
+                    <!--<button type="button" id="insert" style="font-size: 170%;" class="btn btn-default btn-lg" onclick="window.location.href='ReadInWithoutQR.html'">
+                        <span class="glyphicon glyphicon-th inhalt" aria-hidden="true"></span> Produkteingabe
+                    </button> <br><br>
+                    <button type="button" id="scan" style="font-size: 170%;" class="btn btn-default btn-lg" onclick="window.location.href='ReadInWithoutQR.html'">
+                        <span class="glyphicon glyphicon-barcode inhalt" aria-hidden="true"></span> Einscannen
+                    </button>-->
+                    <!--BUTTON 1-->
+                    <button class="button" id="home" type="button" onclick="window.location.href='MainPage.html'">
+                        <span class="glyphicon glyphicon-home inhalt" aria-hidden="true" ></span> Hauptmenü</button>
+                    <br>
+
+                    <!--BUTTON 2-->
+                    <button class="button" id="scan" type="button" onclick="window.location.href='PurchaseList.html'">
+                        <span class="glyphicon glyphicon-shopping-cart inhalt" aria-hidden="true" ></span> Einkaufsliste</button>
+                    <br>
+
+                    <!--BUTTON 3-->
+                    <!--onclick="window.location.href='ReadInWithoutQR.html'"-->
+                    <button class="button" id="insert" type="button"  data-toggle="modal" data-target="#myModal">
+                        <span class="glyphicon glyphicon-th inhalt" aria-hidden="true" ></span> Produkteingabe</button>
+                    <br>
+                    <!-- Modal -->
+                    <div id="myModal" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Produkteingabe</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div >
+                                        <p id="errorProdukt" class="inputfields">Bitte Eingabe überprüfen</p>
+                                        <p class="inputtext">Produkt:</p> <input type="text" class="inputs" placeholder=" Produkt" id="produktEingabe">
+                                    </div>
+
+                                    <div >
+                                        <p id="errorAnzahl" class="inputfields">Bitte Eingabe überprüfen</p>
+                                        <p class="inputtext">Anzahl:</p> <input type="text" class="inputs" placeholder=" Anzahl" id="anzahlEingabe">
+                                    </div>
+                                    <input type="hidden" name="Barcode" id="barcodeField" value="0">
+                                    <div>
+                                        <p id="errorHaltbar" class="inputfields">Bitte Eingabe überprüfen</p>
+
+                                        <p class="inputtext hero-unit">Ablaufdatum:</p>
+                                        <div id="div-date">
+                                                <span class="combodate inputs">
+                                                    <select class="day" id ="Tag" style="width: 5vw;">
+                                                        <option value="Tag">Tag</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                        <option value="13">13</option>
+                                                        <option value="14">14</option>
+                                                        <option value="15">15</option>
+                                                        <option value="16">16</option>
+                                                        <option value="17">17</option>
+                                                        <option value="18">18</option>
+                                                        <option value="19">19</option>
+                                                        <option value="20">20</option>
+                                                        <option value="21">21</option>
+                                                        <option value="22">22</option>
+                                                        <option value="23">23</option>
+                                                        <option value="24">24</option>
+                                                        <option value="25">25</option>
+                                                        <option value="26">26</option>
+                                                        <option value="27">27</option>
+                                                        <option value="28">28</option>
+                                                        <option value="29">29</option>
+                                                        <option value="30">30</option>
+                                                        <option value="31">31</option>
+                                                    </select>&nbsp;
+                                                    <select class="month" id="Monat" style="width: 10vw;">
+                                                        <option value="Monat">Monat</option>
+                                                        <option value="1">Jänner</option>
+                                                        <option value="2">Februar</option>
+                                                        <option value="3">März</option>
+                                                        <option value="4">April</option>
+                                                        <option value="5">May</option>
+                                                        <option value="6">Juni</option>
+                                                        <option value="7">Juli</option>
+                                                        <option value="8">August</option>
+                                                        <option value="9">September</option>
+                                                        <option value="10">Oktober</option>
+                                                        <option value="11">November</option>
+                                                        <option value="12">Dezember</option>
+                                                    </select>&nbsp;
+                                                    <select class="year" id="Jahr"  style="width: 6vw;">
+                                                        <option value="Jahr">Jahr</option>
+                                                        <option value="2016">2016</option>
+                                                        <option value="2017">2017</option>
+                                                        <option value="2018">2018</option>
+                                                        <option value="2019">2019</option>
+                                                        <option value="2020">2020</option>
+                                                        <option value="2021">2021</option>
+                                                    </select>
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="footer-buttongroup">
+                                        <button class="button" type="button" onclick="Send()">Einlesen</button>
+                                        <button class="button" onclick="window.location='Storage.html'" type="button" data-dismiss="modal">Schließen</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!--BUTTON 4-->
+                    <button class="button" id="insertBarCode" type="button"  data-toggle="modal" data-target="#myModal2">
+                        <span class="glyphicon glyphicon-barcode inhalt" aria-hidden="true" ></span> Einscannen</button>
+                    <!-- Modal -->
+                    <div id="myModal2" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content" id="content2">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Barcodeeingabe</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div >
+                                        <p class="inputtext">EAN-Code:</p> <input type="text" class="inputs" placeholder=" Produkt" id="BarcodeEingabe" onkeypress="TriggerBarcode(event)">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="footer-buttongroup">
+                                        <button class="button" type="button" onclick="SendBarcode()">Einlesen</button>
+                                        <button class="button" onclick="window.location='Storage.html'" type="button" data-dismiss="modal">Schließen</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div id="myModal3" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content" id="content3">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Produkt bearbeiten</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div >
+                                    <h2 style="font-size:450%" id="modal_product">Produkt bearbeiten</h2>
+                                    <input type="hidden" id="productId" value="">
+                                    <button class="enter glyphicon glyphicon-floppy-disk" id = "closeButton" onclick="window.location='Storage.html'"></button>
+                                    <button class="enter textMinus glyphicon glyphicon-minus" id = "minusButton" onclick="lower_number();"></button>
+                                    <button class="enter" id="contentVar"><p class ="text">4</p></button>
+                                    <button class="enter textPlus glyphicon glyphicon-plus" id = "plusButton" onclick="raise_number();"></button>
+                                    <button class="enter textDelete glyphicon glyphicon-trash" id = "deleteButton" onclick="deleteProduct(); window.location='Storage.html';"></button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div id="tableSide">
+                    <h1>Produktübersicht</h1><br>
+                    <div class="container">
+                        <table id="dataTable" class="scroll  table-bordered table-collapsed">
+                            <thead class="thead">
+                            <tr>
+                                <th>Produkt</th>
+                                <th>Anzahl</th>
+                                <th>Tage haltbar</th>
+                                <th id="editButton"></th>
+                            </tr>
+                            </thead>
+                            <tbody id="data"/>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div id="footer">
+                <!--<div class = "config" id ="config" onclick="window.location.href='http://www.google.com'">
+                    <span class="glyphicon glyphicon-cog inhalt" aria-hidden="false"><div class="text"></div></span>
+                </div>-->
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                generateTable(document.getElementById('data'));
+            });
+        </script>
+    </body>
+</html>

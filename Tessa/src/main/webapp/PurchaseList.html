@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/shoppingList.js"></script>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="cssBootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="cssBootstrap/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/stylePurchaseList.css">
+    <link rel="stylesheet" href="css/styleReadInShoppingList.css">
+    <link rel="shortcut icon" href="images/einkaufswagen.png">
+    <title>Einkaufsliste</title>
+</head>
+
+<body>
+<div id="container">
+    <div id="header">
+                <span class="imgzentriert">
+                    <img src="images/tessa2.png" alt="Logo" width="23%" height="50%">
+                </span>
+    </div>
+
+    <div id="body">
+        <div id="bodyMenue">
+            <!--BUTTON 1-->
+            <button class="button" id="home" type="button" onclick="window.location.href='MainPage.html'">
+                <span class="glyphicon glyphicon-home inhalt" aria-hidden="true" ></span> Hauptmenü</button>
+            <br>
+
+            <!--BUTTON 2-->
+            <button class="button" id="scan" type="button" onclick="window.location.href='Storage.html'">
+                <span class="glyphicon glyphicon-list inhalt" aria-hidden="true" ></span> Vorräte</button>
+            <br>
+
+            <!--BUTTON Hinzufügen-->
+            <button class="button" id="insert" type="button"  data-toggle="modal" data-target="#myModal">
+                <span class="glyphicon glyphicon-plus inhalt" aria-hidden="true" ></span> Produkt zur Liste hinzufügen</button>
+            <br>
+
+            <!-- Modal -->
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Produkt zur Einkaufsliste hinzufügen</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div >
+                                <p id="errorProdukt" class="inputfields">Bitte Eingabe überprüfen</p>
+                                <p class="inputtext">Produkt:</p> <input type="text" class="inputs" placeholder=" Produkt" id="produktEingabe">
+                            </div>
+
+                            <div >
+                                <p id="errorAnzahl" class="inputfields">Bitte Eingabe überprüfen</p>
+                                <p class="inputtext">Anzahl:</p> <input type="text" class="inputs" placeholder=" Anzahl" id="anzahlEingabe">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="footer-buttongroup">
+                                <button class="button" type="button" onclick="Send()">Hinzufügen</button>
+                                <button class="button" onclick="window.location='PurchaseList.html'" type="button" data-dismiss="modal">Schließen</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="tableSide">
+            <h1>Einkaufsliste</h1><br>
+            <div class="container">
+                <table id="dataTable" class="scroll  table-bordered table-collapsed">
+                        <thead class="thead">
+                            <tr>
+                                <th>Produkt</th>
+                                <th>Anzahl</th>
+                                <th id="editButton"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="data"/>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <!--<div class = "config" id ="config" onclick="window.location.href='http://www.google.com'">
+            <span class="glyphicon glyphicon-cog inhalt" aria-hidden="false"><div class="text"></div></span>
+        </div>-->
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        generateTable(document.getElementById('data'));
+    });
+</script>
+</body>
+</html>
