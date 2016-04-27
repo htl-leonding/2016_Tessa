@@ -1,4 +1,4 @@
-var baseURL = "/FridgePi/rs/product";
+var baseURL = "/Tessa/rs/product";
 //Erstellen der Tabelle
 function generateTable(table){
     $.getJSON(baseURL, function(data){
