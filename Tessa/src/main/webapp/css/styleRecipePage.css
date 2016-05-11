@@ -1,0 +1,162 @@
+
+/*---------------------------
+*    Style-RECIPE-List
+-----------------------------*/
+body{
+    height: 100vh;
+    width: 100vw;
+    background-image: url("../images/recipePage.jpg");
+    position: fixed;
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+}
+#container {
+    height:100vh;
+    width: 100vw;
+    float: left;
+    position:relative;
+}
+
+
+/*Menü*/
+.imgzentriert {
+    display: block;
+    text-align: left;
+    float:left
+
+}
+
+#bodyMenue{
+    position: relative;
+    display: block;
+    text-align: center;
+    float: left;
+    width: 20vw;
+    height: 50vh;
+    margin-top: 1vh;
+}
+#bodyMenue .button{
+    height: 5vh;
+    width: 15vw;
+    margin-bottom: 1vh;
+    background-color: #f9f9f9;
+    font-size: 120%;
+    border-style: solid;
+    border-color: grey;
+    border-width: 3px;
+    margin-left: 3vw;
+}
+#bodyMenue .button:hover{
+    background-color: aliceblue;
+}
+
+
+#bodyMenue .submit{
+    margin-bottom: 1vh;
+    background-color: #f9f9f9;
+    font-size: 120%;
+    border-style: solid;
+    border-color: grey;
+    border-width: 2px;
+
+}
+
+
+/*Body*/
+
+.GerichtsKategorie{
+    float: left;
+    width: 25vw;
+    height: 20vh;
+    position: relative;
+}
+
+.KategorieName{
+    width: 100%;
+    height: 30%;
+
+    font-size: 25px;
+
+    position: absolute;
+    bottom: 0;
+    background:rgba(0,0,0,0.7);
+}
+
+.Vorspeisen{
+    background-image: url("../images/vorspeise.jpg");
+    background-color: #003399;
+    margin-left: 30%;
+
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.Hauptspeisen{
+    background-image: url("../images/hauptspeise.jpg");
+    background-color: #009937;
+    margin-top: 10px;
+    margin-left: 30%;
+
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.Getraenke{
+    background-image: url("../images/getraenke.jpg");
+    background-color: #990084;
+    margin-top: 10px;
+    margin-left: 3%;
+
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    text-align: right;
+}
+
+.Deserts{
+    background-image: url("../images/deserts.jpg");
+    background-color: #990010;
+    margin-top: 10px;
+    margin-left: 2%;
+
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.KategorieName p{
+    margin: 5px 50px auto;
+
+    color: white;
+    opacity: 1;
+}
+
+/*Footer*/
+#footer {
+    position:absolute;
+    bottom:0;
+    width:100vw;
+    height:10vh;
+}
+.config{
+    position: fixed;
+    background-color: white;
+    font-size: 500%;
+    height:5vh;
+    width: 5vw;
+    text-align: center;
+    margin-left:1%;
+    display: block;
+    text-align: center;
+}
+
+/*new body parts*/
+.enter {
+    width: 15%;
+    font-size: 500%;
+    line-height: 190%;
+    text-align: center;
+    border-color: transparent;
+    background-color: transparent;
+    margin-top: 10%;
+}
+
+
