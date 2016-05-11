@@ -264,7 +264,8 @@ function deleteProduct() {
     var id = document.getElementById("productId").value;
     $.ajax({
         type: "DELETE",
-        url: baseURL + "/" + id
+        url: baseURL + "/" + id,
+        async: false
     });
 }
 
