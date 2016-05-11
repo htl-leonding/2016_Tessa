@@ -1,6 +1,6 @@
-var baseURL = "/FridgePi/rs/shoppinglist";
+var baseURL = "/Tessa/rs/shoppinglist";
 function generateTable(table){
-    $.getJSON("/FridgePi/rs/shoppinglist", function(data){
+    $.getJSON("/Tessa/rs/shoppinglist", function(data){
         for(var i = 0; i < data.length; i++) {
             var product = data[i];
             var row = document.createElement("tr");
