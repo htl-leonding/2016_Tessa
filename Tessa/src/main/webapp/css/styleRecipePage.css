@@ -69,6 +69,7 @@ body{
     width: 25vw;
     height: 20vh;
     position: relative;
+    cursor: pointer;
 }
 
 .KategorieName{
@@ -84,7 +85,7 @@ body{
 
 .Vorspeisen{
     background-image: url("../images/vorspeise.jpg");
-    background-color: #003399;
+    /*background-color: #003399;*/
     margin-left: 30%;
 
     background-size: 100% 100%;
@@ -93,7 +94,7 @@ body{
 
 .Hauptspeisen{
     background-image: url("../images/hauptspeise.jpg");
-    background-color: #009937;
+    /*background-color: #009937;*/
     margin-top: 10px;
     margin-left: 30%;
 
@@ -103,7 +104,7 @@ body{
 
 .Getraenke{
     background-image: url("../images/getraenke.jpg");
-    background-color: #990084;
+    /*background-color: #990084;*/
     margin-top: 10px;
     margin-left: 3%;
 
@@ -112,9 +113,9 @@ body{
     text-align: right;
 }
 
-.Deserts{
+.Desserts{
     background-image: url("../images/deserts.jpg");
-    background-color: #990010;
+    /*background-color: #990010;*/
     margin-top: 10px;
     margin-left: 2%;
 
