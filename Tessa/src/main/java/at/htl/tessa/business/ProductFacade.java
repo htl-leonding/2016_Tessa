@@ -14,7 +14,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 /**
- * Created by Korti on 25.10.2015.
+ * @author Korti
+ * @since 25.10.2015
  */
 @Stateless
 public class ProductFacade {
@@ -27,6 +28,11 @@ public class ProductFacade {
     @Inject
     private ProductFinder productFinder;
 
+    /**
+     * Speichert ein Produkt in die Datenbank.
+     * @param product
+     * @return
+     */
     private Product save(Product product) {
         return entityManager.merge(product);
     }
@@ -47,6 +53,13 @@ public class ProductFacade {
         }
     }
 
+    /**
+     * Zur Suche eines Produktes in der Datenbank über den Barcode.
+     * @param barcode Barcode des gesuchten Producktes.
+     * @return Gesuchtes Produkt.
+     * @since 19.01.2016
+     * @author Korti
+     */
     public JsonObject findJsonByBarcode(long barcode) {
         Product product = findByBarcode(barcode);
         if(product == null) {
@@ -80,11 +93,23 @@ public class ProductFacade {
         entityManager.remove(find(id));
     }
 
+    /**
+     * Setzt die Stückanzahl eines Produktes um 1 höher.
+     * @param id ID des Produktes.
+     * @since 09.12.2015
+     * @author Korti
+     */
     public void increaseCount(long id) {
         Product product = find(id);
         product.setStueck(product.getStueck() + 1);
     }
 
+    /**
+     * Setzt die Stückanzahl eines Produktes um 1 herab.
+     * @param id ID des Produktes.
+     * @since 09.12.2015
+     * @author Korti
+     */
     public void decreaseCount(long id) {
         Product product = find(id);
         product.setStueck(product.getStueck() - 1);
@@ -100,6 +125,14 @@ public class ProductFacade {
         return true;
     }
 
+    /**
+     * Konvertiert ein Json Object zu einem Produkt.
+     * @param jsonObject Produkt als Json Object.
+     * @param id ID des Produktes.
+     * @return Konvertiertes Produkt.
+     * @since 17.01.2016
+     * @author Korti
+     */
     private Product parseJson(JsonObject jsonObject, long id) {
         if (!(jsonObject.get("barcode") instanceof JsonNumber) && !(jsonObject.get("stueck") instanceof JsonNumber)) {
             return parseStringJson(jsonObject, id);
@@ -121,6 +154,13 @@ public class ProductFacade {
         return new Product(id, name, barcode, stueck, date);
     }
 
+    /**
+     * Konvertiert ein Produkt zu einem Json Object.
+     * @param product Produkt das zu einem Json Object konvertiert werden soll.
+     * @return Konvertiertes Produkt als Json Object.
+     * @since 17.01.2016
+     * @author Korti
+     */
     private JsonObject parseJson(Product product) {
         JsonObjectBuilder builder = Json.createObjectBuilder();
         builder.add("id", product.getId());

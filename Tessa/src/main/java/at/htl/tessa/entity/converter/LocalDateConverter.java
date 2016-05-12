@@ -6,7 +6,8 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 /**
- * Created by Korti on 17.01.2016.
+ * @author Korti
+ * @since 17.01.2016
  */
 @Converter(autoApply = true)
 public class LocalDateConverter implements AttributeConverter<LocalDate, Date> {

@@ -53,6 +53,12 @@ public class ShoppingListFacade {
         return save(entry);
     }
 
+    /**
+     * Löscht einen Shopping List Eintrag aus der Datenbank über die ID.
+     * @param id ID des List Eintrages.
+     * @since 03.01.2016
+     * @author Korti
+     */
     public void delete(long id) {
         em.remove(find(id));
     }

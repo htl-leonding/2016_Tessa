@@ -14,7 +14,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 /**
- * Created by Korti on 25.10.2015.
+ * @author Korti
+ * @since 25.10.2015
  */
 @Stateless
 @Path("product")
@@ -40,6 +41,13 @@ public class ProductResource {
         return productFacade.findJson(id);
     }
 
+    /**
+     * REST Service um ein Produkt über den Barcode zu bekommen.
+     * @param barcode Barcode des Produktes.
+     * @return Gefundenes Produkt.
+     * @since 19.01.2016
+     * @author Korti
+     */
     @GET
     @Path("barcode={barcode}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -61,6 +69,13 @@ public class ProductResource {
         return Response.accepted(productFacade.update(id, product)).build();
     }
 
+    /**
+     * REST Service um die Stückanzahl eines Produktes um 1 zu höher.
+     * @param id ID des Produktes.
+     * @return Response mit dem aktualisierten Produkt.
+     * @since 09.12.2015
+     * @author Korti
+     */
     @PUT
     @Path("{id}/increase")
     @Produces(MediaType.APPLICATION_JSON)
@@ -69,6 +84,13 @@ public class ProductResource {
         return Response.ok(productFacade.findJson(id)).build();
     }
 
+    /**
+     * REST Service um die Stückanzahl eines Produktes um 1 herab zu setzten.
+     * @param id ID des Produktes.
+     * @return Response mit dem aktualisierten Produkt.
+     * @since 09.12.2015
+     * @author Korti
+     */
     @PUT
     @Path("{id}/decrease")
     @Produces(MediaType.APPLICATION_JSON)

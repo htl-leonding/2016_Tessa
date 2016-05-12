@@ -57,6 +57,12 @@ public class ShoppingListEndpoint {
         return Response.accepted(entry).build();
     }
 
+    /**
+     * REST Service zum löschen eines Shopping List Eintrages über die ID.
+     * @param id ID des List Eintrages.
+     * @since 03.01.2016
+     * @author Korti
+     */
     @DELETE
     @Path("{id}")
     public void deleteEntry(@PathParam("id") long id) {

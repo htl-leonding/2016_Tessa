@@ -10,6 +10,8 @@ import java.util.List;
 
 /**
  * Created by Korti on 21.04.2016.
+ * @author Korti
+ * @since 21.04.2016
  */
 @Stateless
 public class CookingRecipeFacade {
@@ -17,14 +19,35 @@ public class CookingRecipeFacade {
     @PersistenceContext
     private EntityManager entityManager;
 
+    /**
+     * Speichert ein Kochrezept in die Datenbank.
+     * @param recipe Das zu speichernde Rezept.
+     * @return Kochrezept mit der ID aus der Datenbank.
+     * @since 21.04.2016
+     * @author Korti
+     */
     public CookingRecipe save(CookingRecipe recipe) {
         return entityManager.merge(recipe);
     }
 
+    /**
+     * Zur Suche eines Rezeptes in der Datenbank über die ID.
+     * @param id ID des gesuchten Rezeptes.
+     * @return Gesuchte Rezept.
+     * @since 21.04.2016
+     * @author Korti
+     */
     public CookingRecipe find(long id) {
         return entityManager.find(CookingRecipe.class, id);
     }
 
+    /**
+     * Zur Suche eines Rezeptes in der Datenbank über den Namen.
+     * @param name Name des gesuchten Rezeptes.
+     * @return Gesuchte Rezept.
+     * @since 21.04.2016
+     * @author Korti
+     */
     public CookingRecipe findByName(String name) {
         try {
             return entityManager.createNamedQuery("CookingRecipe.FindByName", CookingRecipe.class)
@@ -34,6 +57,12 @@ public class CookingRecipeFacade {
         }
     }
 
+    /**
+     * Gibt alle Rezpte die in der Datenbank gespeichert sind.
+     * @return Liste aller Kochrezepte.
+     * @since 21.04.2016
+     * @author Korti
+     */
     public List<CookingRecipe> findAll() {
         try {
             return entityManager.createNamedQuery("CookingRecipe.GetAll", CookingRecipe.class).getResultList();
@@ -42,11 +71,27 @@ public class CookingRecipeFacade {
         }
     }
 
+    /**
+     * Aktualisiert ein Rezept in der Datenbank über die ID.
+     * @param id ID des zu aktualisierenden Rezeptes.
+     * @param recipe Aktualisiertes Rezept ohne ID.
+     * @return Aktualisiertes Rezept mit ID.
+     * @since 21.04.2016
+     * @author Korti
+     */
     public CookingRecipe update(long id, CookingRecipe recipe) {
         recipe.setId(id);
         return save(recipe);
     }
 
+    /**
+     * Aktualisiert ein Rezept in der Datenbank über den Namen.
+     * @param name Name des zu aktualisierenden Rezeptes.
+     * @param recipe Aktualisiertes Rezept ohne ID.
+     * @return Aktualisiertes Rezept mit ID.
+     * @since 21.04.2016
+     * @author Korti
+     */
     public CookingRecipe update(String name, CookingRecipe recipe) {
         CookingRecipe oldRecipe = findByName(name);
         recipe.setId(oldRecipe.getId());

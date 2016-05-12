@@ -15,13 +15,21 @@ import java.net.MalformedURLException;
 import java.util.List;
 
 /**
- * Created by Korti on 18.01.2016.
+ * @author Korti
+ * @since 18.01.2016
  */
 @Stateless
 public class ProductFinder {
 
     private final String barcodeUrl = "";
 
+    /**
+     * Sucht einen Namen zu einem Produkt über den Barcode.
+     * @param barcode Barcode des zu suchenden Produktes.
+     * @return Name des Produktes.
+     * @since 18.01.2016
+     * @author Korti
+     */
     public String findProductName(long barcode) {
         Document productPage;
         try {
@@ -34,6 +42,13 @@ public class ProductFinder {
         return element.text();
     }
 
+    /**
+     * Holt den URL des zu suchenden Produktes.
+     * @param barcode Barcode des zu suchenden Produktes.
+     * @return URL des Produktes.
+     * @since 18.01.2016
+     * @author Korti
+     */
     private String getProductPageLink(long barcode) {
         try(final WebClient webClient = new WebClient()) {
             webClient.getOptions().setJavaScriptEnabled(false);
@@ -51,6 +66,14 @@ public class ProductFinder {
         return "";
     }
 
+    /**
+     * Sucht die Form im HTML Code über das Action Attribut.
+     * @param page HTML Code des Seite.
+     * @param action Inhalt des Action Attribut.
+     * @return Gesuchte Form.
+     * @since 18.01.2016
+     * @author Korti
+     */
     private HtmlForm findFormByAction(HtmlPage page, String action) {
         List<HtmlForm> forms = page.getForms();
         for (HtmlForm form : forms) {

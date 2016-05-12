@@ -4,7 +4,8 @@ import javax.persistence.*;
 import java.util.List;
 
 /**
- * Created by Korti on 21.04.2016.
+ * @author Korti
+ * @since 21.04.2016
  */
 @Entity
 @NamedQueries({

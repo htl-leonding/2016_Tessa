@@ -5,7 +5,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
- * Created by Korti on 25.10.2015.
+ * @author Korti
+ * @since 25.10.2015
  */
 
 @Entity
