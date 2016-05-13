@@ -46,23 +46,24 @@ body{
     border-width: 3px;
     margin-left: 3vw;
 }
+
+#bodyMenue .fav{
+    margin-left: 2.7vw;
+}
+
 #bodyMenue .button:hover{
     background-color: aliceblue;
 }
 
-
-#bodyMenue .submit{
-    margin-bottom: 1vh;
-    background-color: #f9f9f9;
-    font-size: 120%;
-    border-style: solid;
-    border-color: grey;
-    border-width: 2px;
-
-}
-
-
 /*Body*/
+
+.recipeHead{
+    float: left;
+    position: absolute;
+    margin-left: 30vw;
+    margin-top: 2%;
+    font-family: inherit;
+}
 
 .GerichtsKategorie{
     float: left;
