@@ -22,6 +22,7 @@ public class CookingRecipe {
 
     private String name;
     private String description;
+    private String category;
     @Lob
     private byte[] picture;
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -31,9 +32,10 @@ public class CookingRecipe {
 
     }
 
-    public CookingRecipe(String name, String description, byte[] picture, List<Product> ingredients) {
+    public CookingRecipe(String name, String description, String category, byte[] picture, List<Product> ingredients) {
         this.name = name;
         this.description = description;
+        this.category = category;
         this.picture = picture;
         this.ingredients = ingredients;
     }
@@ -61,6 +63,14 @@ public class CookingRecipe {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public byte[] getPicture() {
