@@ -4,12 +4,23 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutCompat;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    private List<Product> productList = new ArrayList<Product>();
+    private RecyclerView recyclerView;
+    private ProductAdapter productAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +37,38 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+
+        productAdapter = new ProductAdapter(productList);
+        RecyclerView.LayoutManager pLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(pLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(productAdapter);
+
+        prepareProductData();
+    }
+
+    private void prepareProductData() {
+        Product product = new Product("Milch", 5);
+        productList.add(product);
+
+        productList.add(new Product("Apfel", 4));
+        productList.add(new Product("Apfel", 4));
+        productList.add(new Product("Apfel", 4));
+        productList.add(new Product("Apfel", 4));
+        productList.add(new Product("Apfel", 4));
+        productList.add(new Product("Apfel", 4));
+        productList.add(new Product("Apfel", 4));
+        productList.add(new Product("Apfel", 4));
+        productList.add(new Product("Apfel", 4));
+        productList.add(new Product("Apfel", 4));
+        productList.add(new Product("Apfel", 4));
+        productList.add(new Product("Apfel", 4));
+        productList.add(new Product("Apfel", 4));
+        productList.add(new Product("Apfel", 4));
+        productList.add(new Product("Apfel", 4));
+        productAdapter.notifyDataSetChanged();
     }
 
     @Override
