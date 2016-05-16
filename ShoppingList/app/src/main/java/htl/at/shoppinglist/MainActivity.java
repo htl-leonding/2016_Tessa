@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager pLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(pLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(productAdapter);
 
         prepareProductData();
