@@ -48,6 +48,13 @@ public class CookingRecipeEndpoint {
         return facade.findByName(name);
     }
 
+    @GET
+    @Path("c={category}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<CookingRecipe> getCategoryRecipes(@PathParam("category") String category) {
+        return facade.findByCategory(category);
+    }
+
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Response saveRecipe(CookingRecipe recipe) throws URISyntaxException {

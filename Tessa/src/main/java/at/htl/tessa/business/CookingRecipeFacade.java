@@ -71,6 +71,15 @@ public class CookingRecipeFacade {
         }
     }
 
+    public List<CookingRecipe> findByCategory(String category) {
+        try {
+            return entityManager.createNamedQuery("CookingRecipe.FindByCategory", CookingRecipe.class)
+                    .setParameter("CATEGORY", category).getResultList();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
     /**
      * Aktualisiert ein Rezept in der Datenbank über die ID.
      * @param id ID des zu aktualisierenden Rezeptes.
