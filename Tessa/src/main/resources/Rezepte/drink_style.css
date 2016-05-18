@@ -1,0 +1,17 @@
+﻿body{
+font-family:arial,sans-serif
+}
+.Rezept{
+margin-bottom:3em
+}
+h3{
+margin-bottom:.4em;
+font-size:1.05em
+}
+.RezeptBild{
+float:right;
+border:0px;
+}
+#footer{
+font-size:.8em
+}

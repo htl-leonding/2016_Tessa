@@ -30,6 +30,10 @@ public class CookingRecipeFacade {
         return entityManager.merge(recipe);
     }
 
+    public void save(List<CookingRecipe> recipes) {
+        recipes.forEach(this::save);
+    }
+
     /**
      * Zur Suche eines Rezeptes in der Datenbank über die ID.
      * @param id ID des gesuchten Rezeptes.
@@ -96,5 +100,13 @@ public class CookingRecipeFacade {
         CookingRecipe oldRecipe = findByName(name);
         recipe.setId(oldRecipe.getId());
         return save(recipe);
+    }
+
+    public long countRecipes() {
+        try {
+            return entityManager.createNamedQuery("CookingRecipe.Count", Long.class).getSingleResult();
+        } catch (NoResultException e) {
+            return -1;
+        }
     }
 }

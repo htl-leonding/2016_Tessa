@@ -10,7 +10,8 @@ import java.util.List;
 @Entity
 @NamedQueries({
         @NamedQuery(name = "CookingRecipe.FindByName", query = "select r from CookingRecipe r where r.name = :NAME"),
-        @NamedQuery(name = "CookingRecipe.GetAll", query = "select r from CookingRecipe r")
+        @NamedQuery(name = "CookingRecipe.GetAll", query = "select r from CookingRecipe r"),
+        @NamedQuery(name = "CookingRecipe.Count", query = "select count(r) from CookingRecipe r")
 })
 public class CookingRecipe {
 
