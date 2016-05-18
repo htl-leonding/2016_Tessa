@@ -12,7 +12,8 @@ import java.util.List;
         @NamedQuery(name = "CookingRecipe.FindByName", query = "select r from CookingRecipe r where r.name = :NAME"),
         @NamedQuery(name = "CookingRecipe.GetAll", query = "select r from CookingRecipe r"),
         @NamedQuery(name = "CookingRecipe.FindByCategory", query = "select r from CookingRecipe r where r.category = :CATEGORY"),
-        @NamedQuery(name = "CookingRecipe.Count", query = "select count(r) from CookingRecipe r")
+        @NamedQuery(name = "CookingRecipe.Count", query = "select count(r) from CookingRecipe r"),
+        @NamedQuery(name = "CookingRecipe.Search", query = "select r from CookingRecipe r where LOWER(r.name) like :SEARCH")
 })
 public class CookingRecipe {
 
