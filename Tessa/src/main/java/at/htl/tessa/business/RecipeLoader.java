@@ -20,10 +20,10 @@ import java.util.List;
 @Stateless
 public class RecipeLoader {
 
-    public static String vorspeisenPath = "Rezepte/vorspeisen.html";
-    public static String hauptspeisenUrl = "localhost:8080/Tessa/Rezepte/hauptspeisen.htm";
-    public static String nachspeisenUrl = "localhost:8080/Tessa/Rezepte/nachspeisen.htm";
-    public static String drinksUrls = "/webapp/Rezepte/drinks.htm";
+    private static String vorspeisenPath = "Rezepte/vorspeisen.html";
+    private static String hauptspeisenPath = "Rezepte/hauptspeisen.html";
+    private static String nachspeisenPath = "Rezepte/nachspeisen.html";
+    private static String drinksPath = "Rezepte/drinks.html";
     private static String imageUrl = "/Rezepte/Bilder/klein/%s";
 
     private static final String contentClassName = "Inhaltsverzeichnis";
@@ -31,15 +31,31 @@ public class RecipeLoader {
     @Inject
     private CookingRecipeFacade facade;
 
-    public void loadVorspeisen() {
+    public void loadVorspeisen(){
+        loadPage("Vorspeise", vorspeisenPath);
+    }
 
-        Document vorspeisenPage;
+    public void loadHauptspeisen(){
+        loadPage("Hauptspeise", hauptspeisenPath);
+    }
+
+    public void loadNachspeisen(){
+        loadPage("Nachspeise", nachspeisenPath);
+    }
+
+    public void loadDrinks(){
+        loadPage("Drink", drinksPath);
+    }
+
+    public void loadPage(String category, String path) {
+
+        Document htmlPage;
         InputStream fileStream = null;
         BufferedReader reader = null;
 
         try{
 
-            fileStream = RecipeLoader.class.getClassLoader().getResourceAsStream(vorspeisenPath);
+            fileStream = RecipeLoader.class.getClassLoader().getResourceAsStream(path);
             reader = new BufferedReader(new InputStreamReader(fileStream));
             StringBuilder htmlBuilder = new StringBuilder();
             String line;
@@ -48,7 +64,7 @@ public class RecipeLoader {
                 htmlBuilder.append(line);
             }
 
-            vorspeisenPage = Jsoup.parse(htmlBuilder.toString());
+            htmlPage = Jsoup.parse(htmlBuilder.toString());
         } catch (IOException e){
             e.printStackTrace();
             return;
@@ -67,7 +83,7 @@ public class RecipeLoader {
             }
         }
 
-        Element body = vorspeisenPage.body();
+        Element body = htmlPage.body();
 
         Elements contents = body.getElementsByClass(contentClassName);
         Element content;
@@ -95,7 +111,7 @@ public class RecipeLoader {
             imageName = imageName.substring(imageName.lastIndexOf("/") + 1);
             byte[] image = loadImage(imageName);
 
-            recipes.add(new CookingRecipe(recipeName, "", "Vorspeise", image, new LinkedList<>()));
+            recipes.add(new CookingRecipe(recipeName, "", category, image, null));
         }
 
         facade.save(recipes);

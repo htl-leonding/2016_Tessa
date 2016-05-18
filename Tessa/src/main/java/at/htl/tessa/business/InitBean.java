@@ -23,6 +23,9 @@ public class InitBean {
     public void init(){
         if(recipeFacade.countRecipes() <= 0) {
             recipeLoader.loadVorspeisen();
+            recipeLoader.loadHauptspeisen();
+            recipeLoader.loadNachspeisen();
+            recipeLoader.loadDrinks();
         }
     }
 
