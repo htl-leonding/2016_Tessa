@@ -94,7 +94,7 @@ public class RecipeLoader {
             imageName = imageName.substring(imageName.lastIndexOf("/") + 1);
             byte[] image = loadImage(imageName);
 
-            recipes.add(new CookingRecipe(recipeName, "", image, null));
+            recipes.add(new CookingRecipe(recipeName, "", "Vorspeise", image, null));
         }
 
         facade.save(recipes);
