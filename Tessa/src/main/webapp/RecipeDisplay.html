@@ -18,7 +18,7 @@
     <title>Rezepte</title>
 </head>
 <body>
-<div style="display: none" id="URLPath">getraenke</div>
+<div style="display: none" id="URLPath">nachspeise</div>
 <div id="container">
 
     <div id="header">
@@ -50,41 +50,16 @@
     </div>
 
     <div class="recipeHead">
-        <h1>Rezepte für Getränke</h1>
+        <h1 id="recipeTitle"></h1>
     </div>
 
     <div class="outer">
-
-        <!--Searchbar-->
-        <form class="Suchfeldblock" method="post" action="" >
-            <label>
-                <input type="text" id="suchfeld" style="width: 20vw; height: 4vh;" placeholder="Rezept suchen..." />
-            </label>
-            <label>
-                <button class="submit" id="suchen" type="button" style="width: 2.8vw; height: 4vh;">
-                    <span class="glyphicon glyphicon-search inhalt" aria-hidden="true" ></span></button>
-            </label>
-        </form>
-
-
-        <div id="tableSide">
-            <div class="container">
-                <table id="dataTable" class="scroll  table-bordered table-collapsed">
-                    <thead class="thead">
-                    <tr>
-                        <th id="bild"></th>
-                        <th id="name"></th>
-                        <th id="description"></th>
-                    </tr>
-                    </thead>
-                    <tbody id="data"/>
-                </table>
-            </div>
+        <div>
+            <img id="recipeImg">
         </div>
+        <div id="description"></div>
+        <div id="ingredients"></div>
     </div>
-
-
-
 
     <div id="footer">
         <!--<div class = "config" id ="config" onclick="window.location.href='http://www.google.com'">

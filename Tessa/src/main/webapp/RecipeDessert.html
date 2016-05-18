@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
-    <script src="js/slideShow.js"></script>
+    <script src="js/RecipeList.js"></script>
 
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -12,16 +12,14 @@
     <link rel="stylesheet" href="cssBootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="cssBootstrap/bootstrap-theme.min.css">
 
-    <link rel="stylesheet" href="css/styleRecipePage.css">
+    <link rel="stylesheet" href="css/styleCategoriePages.css">
     <link rel="shortcut icon" href="images/recipeIcon.png">
 
     <title>Rezepte</title>
 </head>
 <body>
-
+<div style="display: none" id="URLPath">nachspeise</div>
 <div id="container">
-
-
 
     <div id="header">
             <span class="imgzentriert">
@@ -31,12 +29,6 @@
 
     <div id="bodyMenue">
 
-        <!--<button type="button" id="insert" style="font-size: 170%;" class="btn btn-default btn-lg" onclick="window.location.href='ReadInWithoutQR.html'">
-            <span class="glyphicon glyphicon-th inhalt" aria-hidden="true"></span> Produkteingabe
-        </button> <br><br>
-        <button type="button" id="scan" style="font-size: 170%;" class="btn btn-default btn-lg" onclick="window.location.href='ReadInWithoutQR.html'">
-            <span class="glyphicon glyphicon-barcode inhalt" aria-hidden="true"></span> Einscannen
-        </button>-->
         <!--BUTTON 1-->
         <button class="button" id="home" type="button" onclick="window.location.href='MainPage.html'">
             <span class="glyphicon glyphicon-home inhalt" aria-hidden="true" ></span> Hauptmenü</button>
@@ -66,17 +58,7 @@
         <!--Searchbar-->
         <form class="Suchfeldblock" method="post" action="" >
             <label>
-                <input type="text" name="suchfeld" id="suchfeld" value="Rezept suchen..." style="width: 20vw; height: 4vh;"
-                       onfocus="changeValue('Rezept suchen...', this);" onblur="changeValue('Rezept suchen...', this);" />
-                <script>
-                    function changeValue(def_val, sender) {
-                        if (sender.value == def_val) {
-                            sender.value = "";
-                        } else if (sender.value == "") {
-                            sender.value = def_val;
-                        }
-                    }
-                </script>
+                <input type="text" id="suchfeld" style="width: 20vw; height: 4vh;" placeholder="Rezept suchen..." />
             </label>
             <label>
                 <button class="submit" id="suchen" type="button" style="width: 2.8vw; height: 4vh;">
@@ -88,12 +70,12 @@
 
         <div id="tableSide">
             <div class="container">
-                <table id="dataTable" class="scroll  table-collapsed">
+                <table id="dataTable" class="scroll  table-bordered table-collapsed">
                     <thead class="thead">
                     <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th id="bild"></th>
+                        <th id="name"></th>
+                        <th id="description"></th>
                     </tr>
                     </thead>
                     <tbody id="data"/>
