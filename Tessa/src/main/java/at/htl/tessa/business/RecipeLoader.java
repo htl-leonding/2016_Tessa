@@ -10,6 +10,8 @@ import org.jsoup.select.Elements;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.io.*;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -56,7 +58,7 @@ public class RecipeLoader {
         try{
 
             fileStream = RecipeLoader.class.getClassLoader().getResourceAsStream(path);
-            reader = new BufferedReader(new InputStreamReader(fileStream));
+            reader = new BufferedReader(new InputStreamReader(fileStream, StandardCharsets.UTF_8));
             StringBuilder htmlBuilder = new StringBuilder();
             String line;
 
