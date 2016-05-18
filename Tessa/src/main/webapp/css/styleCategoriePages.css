@@ -79,19 +79,13 @@ table{
     margin-top: -2%;
 }
 tr{
-    font-size: 250%;
+    font-size: 150%;
     text-align: center;
     color: black;
-
     height: 8vh;
-    width:100%;
+
 }
-th{
-    width: 20vw;
-    text-align: center;
-    color: dimgray;
-    background-color: #f9f9f9;
-}
+
 
 /*MakeItScrollable*/
 #tableSide table.scroll {

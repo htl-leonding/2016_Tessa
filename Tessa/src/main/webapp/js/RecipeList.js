@@ -23,6 +23,8 @@ function generateTable(table){
             row.appendChild(cellImg);
 
             var cellName = document.createElement("td");
+            cellName.id="cellName";
+            cellName.width = "100%";
             cellName.innerHTML = recipe.name;
             row.appendChild(cellName);
 
