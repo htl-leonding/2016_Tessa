@@ -62,6 +62,22 @@ public class CookingRecipeFacade {
     }
 
     /**
+     * Zur Suche eines Rezeptes in der Datenbank über den Teil eines Namens.
+     * @param query Teil des Namens des gesuchten Rezeptes.
+     * @return Gefundene Rezepte.
+     * @since 18.05.2016
+     * @author Korti
+     */
+    public List<CookingRecipe> searchRecipes(String query) {
+        try {
+            return entityManager.createNamedQuery("CookingRecipe.Search", CookingRecipe.class)
+                    .setParameter("SEARCH", "%" + query.toLowerCase() + "%").getResultList();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    /**
      * Gibt alle Rezpte die in der Datenbank gespeichert sind.
      * @return Liste aller Kochrezepte.
      * @since 21.04.2016

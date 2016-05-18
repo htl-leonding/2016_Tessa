@@ -49,6 +49,13 @@ public class CookingRecipeEndpoint {
     }
 
     @GET
+    @Path("s={query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<CookingRecipe> searchRecipes(@PathParam("query") String query) {
+        return facade.searchRecipes(query);
+    }
+
+    @GET
     @Path("c={category}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<CookingRecipe> getCategoryRecipes(@PathParam("category") String category) {
