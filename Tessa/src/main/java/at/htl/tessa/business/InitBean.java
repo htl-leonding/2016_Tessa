@@ -14,7 +14,7 @@ import javax.inject.Inject;
 public class InitBean {
 
     @Inject
-    RecipeLoader recipeLoader = new RecipeLoader();
+    RecipeLoader recipeLoader;
 
     @Inject
     CookingRecipeFacade recipeFacade;
@@ -28,5 +28,4 @@ public class InitBean {
             recipeLoader.loadDrinks();
         }
     }
-
 }
