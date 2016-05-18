@@ -92,7 +92,19 @@ th{
     background-color: #f9f9f9;
 }
 
-tr
+/*MakeItScrollable*/
+#tableSide table.scroll {
+    border-spacing: 0;
+}
+#tableSide table.scroll tbody,
+#tableSide table.scroll thead { display: block; }
+
+#tableSide table.scroll tbody {
+    height: 56vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 
 /*Footer*/
 #footer {

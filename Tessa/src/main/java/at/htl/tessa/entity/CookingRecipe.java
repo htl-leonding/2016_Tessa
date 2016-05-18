@@ -83,12 +83,12 @@ public class CookingRecipe {
         this.picture = picture;
     }
 
-    public List<Product> getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(List<Product> ingredients) {
-        this.ingredients = ingredients;
-    }
+//    public List<Product> getIngredients() {
+//        return ingredients;
+//    }
+//
+//    public void setIngredients(List<Product> ingredients) {
+//        this.ingredients = ingredients;
+//    }
     //endregion
 }

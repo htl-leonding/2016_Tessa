@@ -18,7 +18,7 @@
     <title>Rezepte</title>
 </head>
 <body>
-<div style="display: none" id="URLPath">getraenke</div>
+<div style="display: none" id="URLPath">Getraenke</div>
 <div id="container">
 
     <div id="header">
@@ -71,11 +71,11 @@
             <div class="container">
                 <table id="dataTable" class="scroll  table-bordered table-collapsed">
                     <thead class="thead">
-                    <tr>
+                    <!--<tr>
                         <th id="bild"></th>
                         <th id="name"></th>
                         <th id="description"></th>
-                    </tr>
+                    </tr>-->
                     </thead>
                     <tbody id="data"/>
                 </table>
@@ -83,8 +83,26 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
 
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" id="modalHead">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body" id="recipeData">
 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <div id="footer">
         <!--<div class = "config" id ="config" onclick="window.location.href='http://www.google.com'">

@@ -4,7 +4,7 @@
 var baseURL = "/Tessa/rs/cooking/c=";
 //Erstellen der Tabelle
 function generateTable(table){
-    baseURL += $("#URLPath").text() + "/";
+    baseURL += $("#URLPath").text();
 
     $.getJSON(baseURL, function(data){
         for(var i = 0; i < data.length; i++) {
@@ -14,7 +14,7 @@ function generateTable(table){
 
             var cellImg = document.createElement("td");
             cellImg.id = "RecipeImg";
-            cellImg.rowSpan = "2";
+            //cellImg.rowSpan = "2";
 
             var img = document.createElement("img");
             img.src ="data:image/png;base64," + recipe.picture;
@@ -26,18 +26,30 @@ function generateTable(table){
             cellName.innerHTML = recipe.name;
             row.appendChild(cellName);
 
-            var row2 = document.createElement("tr");
+            /*var row2 = document.createElement("tr");
             row2.id = "recipe_" + recipe.id;
 
             var cellDescription = document.createElement("td");
             cellDescription.innerHTML = recipe.description;
-            row.appendChild(cellName);
+            row.appendChild(cellName);*/
 
             table.appendChild(row);
         }
+
+        /*$(document).ready(function(){
+            $("#recipe_"+recipe.id).click(function(){
+                openModal();
+            });
+        });*/
     });
 }
 
+/*function openModal(){
+    $("#myModal").modal();
 
+
+}
+
+*/
 
 

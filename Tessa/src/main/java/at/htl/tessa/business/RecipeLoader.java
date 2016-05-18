@@ -1,6 +1,7 @@
 package at.htl.tessa.business;
 
 import at.htl.tessa.entity.CookingRecipe;
+import at.htl.tessa.entity.Product;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -94,7 +95,7 @@ public class RecipeLoader {
             imageName = imageName.substring(imageName.lastIndexOf("/") + 1);
             byte[] image = loadImage(imageName);
 
-            recipes.add(new CookingRecipe(recipeName, "", "Vorspeise", image, null));
+            recipes.add(new CookingRecipe(recipeName, "", "Vorspeise", image, new LinkedList<>()));
         }
 
         facade.save(recipes);
