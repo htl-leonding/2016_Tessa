@@ -38,30 +38,9 @@ function generateTable(table){
                 height: 300
             });
 
-            /*var row2 = document.createElement("tr");
-            row2.id = "recipe_" + recipe.id;
-
-            var cellDescription = document.createElement("td");
-            cellDescription.innerHTML = recipe.description;
-            row.appendChild(cellName);*/
-
             table.appendChild(row);
         }
-
-        /*$(document).ready(function(){
-            $("#recipe_"+recipe.id).click(function(){
-                openModal();
-            });
-        });*/
     });
 }
-
-/*function openModal(){
-    $("#myModal").modal();
-
-
-}
-
-*/
 
 
