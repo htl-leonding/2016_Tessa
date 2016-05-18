@@ -9,17 +9,30 @@
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
+    <script src="js/jquery.avgrund.min.js"></script>
+
     <link rel="stylesheet" href="cssBootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="cssBootstrap/bootstrap-theme.min.css">
 
     <link rel="stylesheet" href="css/styleCategoriePages.css">
     <link rel="shortcut icon" href="images/recipeIcon.png">
 
+    <link rel="stylesheet" href="css/avgrund.css"/>
+
     <title>Rezepte</title>
 </head>
 <body>
 <div style="display: none" id="URLPath">Vorspeise</div>
 <div id="container">
+    <div class="invis" id="avgrund-popup" >
+        <div class="recipe-details">
+            <img src="" alt="not loaded yet">
+            <p id="name"></p>
+            <p id="description"></p>
+            <p id="ingredients"></p>
+        </div>
+    </div>
+
 
     <div id="header">
             <span class="imgzentriert">

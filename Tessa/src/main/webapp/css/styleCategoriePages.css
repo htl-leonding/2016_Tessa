@@ -137,4 +137,13 @@ th{
     margin-top: 10%;
 }
 
+.invis{
+    display: none;
+}
 
+.recipe-details{
+    width: 380px;
+    height: 280px;
+    text-align: center;
+    margin: 0;
+}

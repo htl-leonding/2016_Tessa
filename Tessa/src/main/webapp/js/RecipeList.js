@@ -26,6 +26,18 @@ function generateTable(table){
             cellName.innerHTML = recipe.name;
             row.appendChild(cellName);
 
+            var temp = $('#avgrund-popup');
+            temp.find('img')[0].src="data:image/png;base64," + recipe.picture;
+            temp.find('#name').text(recipe.name);
+            temp.find('#description').text(recipe.description);
+            temp.find('#ingredients').text(recipe.ingredients);
+
+            $(row).avgrund({
+               template: temp.html(),
+                width: 400,
+                height: 300
+            });
+
             /*var row2 = document.createElement("tr");
             row2.id = "recipe_" + recipe.id;
 
