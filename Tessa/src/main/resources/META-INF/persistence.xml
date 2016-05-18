@@ -2,7 +2,7 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
 
     <persistence-unit name="FridgePiPU" transaction-type="JTA">
-        <jta-data-source>java:jboss/datasources/MyDS</jta-data-source>
+        <jta-data-source>java:jboss/datasources/FridgePiDS</jta-data-source>
 
         <properties>
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
