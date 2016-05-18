@@ -2,6 +2,8 @@ package htl.at.shoppinglist;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +20,6 @@ import java.util.List;
  */
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHolder> {
     private List<Product> productList;
-
     public List<Product> getProductList() {
         return productList;
     }
@@ -37,18 +38,31 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             delete_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    removeAt(getPosition());
+                    removeItem(getPosition());
                 }
             });
+
         }
 
 
     }
 
-    public void removeAt(int position) {
+    public Product removeItem(int position) {
+        Product product = productList.get(position);
         productList.remove(position);
         notifyItemRemoved(position);
-        notifyItemRangeChanged(position, productList.size());
+        return product;
+    }
+
+    public void addItem(int position, Product product) {
+        productList.add(position, product);
+        notifyItemInserted(position);
+    }
+
+    public void moveItem(int fromPosition, int toPosition) {
+        final Product product = productList.remove(fromPosition);
+        productList.add(toPosition, product);
+        notifyItemMoved(fromPosition, toPosition);
     }
 
     public ProductAdapter(List<Product> productList) {
@@ -67,7 +81,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         return new MyViewHolder(itemView);
     }
 
-
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
+    }
 
     @Override
     public int getItemCount() {

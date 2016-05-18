@@ -13,21 +13,6 @@
     tools:showIn="@layout/activity_main"
     android:orientation="vertical">
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="fill_horizontal"
-        android:id="@+id/view">
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/searchEditText"
-        android:layout_weight="1"
-        android:singleLine="true"
-        android:hint="@string/hint_text" />
-    </android.support.design.widget.TextInputLayout>
-
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
