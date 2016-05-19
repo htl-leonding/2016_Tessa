@@ -1,7 +1,6 @@
 package at.htl.tessa.business;
 
 import at.htl.tessa.entity.CookingRecipe;
-import at.htl.tessa.entity.Product;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -111,9 +110,14 @@ public class RecipeLoader {
             String recipeName = recipe.select("h2").first().text();
             String imageName = recipe.select("img").first().attr("src");
             imageName = imageName.substring(imageName.lastIndexOf("/") + 1);
+            String description = "";
+            /* Code für die Description, funktioniert schon, nur ist der Text noch zu lange
+            recipe.select("div").last().text();
+            String workingtime = description.substring(description.indexOf("Arbeitszeit")+17);
+            description = description.substring(description.indexOf("Zubereitung:")+12, description.indexOf("Arbeitszeit")-1);*/
             byte[] image = loadImage(imageName);
 
-            recipes.add(new CookingRecipe(recipeName, "", category, image, null));
+            recipes.add(new CookingRecipe(recipeName, description, category, image, null));
         }
 
         facade.save(recipes);
