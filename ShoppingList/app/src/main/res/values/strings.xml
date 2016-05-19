@@ -3,4 +3,6 @@
     <string name="action_settings">Settings</string>
     <string name="hint_text">Enter Product Name....</string>
     <string name="action_search">Search...</string>
+    <string name="productname_hint">enter product name...</string>
+    <string name="productvalue_hint">enter amount of products...</string>
 </resources>

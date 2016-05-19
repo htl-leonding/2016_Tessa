@@ -1,6 +1,7 @@
 package htl.at.shoppinglist;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -42,8 +43,10 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent= new Intent(MainActivity.this,InputActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+
+                startActivity(intent);
             }
         });
 
@@ -61,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             public void onClick(View view, int position) {
                 Product product = productList.get(position);
                 Toast.makeText(getApplicationContext(), product.getTitle() +" is selected!", Toast.LENGTH_SHORT).show();
-               // hideKeyboard(getCurrentFocus());
+               // hideKeyboard(recyclerView);
 
             }
 
@@ -70,8 +73,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
             }
         }));
-
-        prepareProductData();
+prepareProductData();
 
         /*recyclerView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,20 +146,14 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         productList.add(product);
 
         productList.add(new Product("Apfel", 4));
-        productList.add(new Product("Apfel", 4));
-        productList.add(new Product("Apfel", 4));
-        productList.add(new Product("Apfel", 4));
-        productList.add(new Product("Apfel", 4));
-        productList.add(new Product("Apfel", 4));
-        productList.add(new Product("Apfel", 4));
-        productList.add(new Product("Apfel", 4));
-        productList.add(new Product("Apfel", 4));
-        productList.add(new Product("Apfel", 4));
-        productList.add(new Product("Apfel", 4));
-        productList.add(new Product("Apfel", 4));
-        productList.add(new Product("Apfel", 4));
-        productList.add(new Product("Apfel", 4));
-        productList.add(new Product("Apfel", 4));
+        productList.add(new Product("Birnen", 10));
+        productList.add(new Product("Himbeeren", 1));
+        productList.add(new Product("Cola", 6));
+        productList.add(new Product("Bier", 12));
+        productList.add(new Product("Bananen", 3));
+        productList.add(new Product("Käse", 1));
+        productList.add(new Product("Gurken", 2));
+        productList.add(new Product("Zuchini", 4));
         productAdapter.notifyDataSetChanged();
     }
 
