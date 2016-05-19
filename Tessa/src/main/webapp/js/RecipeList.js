@@ -34,10 +34,6 @@ function generateInTable(data, table) {
         cellName.innerHTML = recipe.name;
         row.appendChild(cellName);
 
-        var cellName = document.createElement("td");
-        cellName.innerHTML = recipe.name;
-        row.appendChild(cellName);
-
         var temp = $('#avgrund-popup');
         temp.find('img')[0].src="data:image/png;base64," + recipe.picture;
         temp.find('#name').text(recipe.name);
