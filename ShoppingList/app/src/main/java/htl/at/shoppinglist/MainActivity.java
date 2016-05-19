@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     private final List<Product> productList = new ArrayList<Product>();
     private RecyclerView recyclerView;
     private ProductAdapter productAdapter;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +65,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             public void onClick(View view, int position) {
                 Product product = productList.get(position);
                 Toast.makeText(getApplicationContext(), product.getTitle() +" is selected!", Toast.LENGTH_SHORT).show();
-               // hideKeyboard(recyclerView);
-
+                searchView.clearFocus();
             }
 
             @Override
@@ -84,8 +84,6 @@ prepareProductData();
 
 
     }
-
-
 
     public interface ClickListener{
         void onClick(View view, int position);
@@ -163,7 +161,7 @@ prepareProductData();
         inflater.inflate(R.menu.menu_main, menu);
 
         final MenuItem item = menu.findItem(R.id.action_search);
-        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
+        searchView = (SearchView) MenuItemCompat.getActionView(item);
         searchView.setOnQueryTextListener(this);
         return true;
     }
