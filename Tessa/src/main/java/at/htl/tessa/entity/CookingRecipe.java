@@ -24,6 +24,7 @@ public class CookingRecipe {
     long id;
 
     private String name;
+    @Column(columnDefinition = "LONG VARCHAR")
     private String description;
     private String category;
     @Lob

@@ -10,7 +10,6 @@ import org.jsoup.select.Elements;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.io.*;
-import java.nio.charset.CharsetDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -111,9 +110,14 @@ public class RecipeLoader {
             String recipeName = recipe.select("h2").first().text();
             String imageName = recipe.select("img").first().attr("src");
             imageName = imageName.substring(imageName.lastIndexOf("/") + 1);
+            String description = "";
+            /* Code für die Description, funktioniert schon, nur ist der Text noch zu lange*/
+            description = recipe.select("div").last().text();
+            String workingtime = description.substring(description.indexOf("Arbeitszeit")+17);
+            description = description.substring(description.indexOf("Zubereitung:")+12, description.indexOf("Arbeitszeit")-1);
             byte[] image = loadImage(imageName);
 
-            recipes.add(new CookingRecipe(recipeName, "", category, image, null));
+            recipes.add(new CookingRecipe(recipeName, description, category, image, null));
         }
 
         facade.save(recipes);
