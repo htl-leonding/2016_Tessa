@@ -34,6 +34,9 @@ function generateInTable(data, table) {
         cellName.innerHTML = recipe.name;
         row.appendChild(cellName);
 
+        /*
+            POP-Up um das ausgewählte Rezept anzuzeigen
+         */
         var temp = $('#avgrund-popup');
         temp.find('img')[0].src="data:image/png;base64," + recipe.picture;
         temp.find('#name').text(recipe.name);
@@ -42,8 +45,8 @@ function generateInTable(data, table) {
 
         $(row).avgrund({
             template: temp.html(),
-            width: 400,
-            height: 300
+            width: 900,
+            height: 500
         });
 
         table.appendChild(row);
