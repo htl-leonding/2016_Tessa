@@ -110,7 +110,6 @@ public class RecipeLoader {
             String imageName = recipe.select("img").first().attr("src");
             imageName = imageName.substring(imageName.lastIndexOf("/") + 1);
             String description = "";
-            /* Code für die Description, funktioniert schon, nur ist der Text noch zu lange*/
             description = recipe.select("div").last().text();
             String workingtime = description.substring(description.indexOf("Arbeitszeit")+17);
             description = description.substring(description.indexOf("Zubereitung:")+12, description.indexOf("Arbeitszeit")-1);
