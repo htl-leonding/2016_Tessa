@@ -148,7 +148,6 @@ tr{
 .recipe-details #ingredients{
     float: left;
     position: relative;
-    width: 60%;
     text-align: left;
     margin-left: 10px;
     margin-top: 10px;
@@ -157,7 +156,8 @@ tr{
     float: left;
     position: relative;
     margin-top: 10px;
-    height: 20%;
+    height: 220px;
+    overflow-y: scroll;
 }
 
 /*
