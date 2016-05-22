@@ -46,14 +46,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
 
 
     }
-
+    //Todo:Delete from DB
     public Product removeItem(int position) {
         Product product = productList.get(position);
         productList.remove(position);
         notifyItemRemoved(position);
         return product;
     }
-
+    //Todo:Add to DB
     public void addItem(int position, Product product) {
         productList.add(position, product);
         notifyItemInserted(position);

@@ -10,4 +10,3 @@
         </properties>
     </persistence-unit>
 </persistence>
-<!--drop-and-create-->

@@ -91,6 +91,12 @@ public class CookingRecipeFacade {
         }
     }
 
+    /**
+     * Gibt alle Rezpte aus der gewählten Kategorie, die in der Datenbank gespeichert sind.
+     * @return Liste aller Kochrezepte einer Kategorie.
+     * @since 18.05.2016
+     * @author Saiz
+     */
     public List<CookingRecipe> findByCategory(String category) {
         try {
             return entityManager.createNamedQuery("CookingRecipe.FindByCategory", CookingRecipe.class)

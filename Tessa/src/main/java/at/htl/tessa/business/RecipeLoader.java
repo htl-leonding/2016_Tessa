@@ -1,7 +1,6 @@
 package at.htl.tessa.business;
 
 import at.htl.tessa.entity.CookingRecipe;
-import at.htl.tessa.entity.Product;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

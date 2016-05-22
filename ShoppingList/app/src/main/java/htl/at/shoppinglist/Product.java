@@ -13,7 +13,7 @@ public class Product {
     }
 
     public String getPieces() {
-        return " "+Integer.toString(pieces)+" Stück";
+        return " "+Integer.toString(pieces)+" pieces";
     }
 
     public String getTitle() {

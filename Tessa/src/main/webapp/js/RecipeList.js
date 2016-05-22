@@ -28,13 +28,9 @@ function generateInTable(data, table) {
         img.id = "img_" + recipe.id;
         cellImg.appendChild(img);
         row.appendChild(cellImg);
-            var cellName = document.createElement("td");
-            cellName.id="cellName";
-            cellName.width = "100%";
-            cellName.innerHTML = recipe.name;
-            row.appendChild(cellName);
-
         var cellName = document.createElement("td");
+        cellName.id="cellName";
+        cellName.width = "100%";
         cellName.innerHTML = recipe.name;
         row.appendChild(cellName);
 

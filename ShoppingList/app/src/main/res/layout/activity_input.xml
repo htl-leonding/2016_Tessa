@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Add Product"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="69dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_columnSpan="3"
+        android:layout_row="0"
+        android:layout_column="1"
+        android:layout_columnWeight="1"
+        android:layout_rowSpan="1"
+        android:layout_rowWeight="0"
+        android:layout_x="140dp"
+        android:layout_y="54dp"
+        android:textSize="40dp"/>
+
+    <EditText
+        android:layout_width="242dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/insert_name"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="48dp"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:layout_row="1"
+        android:layout_column="1"
+        android:layout_columnSpan="2"
+        android:layout_gravity="center"
+        android:layout_x="72dp"
+        android:layout_y="162dp"
+        android:hint="@string/productname_hint"
+        android:singleLine="true" />
+
+    <EditText
+        android:layout_width="242dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/insert_amount"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="48dp"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:layout_row="1"
+        android:layout_column="1"
+        android:layout_columnSpan="2"
+        android:layout_gravity="center"
+        android:layout_x="71dp"
+        android:layout_y="257dp"
+        android:hint="@string/productvalue_hint"
+        android:singleLine="true" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:id="@+id/insert_cancel"
+        android:layout_x="74dp"
+        android:layout_y="344dp"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:id="@+id/insert_add"
+        android:layout_x="211dp"
+        android:layout_y="343dp"
+        android:layout_gravity="center_horizontal" />
+</LinearLayout>
