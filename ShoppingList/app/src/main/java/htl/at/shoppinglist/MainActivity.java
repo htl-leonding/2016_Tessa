@@ -23,11 +23,12 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
-    private final List<Product> productList = new ArrayList<Product>();
+    public static final List<Product> productList = new ArrayList<Product>();
     private RecyclerView recyclerView;
     private ProductAdapter productAdapter;
     private SearchView searchView;
@@ -52,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         });
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-
         productAdapter = new ProductAdapter(productList);
         RecyclerView.LayoutManager pLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(pLayoutManager);
@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 Product product = productList.get(position);
                 Toast.makeText(getApplicationContext(), product.getTitle() +" is selected!", Toast.LENGTH_SHORT).show();
                 searchView.clearFocus();
+               hideKeyboard((View) view.getParent());
             }
 
             @Override
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
             }
         }));
-prepareProductData();
+            prepareProductData();
 
         /*recyclerView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,18 +141,19 @@ prepareProductData();
     }
 
     private void prepareProductData() {
-        Product product = new Product("Milch", 5);
+        Product product = new Product("Milch", "5");
         productList.add(product);
 
-        productList.add(new Product("Apfel", 4));
-        productList.add(new Product("Birnen", 10));
-        productList.add(new Product("Himbeeren", 1));
-        productList.add(new Product("Cola", 6));
-        productList.add(new Product("Bier", 12));
-        productList.add(new Product("Bananen", 3));
-        productList.add(new Product("Käse", 1));
-        productList.add(new Product("Gurken", 2));
-        productList.add(new Product("Zuchini", 4));
+        productList.add(new Product("Apfel", "4"));
+        productList.add(new Product("Birnen", "10"));
+        productList.add(new Product("Himbeeren", "1"));
+        productList.add(new Product("Cola", "6"));
+        productList.add(new Product("Bier", "12"));
+        productList.add(new Product("Bananen", "3"));
+        productList.add(new Product("Käse", "1"));
+        productList.add(new Product("Gurken", "2"));
+        productList.add(new Product("Zuchini", "4"));
+        Collections.sort(productList);
         productAdapter.notifyDataSetChanged();
     }
 
@@ -189,6 +191,7 @@ prepareProductData();
     @Override
     public boolean onQueryTextChange(String query) {
         final List<Product> filteredModelList = filter(productList, query);
+        Collections.sort(filteredModelList);
         productAdapter.setProductList(filteredModelList);
         productAdapter.notifyDataSetChanged();
         recyclerView.scrollToPosition(0);
