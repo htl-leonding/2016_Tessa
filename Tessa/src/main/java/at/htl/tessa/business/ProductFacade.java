@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * @author Korti
@@ -20,7 +21,7 @@ import java.util.List;
 @Stateless
 public class ProductFacade {
 
-    private static final String DATE_PATTERN = "dd.MM.yyyy";
+    private static final String DATE_PATTERN = "dd MMM, yyyy";
 
     @PersistenceContext(unitName = "FridgePiPU")
     private EntityManager entityManager;
@@ -139,16 +140,19 @@ public class ProductFacade {
         }
         long barcode = jsonObject.getJsonNumber("barcode").longValue();
         int stueck = jsonObject.getInt("stueck");
-        LocalDate date = LocalDate.parse(jsonObject.getString("date"), DateTimeFormatter.ofPattern(DATE_PATTERN));
+        LocalDate date = LocalDate.parse(jsonObject.getString("date"), DateTimeFormatter.ofPattern(DATE_PATTERN, Locale.US));
         String name = jsonObject.getString("name");
 
         return new Product(id, name, barcode, stueck, date);
     }
 
     private Product parseStringJson(JsonObject jsonObject, long id) {
-        long barcode = Long.valueOf(jsonObject.getString("barcode"));
+        long barcode = 0;
+        if(jsonObject.containsKey("barcode")) {
+            Long.valueOf(jsonObject.getString("barcode"));
+        }
         int stueck = Integer.valueOf(jsonObject.getString("stueck"));
-        LocalDate date = LocalDate.parse(jsonObject.getString("date"), DateTimeFormatter.ofPattern(DATE_PATTERN));
+        LocalDate date = LocalDate.parse(jsonObject.getString("date"), DateTimeFormatter.ofPattern(DATE_PATTERN, Locale.US));
         String name = jsonObject.getString("name");
 
         return new Product(id, name, barcode, stueck, date);

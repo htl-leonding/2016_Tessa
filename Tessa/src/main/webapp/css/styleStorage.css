@@ -73,14 +73,14 @@ body{
     border-bottom-color: white;
     border-bottom-width: 2px;
 }
-#body table{
+#body #dataTable{
     border-style: none;
     border-color: transparent;
     border-width: 3px;
     width: 76vw;
     margin-left: -11.5%;
 }
-#body tr{
+#body .productRow{
     font-size: 250%;
     text-align: center;
     color: black;
@@ -88,7 +88,7 @@ body{
     height: 8vh;
     width:100%;
 }
-#body th{
+#body .productCol{
     width: 22vw;
     text-align: center;
     color: dimgray;

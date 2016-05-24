@@ -1,7 +1,16 @@
 var baseURL = "/Tessa/rs/product";
 
 $(function () {
-    $("#anzahlSlider").slider();
+    $('.modal-trigger').leanModal({
+        dismissible: false
+    });
+    $('.datepicker').pickadate({
+        selectYears: 15,
+        today: 'Heute',
+        clear: 'Löschen',
+        close: 'Schließen',
+        min: new Date()
+    });
 });
 
 //Erstellen der Tabelle
@@ -10,14 +19,18 @@ function generateTable(table){
         for(var i = 0; i < data.length; i++) {
             var product = data[i];
             var row = document.createElement("tr");
+            row.className += ' productRow';
 
             var cellName = document.createElement("td");
+            cellName.className += ' productRow';
             cellName.innerHTML = product.name;
             row.appendChild(cellName);
             var cellCount = document.createElement("td");
+            cellCount.className += ' productRow';
             cellCount.innerHTML = product.stueck;
             row.appendChild(cellCount);
             var cellDays = document.createElement("td");
+            cellDays.className += ' productRow';
             if(product.tage>=300){
                 cellDays.innerHTML = "+300";
             }
@@ -60,47 +73,19 @@ function generateTable(table){
 function Send(){
     var request = {};
     var helper = 1;
-    if(checkDate() == 0){
-        helper = 0;
-    }
 
-    if(!document.getElementById("produktEingabe").value.match("^[A-Z].{1,}$")){
-        document.getElementById("errorProdukt").style.color = "red";
-        document.getElementById("produktEingabe").style.borderColor = "red";
+    if(!$('#productInput').val().match("^[A-Z].{1,}$")){
+        $('#productInput').addClass('invalid');
         helper=0;
     }
     else{
-        document.getElementById("errorProdukt").style.color = "white";
-        document.getElementById("produktEingabe").style.borderColor = "lightgrey";
-    }
-
-
-    if(document.getElementById("Tag").value == "Tag"||document.getElementById("Monat").value == "Monat"||document.getElementById("Jahr").value == "Jahr"){
-        helper = 0;
-        document.getElementById("Tag").style.color = "red";
-        document.getElementById("Tag").style.borderColor = "red";
-        document.getElementById("Monat").style.color = "red";
-        document.getElementById("Monat").style.borderColor = "red";
-        document.getElementById("Jahr").style.color = "red";
-        document.getElementById("Jahr").style.borderColor = "red";
-        document.getElementById("errorHaltbar").style.color = "red;"
-
-    }
-    else{
-        document.getElementById("Tag").style.color = "black";
-        document.getElementById("Tag").style.borderColor = "black";
-        document.getElementById("Monat").style.color = "black";
-        document.getElementById("Monat").style.borderColor = "black";
-        document.getElementById("Jahr").style.color = "black";
-        document.getElementById("Jahr").style.borderColor = "black";
-        document.getElementById("errorHaltbar").style.color = "white;"
+        $('#productInput').removeClass('invalid');
     }
 
     if(helper == 1){
-        request['barcode'] = document.getElementById("barcodeField").value;
-        request['name'] = document.getElementById("produktEingabe").value;
-        request['stueck'] = $("#anzahlSlider").slider('getValue').val();
-        request['date'] = buildDate();
+        request['name'] = $('#productInput').val();
+        request['stueck'] = $('#countRange').val();
+        request['date'] = $('#expirationDate').val();
 
         //Schickt Produkt an den Application Server - RestService Abfrage
         $.ajax({
@@ -158,44 +143,11 @@ function buildDate(){
         return document.getElementById("Tag").value +"."+document.getElementById("Monat").value+"."+document.getElementById("Jahr").value;
     }
 }
-function checkDate() {
-    var currentDate = new Date();
 
-    if (currentDate.getFullYear() == document.getElementById("Jahr").value) {
-            if (currentDate.getMonth() > document.getElementById("Monat").value) {
-                return 0;
-            }
-            else {
-                if (currentDate.getMonth() < document.getElementById("Monat").value) {
-                    return 1;
-                }
-                else {
-                    if (currentDate.getDate() <= document.getElementById("Tag").value) {
-                        return 1;
-                    }
-                    else {
-                        return 0;
-                    }
-                }
-            }
-        }
-
-    else {
-        if(currentDate.getFullYear() < document.getElementById("Jahr").value){
-            return 1;
-        }
-        else{
-            return 0;
-        }
-    }
-
-
-}
 function Delete(){
-    document.getElementById("produktEingabe").value = "";
-    document.getElementById("Tag").value = "Tag";
-    document.getElementById("Monat").value = "Monat";
-    document.getElementById("Jahr").value = "Jahr";
+    $('#productInput').val("");
+    $('#countRange').val(1);
+    $('#expirationDate').val("");
 }
 // Change the selector if needed
 var $table = $('table.scroll'),
