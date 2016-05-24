@@ -2,11 +2,14 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <script src="js/Storage.js"></script>
         <script src="js/jquery-2.1.4.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="components/slider/js/bootstrap-slider.js"></script>
+        <script src="js/Storage.js"></script>
+
         <link rel="stylesheet" href="cssBootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="cssBootstrap/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="components/slider/css/slider.css">
         <link rel="stylesheet" href="css/styleStorage.css">
         <link rel="stylesheet" href="css/stylePopUpProductinput.css">
         <link rel="shortcut icon" href="images/apple.png">
@@ -62,7 +65,9 @@
 
                                     <div >
                                         <p id="errorAnzahl" class="inputfields">Bitte Eingabe überprüfen</p>
-                                        <p class="inputtext">Anzahl:</p> <input type="text" class="inputs" placeholder=" Anzahl" id="anzahlEingabe">
+                                        <p class="inputtext">Anzahl:</p>
+                                        <!--<input type="text" class="inputs" placeholder=" Anzahl" id="anzahlEingabe">-->
+                                        <input id="anzahlSlider" type="text" value="" data-slider-min="1" data-slider-value="1">
                                     </div>
                                     <input type="hidden" name="Barcode" id="barcodeField" value="0">
                                     <div>

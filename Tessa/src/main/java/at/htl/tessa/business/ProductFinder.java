@@ -21,7 +21,7 @@ import java.util.List;
 @Stateless
 public class ProductFinder {
 
-    private final String barcodeUrl = "";
+    private final String barcodeUrl = "http://codecheck.info";
 
     /**
      * Sucht einen Namen zu einem Produkt über den Barcode.

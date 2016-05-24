@@ -1,4 +1,9 @@
 var baseURL = "/Tessa/rs/product";
+
+$(function () {
+    $("#anzahlSlider").slider();
+});
+
 //Erstellen der Tabelle
 function generateTable(table){
     $.getJSON(baseURL, function(data){
@@ -58,16 +63,7 @@ function Send(){
     if(checkDate() == 0){
         helper = 0;
     }
-    if(!document.getElementById("anzahlEingabe").value.match("^([0-9]{1,2}|100)$")||document.getElementById("anzahlEingabe").value==0){
-        document.getElementById("errorAnzahl").style.color = "red";
-        document.getElementById("anzahlEingabe").style.borderColor = "red";
-        helper = 0;
 
-    }
-    else{
-        document.getElementById("errorAnzahl").style.color = "white";
-        document.getElementById("anzahlEingabe").style.borderColor = "lightgrey";
-    }
     if(!document.getElementById("produktEingabe").value.match("^[A-Z].{1,}$")){
         document.getElementById("errorProdukt").style.color = "red";
         document.getElementById("produktEingabe").style.borderColor = "red";
@@ -103,7 +99,7 @@ function Send(){
     if(helper == 1){
         request['barcode'] = document.getElementById("barcodeField").value;
         request['name'] = document.getElementById("produktEingabe").value;
-        request['stueck'] = document.getElementById("anzahlEingabe").value;
+        request['stueck'] = $("#anzahlSlider").slider('getValue').val();
         request['date'] = buildDate();
 
         //Schickt Produkt an den Application Server - RestService Abfrage
@@ -197,7 +193,6 @@ function checkDate() {
 }
 function Delete(){
     document.getElementById("produktEingabe").value = "";
-    document.getElementById("anzahlEingabe").value = "";
     document.getElementById("Tag").value = "Tag";
     document.getElementById("Monat").value = "Monat";
     document.getElementById("Jahr").value = "Jahr";
