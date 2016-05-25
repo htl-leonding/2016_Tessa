@@ -10,12 +10,27 @@ $(function () {
 
     $('.datepicker').pickadate({
         selectYears: 15,
-        today: 'Heute',
-        clear: 'Löschen',
-        close: 'Schließen',
+        today: '<i class="material-icons">today</i>',
+        clear: '<i class="material-icons">delete</i>',
+        close: '<i class="material-icons">close</i>',
         min: new Date()
     });
+
+    loadDatepickerTooltip();
+    $('.tooltipped').tooltip({delay: 50});
 });
+
+function loadDatepickerTooltip() {
+    addTooltip($('.picker__today'), "Heute");
+    addTooltip($('.picker__clear'), "Löschen");
+    addTooltip($('.picker__close'), "Schließen");
+}
+
+function addTooltip(element, text) {
+    element.addClass('tooltipped');
+    element.attr("data-position", "bottom");
+    element.attr("data-tooltip", text);
+}
 
 function initCarousel() {
     var carousel = $('.carousel');
@@ -132,13 +147,14 @@ function Send(){
             type: "POST",
             url: baseURL,
             data: JSON.stringify(request),
-            contentType: "application/json"
+            contentType: "application/json",
+            success: function() {
+                Materialize.toast('Produkt gespeichert!', 4000);
+                Delete();
+            }
+        }).fail(function(){
+            Materialize.toast('Produkt konnte nicht gespeichert werden!', 4000);
         });
-
-        Delete();
-    }
-    else{
-        alert("error");
     }
 }
 
