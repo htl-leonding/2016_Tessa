@@ -21,7 +21,7 @@ import java.util.Locale;
 @Stateless
 public class ProductFacade {
 
-    private static final String DATE_PATTERN = "dd MMM, yyyy";
+    private static final String DATE_PATTERN = "dd MMMM, yyyy";
 
     @PersistenceContext(unitName = "FridgePiPU")
     private EntityManager entityManager;

@@ -1,9 +1,13 @@
 var baseURL = "/Tessa/rs/product";
 
 $(function () {
+    //initCarousel();
+
     $('.modal-trigger').leanModal({
-        dismissible: false
+        dismissible: false,
+        ready: initCarousel
     });
+
     $('.datepicker').pickadate({
         selectYears: 15,
         today: 'Heute',
@@ -12,6 +16,42 @@ $(function () {
         min: new Date()
     });
 });
+
+function initCarousel() {
+    var carousel = $('.carousel');
+    if(!carousel.hasClass('initialized')) {
+        var images = [
+            "https://pixabay.com/static/uploads/photo/2013/11/20/23/00/nice-apples-214170_960_720.jpg",
+            "https://pixabay.com/static/uploads/photo/2010/12/13/10/06/food-2280_960_720.jpg",
+            "https://pixabay.com/static/uploads/photo/2016/03/05/21/44/berry-1239075_960_720.jpg",
+            "https://pixabay.com/static/uploads/photo/2010/12/13/10/21/strawberry-2688_960_720.jpg",
+            "https://pixabay.com/static/uploads/photo/2015/02/14/18/10/pineapple-636562_960_720.jpg",
+            "https://pixabay.com/static/uploads/photo/2015/11/05/23/08/banana-1025109_960_720.jpg"
+        ];
+        var names = [
+            "Apfel",
+            "Birne",
+            "Krischen",
+            "Erdbeeren",
+            "Ananas",
+            "Bananen"
+        ];
+
+        for (var i = 0; i < images.length && i < names.length; i++) {
+            var image = images[i];
+            var name = names[i];
+            carousel.append("<a class='carousel-item' onclick='setText(\"" + name + "\")'><img src='" + image + "'/></a>");
+        }
+
+        carousel.carousel();
+    }
+}
+
+function setText(text) {
+    $('#labelProduct').addClass("active");
+    $('#productInput').val(text)
+    $('#productInput').addClass("valid");
+}
 
 //Erstellen der Tabelle
 function generateTable(table){
@@ -125,29 +165,13 @@ function SendBarcode() {
     });
 }
 
-function buildDate(){
-    if(document.getElementById("Tag").value < 10 || document.getElementById("Monat").value <10){
-        if(document.getElementById("Tag").value < 10&&document.getElementById("Monat").value <10){
-            return "0"+document.getElementById("Tag").value +".0"+document.getElementById("Monat").value+"."+document.getElementById("Jahr").value;
-        }
-        else{
-           if(document.getElementById("Tag").value < 10) {
-               return "0"+document.getElementById("Tag").value +"."+document.getElementById("Monat").value+"."+document.getElementById("Jahr").value;
-           }
-           else{
-               return document.getElementById("Tag").value +".0"+document.getElementById("Monat").value+"."+document.getElementById("Jahr").value;
-           }
-        }
-    }
-    else{
-        return document.getElementById("Tag").value +"."+document.getElementById("Monat").value+"."+document.getElementById("Jahr").value;
-    }
-}
-
 function Delete(){
     $('#productInput').val("");
     $('#countRange').val(1);
     $('#expirationDate').val("");
+
+    $('#labelProduct').removeClass("active");
+    $('#productInput').removeClass("valid");
 }
 // Change the selector if needed
 var $table = $('table.scroll'),
