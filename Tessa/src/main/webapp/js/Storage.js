@@ -16,6 +16,8 @@ $(function () {
         min: new Date()
     });
 
+    $('.button-collapse').sideNav();
+
     loadDatepickerTooltip();
     $('.tooltipped').tooltip({delay: 50});
 });

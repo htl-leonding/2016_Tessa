@@ -20,96 +20,57 @@
 
         <div id="container">
             <div id="header">
-                <span class="imgzentriert">
-                    <img src="images/tessa2.png" alt="Logo" width="23%" height="50%">
-                </span>
+                <!--<span class="imgzentriert">-->
+                    <!--<img src="images/tessa2.png" alt="Logo" width="23%" height="50%">-->
+                <!--</span>-->
+                <nav>
+                    <div class="nav-wrapper">
+                        <a href="MainPage.html" class="brand-logo right" style="text-decoration: none">Tessa</a>
+                        <p class="brand-logo center">Produktübersicht</p>
+                        <a data-activates="navigation" class="button-collapse" style="display: block"><i class="material-icons">menu</i></a>
+                        <ul class="side-nav" id="navigation">
+                            <li><img src="images/tessa2.png" alt="Logo" width="125%" height="125%" style="margin-left: -12.5%"></li>
+                            <li><a href="MainPage.html">Hauptmenü</a></li>
+                            <li><a href="PurchaseList.html">Einkaufsliste</a></li>
+                            <li><a href="RecipePage.html">Rezepte</a></li>
+                        </ul>
+                    </div>
+                </nav>
             </div>
 
             <div id="body">
-                <div id="bodyMenue">
-                    <!--<button type="button" id="insert" style="font-size: 170%;" class="btn btn-default btn-lg" onclick="window.location.href='ReadInWithoutQR.html'">
-                        <span class="glyphicon glyphicon-th inhalt" aria-hidden="true"></span> Produkteingabe
-                    </button> <br><br>
-                    <button type="button" id="scan" style="font-size: 170%;" class="btn btn-default btn-lg" onclick="window.location.href='ReadInWithoutQR.html'">
-                        <span class="glyphicon glyphicon-barcode inhalt" aria-hidden="true"></span> Einscannen
-                    </button>-->
-                    <!--BUTTON 1-->
-                    <button class="button" id="home" type="button" onclick="window.location.href='MainPage.html'">
-                        <span class="glyphicon glyphicon-home inhalt" aria-hidden="true" ></span> Hauptmenü</button>
-                    <br>
-
-                    <!--BUTTON 2-->
-                    <button class="button" id="scan" type="button" onclick="window.location.href='PurchaseList.html'">
-                        <span class="glyphicon glyphicon-shopping-cart inhalt" aria-hidden="true" ></span> Einkaufsliste</button>
-                    <br>
-
-                    <!--BUTTON 3-->
-                    <button class="button modal-trigger" id="insert" type="button" data-target="inputModal">
-                        <span class="glyphicon glyphicon-th inhalt" aria-hidden="true" ></span> Produkteingabe</button>
-                    <br>
-
-                    <!-- Input Modal -->
-                    <div id="inputModal" class="modal modal-fixed-footer">
-                        <div class="modal-content">
-                            <h4>Produkteingabe</h4>
-                            <div class="row">
-                                <div class="col s12">
-                                    <div class="row">
-                                        <div class="input-field col s6">
-                                            <input id="productInput" type="text" class="validate">
-                                            <label id="labelProduct" for="productId" data-error="Bitte Eingabe überprüfen" style="text-align: start">Produkt</label>
-                                        </div>
-                                        <div class="col s6">
-                                            <form action="#">
-                                                <p class="range-field">
-                                                    <label for="countRange">Anzahl</label>
-                                                    <input type="range" id="countRange" min="1" max="30" value="1">
-                                                </p>
-                                            </form>
-                                        </div>
+                <!-- Input Modal -->
+                <div id="inputModal" class="modal modal-fixed-footer">
+                    <div class="modal-content">
+                        <h4>Produkteingabe</h4>
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <input id="productInput" type="text" class="validate">
+                                        <label id="labelProduct" for="productId" data-error="Bitte Eingabe überprüfen" style="text-align: start">Produkt</label>
                                     </div>
-                                    <div class="col s12" style="text-align: start">
-                                        <label for="expirationDate">Ablauf Datum</label>
-                                        <input id="expirationDate" type="date" class="datepicker">
+                                    <div class="col s6">
+                                        <form action="#">
+                                            <p class="range-field">
+                                                <label for="countRange">Anzahl</label>
+                                                <input type="range" id="countRange" min="1" max="30" value="1">
+                                            </p>
+                                        </form>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="carousel" style="height: 275px">
+                                <div class="col s12" style="text-align: start">
+                                    <label for="expirationDate">Ablauf Datum</label>
+                                    <input id="expirationDate" type="date" class="datepicker">
+                                </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <a class="waves-effect waves-red btn modal-action modal-close tooltipped" data-position="bottom" data-tooltip="Schließen"><i class="material-icons">close</i></a>
-                            <a class="waves-effect waves-green btn tooltipped" data-position="bottom" data-tooltip="Speichern" style="margin-right: 5px" onclick="Send()"><i class="material-icons">save</i></a>
+                        <div class="carousel" style="height: 275px">
                         </div>
                     </div>
-
-                    <!--BUTTON 4-->
-                    <button class="button" id="insertBarCode" type="button"  data-toggle="modal" data-target="#myModal2">
-                        <span class="glyphicon glyphicon-barcode inhalt" aria-hidden="true" ></span> Einscannen</button>
-                    <!-- Modal -->
-                    <div id="myModal2" class="modal fade" role="dialog">
-                        <div class="modal-dialog">
-
-                            <!-- Modal content-->
-                            <div class="modal-content" id="content2">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Barcodeeingabe</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div >
-                                        <p class="inputtext">EAN-Code:</p> <input type="text" class="inputs" placeholder=" Produkt" id="BarcodeEingabe" onkeypress="TriggerBarcode(event)">
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <div class="footer-buttongroup">
-                                        <button class="button" type="button" onclick="SendBarcode()">Einlesen</button>
-                                        <button class="button" onclick="window.location='Storage.html'" type="button" data-dismiss="modal">Schließen</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
+                    <div class="modal-footer">
+                        <a class="waves-effect waves-red btn modal-action modal-close tooltipped" data-position="bottom" data-tooltip="Schließen"><i class="material-icons">close</i></a>
+                        <a class="waves-effect waves-green btn tooltipped" data-position="bottom" data-tooltip="Speichern" style="margin-right: 5px" onclick="Send()"><i class="material-icons">save</i></a>
                     </div>
                 </div>
 
@@ -141,7 +102,6 @@
 
 
                 <div id="tableSide">
-                    <h1>Produktübersicht</h1><br>
                     <div class="container">
                         <table id="dataTable" class="scroll  table-bordered table-collapsed">
                         <thead class="thead">
