@@ -71,6 +71,7 @@ function setText(text) {
 }
 
 //Erstellen der Tabelle
+//TODO: Produkt Liste generierung neu schreiben
 function generateTable(table){
     $.getJSON(baseURL, function(data){
         for(var i = 0; i < data.length; i++) {

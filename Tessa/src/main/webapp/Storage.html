@@ -41,7 +41,7 @@
             <div id="body">
                 <!-- Input Modal -->
                 <div id="inputModal" class="modal modal-fixed-footer">
-                    <div class="modal-content">
+                    <div class="modal-content" style="text-align: center">
                         <h4>Produkteingabe</h4>
                         <div class="row">
                             <div class="col s12">
@@ -100,22 +100,52 @@
                     </div>
                 </div>
 
-
-                <div id="tableSide">
-                    <div class="container">
-                        <table id="dataTable" class="scroll  table-bordered table-collapsed">
-                        <thead class="thead">
-                        <tr class="productRow">
-                            <th class="productCol">Produkt</th>
-                            <th class="productCol">Anzahl</th>
-                            <th class="productCol">Tage haltbar</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody id="data"/>
-                        </table>
-                    </div>
-                </div>
+                <ul class="collection" id="productList">
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle green">local_offer</i>
+                        <span class="title">Apfel</span>
+                        <p>
+                            Anzahl: 2<br>
+                            Tage haltbar: 12
+                        </p>
+                        <a class="secondary-content"><i class="medium material-icons">delete</i></a>
+                        <a class="secondary-content" style="margin-right: 8vw"><i class="medium material-icons">add</i></a>
+                        <a class="secondary-content" style="margin-right: 4vw"><i class="medium material-icons">remove</i></a>
+                    </li>
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle red">local_offer</i>
+                        <span class="title">Schlagobers</span>
+                        <p>
+                            Anzahl: 2<br>
+                            Tage haltbar: 2
+                        </p>
+                        <a class="secondary-content"><i class="medium material-icons">delete</i></a>
+                        <a class="secondary-content" style="margin-right: 8vw"><i class="medium material-icons">add</i></a>
+                        <a class="secondary-content" style="margin-right: 4vw"><i class="medium material-icons">remove</i></a>
+                    </li>
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle green">local_offer</i>
+                        <span class="title">Butter</span>
+                        <p>
+                            Anzahl: 1<br>
+                            Tage haltbar: 9
+                        </p>
+                        <a class="secondary-content"><i class="medium material-icons">delete</i></a>
+                        <a class="secondary-content" style="margin-right: 8vw"><i class="medium material-icons">add</i></a>
+                        <a class="secondary-content" style="margin-right: 4vw"><i class="medium material-icons">remove</i></a>
+                    </li>
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle orange">local_offer</i>
+                        <span class="title">Milch</span>
+                        <p>
+                            Anzahl: 2<br>
+                            Tage haltbar: 4
+                        </p>
+                        <a class="secondary-content"><i class="medium material-icons">delete</i></a>
+                        <a class="secondary-content" style="margin-right: 8vw"><i class="medium material-icons">add</i></a>
+                        <a class="secondary-content" style="margin-right: 4vw"><i class="medium material-icons">remove</i></a>
+                    </li>
+                </ul>
 
                 <div class="fixed-action-btn">
                     <a class="btn-floating btn-large waves-effect waves-light red modal-trigger" data-target="inputModal"><i class="material-icons">add</i></a>
