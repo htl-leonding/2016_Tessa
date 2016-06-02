@@ -1,6 +1,7 @@
 package at.htl.tessa.business;
 
 import at.htl.tessa.entity.CookingRecipe;
+import at.htl.tessa.entity.Product;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -110,12 +111,35 @@ public class RecipeLoader {
             String imageName = recipe.select("img").first().attr("src");
             imageName = imageName.substring(imageName.lastIndexOf("/") + 1);
             String description = "";
+            List<String> ingredientList = new ArrayList<>();
             description = recipe.select("div").last().text();
             String workingtime = description.substring(description.indexOf("Arbeitszeit")+17);
             description = description.substring(description.indexOf("Zubereitung:")+12, description.indexOf("Arbeitszeit")-1);
+            String ingredients = recipe.select("div").html();
+            ingredients = ingredients.substring(ingredients.indexOf("<h3>Zutaten:</h3>") + 17, ingredients.indexOf("</div>\n" + "<div class=\"Zubereitung\">"));
+            String ingredient = "";
+            for (int i = 0; i < ingredients.length(); i++) {
+
+                if(ingredients.charAt(i) != '\n'){
+                    ingredient += ingredients.charAt(i);
+                } else {
+                    if(ingredientList.size() != 0) {
+                        ingredientList.add(ingredient.substring(5));
+                    } else {
+                        ingredientList.add(ingredient);
+                    }
+                    ingredient = "";
+                }
+
+            }
+
             byte[] image = loadImage(imageName);
 
-            recipes.add(new CookingRecipe(recipeName, description, category, image, null));
+            for (String str:ingredientList) {
+                ingredient += str + ";";
+            }
+
+            recipes.add(new CookingRecipe(recipeName, description, category, image, ingredient));
         }
 
         facade.save(recipes);

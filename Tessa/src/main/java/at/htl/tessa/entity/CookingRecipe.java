@@ -27,6 +27,11 @@ public class CookingRecipe {
     @Column(columnDefinition = "LONG VARCHAR")
     private String description;
     private String category;
+
+    @Column(columnDefinition = "LONG VARCHAR")
+    private String ingredient;
+
+
     @Lob
     private byte[] picture;
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -36,12 +41,13 @@ public class CookingRecipe {
 
     }
 
-    public CookingRecipe(String name, String description, String category, byte[] picture, List<Product> ingredients) {
+    public CookingRecipe(String name, String description, String category, byte[] picture, String ingredient) {
         this.name = name;
         this.description = description;
         this.category = category;
         this.picture = picture;
-        this.ingredients = ingredients;
+        this.ingredient = ingredient;
+
     }
 
     //region Getter and Setter
@@ -67,6 +73,14 @@ public class CookingRecipe {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getIngredient() {
+        return ingredient;
+    }
+
+    public void setIngredient(String ingredient) {
+        this.ingredient = ingredient;
     }
 
     public String getCategory() {
