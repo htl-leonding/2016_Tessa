@@ -5,8 +5,9 @@
         <jta-data-source>java:jboss/datasources/FridgePiDS</jta-data-source>
 
         <properties>
-            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="javax.persistence.schema-generation.database.action" value=""/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect"/>
         </properties>
     </persistence-unit>
 </persistence>
+<!--drop-and-create-->

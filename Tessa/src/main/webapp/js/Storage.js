@@ -71,59 +71,35 @@ function setText(text) {
 }
 
 //Erstellen der Tabelle
-//TODO: Produkt Liste generierung neu schreiben
-function generateTable(table){
+function generateTable(){
     $.getJSON(baseURL, function(data){
         for(var i = 0; i < data.length; i++) {
             var product = data[i];
-            var row = document.createElement("tr");
-            row.className += ' productRow';
+            var list = $('#productList');
+            var iconColor = "green";
+            var days = product.tage;
 
-            var cellName = document.createElement("td");
-            cellName.className += ' productRow';
-            cellName.innerHTML = product.name;
-            row.appendChild(cellName);
-            var cellCount = document.createElement("td");
-            cellCount.className += ' productRow';
-            cellCount.innerHTML = product.stueck;
-            row.appendChild(cellCount);
-            var cellDays = document.createElement("td");
-            cellDays.className += ' productRow';
-            if(product.tage>=300){
-                cellDays.innerHTML = "+300";
+            if(product.tage <= 4){
+                iconColor = "orange";
+            } else if(product.tage <= 2){
+                iconColor = "rot";
             }
-            else{
-            cellDays.innerHTML = product.tage;
+
+            if(days > 300) {
+                days = "+300";
             }
-            if(product.tage<1) {
-                cellDays.style.color="Red";
-            }
-            else{
-                if (product.tage < 3) {
-                    cellDays.style.color="Orange";
-                }
-                else {
-                    if (product.tage < 6) {
-                        cellDays.style.color="Yellow";
-                    }
-                    else{
-                        cellDays.style.color = "Green";
-                    }
-                }
-            }
-            row.appendChild(cellDays);
-            var cellBtn = document.createElement("td");
-            cellBtn.id = "cellBtnEdit";
-            var btn = document.createElement("BUTTON");
-            btn.setAttribute('class', 'glyphicon glyphicon-edit');
-            btn.id = "btn_" + product.id;
-            btn.data=product.id;
-            btn.onclick=function(){
-                loadInElementsForEdit(this.data)
-            };
-            cellBtn.appendChild(btn);
-            row.appendChild(cellBtn);
-            table.appendChild(row);
+
+            list.append('<li class="collection-item avatar">' +
+                '<i class="material-icons circle ' + iconColor + '" >local_offer</i>' +
+                '<span class="title">' + product.name + '</span>' +
+                '<p>' +
+                    'Anzahl: ' + product.stueck + '<br>' +
+                    'Tage haltbar: ' + days +
+                '</p>' +
+                '<a class="secondary-content"><i class="medium material-icons">delete</i></a>' +
+                '<a class="secondary-content" style="margin-right: 8vw"><i class="medium material-icons">add</i></a>' +
+                '<a class="secondary-content" style="margin-right: 4vw"><i class="medium material-icons">remove</i></a>'
+            );
         }
     });
 }
