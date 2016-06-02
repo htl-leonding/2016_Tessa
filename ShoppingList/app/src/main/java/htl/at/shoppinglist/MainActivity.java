@@ -28,7 +28,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
-    public static final List<Product> productList = new ArrayList<Product>();
     private RecyclerView recyclerView;
     private ProductAdapter productAdapter;
     private SearchView searchView;
@@ -53,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         });
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        productAdapter = new ProductAdapter(productList);
+        productAdapter = new ProductAdapter();
         RecyclerView.LayoutManager pLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(pLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -63,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         recyclerView.addOnItemTouchListener(new RecycleTouchListener(getApplicationContext(), recyclerView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Product product = productList.get(position);
+                Product product = productAdapter.getItem(position);
                 Toast.makeText(getApplicationContext(), product.getTitle() +" is selected!", Toast.LENGTH_SHORT).show();
                 searchView.clearFocus();
                hideKeyboard((View) view.getParent());
@@ -142,19 +141,17 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
     private void prepareProductData() {
         Product product = new Product("Milch", "5");
-        productList.add(product);
+        productAdapter.addItem(product);
 
-        productList.add(new Product("Apfel", "4"));
-        productList.add(new Product("Birnen", "10"));
-        productList.add(new Product("Himbeeren", "1"));
-        productList.add(new Product("Cola", "6"));
-        productList.add(new Product("Bier", "12"));
-        productList.add(new Product("Bananen", "3"));
-        productList.add(new Product("Käse", "1"));
-        productList.add(new Product("Gurken", "2"));
-        productList.add(new Product("Zuchini", "4"));
-        Collections.sort(productList);
-        productAdapter.notifyDataSetChanged();
+        productAdapter.addItem(new Product("Apfel", "4"));
+        productAdapter.addItem(new Product("Birnen", "10"));
+        productAdapter.addItem(new Product("Himbeeren", "1"));
+        productAdapter.addItem(new Product("Cola", "6"));
+        productAdapter.addItem(new Product("Bier", "12"));
+        productAdapter.addItem(new Product("Bananen", "3"));
+        productAdapter.addItem(new Product("Käse", "1"));
+        productAdapter.addItem(new Product("Gurken", "2"));
+        productAdapter.addItem(new Product("Zuchini", "4"));
     }
 
     @Override
@@ -190,25 +187,11 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
     @Override
     public boolean onQueryTextChange(String query) {
-        final List<Product> filteredModelList = filter(productList, query);
-        Collections.sort(filteredModelList);
-        productAdapter.setProductList(filteredModelList);
-        productAdapter.notifyDataSetChanged();
+        productAdapter.setFilter(query);
         recyclerView.scrollToPosition(0);
 
         return true;
     }
 
-    private List<Product> filter(List<Product> productList, String query) {
-        query = query.toLowerCase();
 
-        final List<Product> filteredModelList = new ArrayList<>();
-        for (Product product : productList) {
-            final String title = product.getTitle().toLowerCase();
-            if (title.contains(query)) {
-                filteredModelList.add(product);
-            }
-        }
-        return filteredModelList;
-    }
 }
