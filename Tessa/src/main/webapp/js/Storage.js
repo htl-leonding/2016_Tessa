@@ -75,33 +75,39 @@ function generateTable(){
     $.getJSON(baseURL, function(data){
         for(var i = 0; i < data.length; i++) {
             var product = data[i];
-            var list = $('#productList');
-            var iconColor = "green";
-            var days = product.tage;
-
-            if(product.tage <= 4){
-                iconColor = "orange";
-            } else if(product.tage <= 2){
-                iconColor = "rot";
-            }
-
-            if(days > 300) {
-                days = "+300";
-            }
-
-            list.append('<li class="collection-item avatar">' +
-                '<i class="material-icons circle ' + iconColor + '" >local_offer</i>' +
-                '<span class="title">' + product.name + '</span>' +
-                '<p>' +
-                    'Anzahl: ' + product.stueck + '<br>' +
-                    'Tage haltbar: ' + days +
-                '</p>' +
-                '<a class="secondary-content"><i class="medium material-icons">delete</i></a>' +
-                '<a class="secondary-content" style="margin-right: 8vw"><i class="medium material-icons">add</i></a>' +
-                '<a class="secondary-content" style="margin-right: 4vw"><i class="medium material-icons">remove</i></a>'
-            );
+            addProductEntryToList(product, i)
         }
     });
+}
+
+function addProductEntryToList(product, i) {
+    var list = $('#productList');
+    var iconColor = "green";
+    var days = product.tage;
+    var dbID = "productListItemDB_" + i;
+    var id = "productListItem_" + i;
+
+    if(product.tage <= 4){
+        iconColor = "orange";
+    } else if(product.tage <= 2){
+        iconColor = "rot";
+    }
+
+    if(days > 300) {
+        days = "+300";
+    }
+
+    list.append('<li class="collection-item avatar" id="' + id + '">' +
+        '<i class="material-icons circle ' + iconColor + '" style="font-size: 25px" >add_shopping_cart</i>' +
+        '<input type="hidden" id="' + dbID +'" value="' + product.id + '"/>' +
+        '<span class="title" style="font-size: 20px">' + product.name + '</span>' +
+        '<p>' +
+        'Anzahl: ' + product.stueck + ' Stück / Haltbar: ' + days + ' Tage' +
+        '</p>' +
+        '<a class="secondary-content" style="cursor: pointer" onclick="deleteProduct(\'' + id + '\',\'' + dbID + '\')"><i class="medium material-icons">delete</i></a>' +
+        '<a class="secondary-content" style="margin-right: 8vw; cursor: pointer" onclick="raise_number(\'' + id + '\',\'' + dbID + '\')"><i class="medium material-icons">add</i></a>' +
+        '<a class="secondary-content" style="margin-right: 4vw; cursor: pointer" onclick="lower_number(\'' + id + '\',\'' + dbID + '\')"><i class="medium material-icons">remove</i></a>'
+    );
 }
 
 function Send(){
@@ -127,8 +133,9 @@ function Send(){
             url: baseURL,
             data: JSON.stringify(request),
             contentType: "application/json",
-            success: function() {
+            success: function(product) {
                 Materialize.toast('Produkt gespeichert!', 4000);
+                addProductEntryToList(product, $("#productList").children().length + 1);
                 Delete();
             }
         }).fail(function(){
@@ -187,55 +194,42 @@ $(window).resize(function() {
 }).resize(); // Trigger resize handler
 
 //Edit a product
-function raise_number(){
-    if(parseInt(document.getElementById("contentVar").textContent)<100) {
-        document.getElementById("contentVar").innerHTML = parseFloat(document.getElementById("contentVar").textContent) + 1;
-        var id = document.getElementById("productId").value;
-        $.ajax({
-            type: "PUT",
-            url: baseURL + "/" + id + "/increase"
-        });
-    }
-
-}
-
-function lower_number(){
-    if(parseInt(document.getElementById("contentVar").textContent)>1) {
-        document.getElementById("contentVar").innerHTML = parseFloat(document.getElementById("contentVar").textContent) - 1;
-        var id = document.getElementById("productId").value;
-        $.ajax({
-            type: "PUT",
-            url: baseURL + "/" + id + "/decrease"
-        });
-    }
-
-}
-
-function loadInElementsForEdit(id){
-    showModal();
-    $.getJSON(baseURL, function(data){
-       var product;
-        for(var i = 0; i < data.length; i++) {
-            if(data[i].id == id ){
-                product = data[i];
-            }
+function raise_number(htmlID, dbID){
+    var id = $("#" + dbID).val();
+    $.ajax({
+        type: "PUT",
+        url: baseURL + "/" + id + "/increase",
+        success: function (data){
+            var listItem = $("#" + htmlID);
+            var htmlData = 'Anzahl: ' + data.stueck + ' Stück / Haltbar: ' + data.tage + ' Tage';
+            listItem.children("p").html(htmlData);
         }
-        document.getElementById("contentVar").innerHTML = product.stueck;
-        document.getElementById("productId").value = id;
-        document.getElementById("modal_product").innerHTML = product.name;
     });
 }
 
-function deleteProduct() {
-    var id = document.getElementById("productId").value;
+function lower_number(htmlID, dbID){
+    var id = $("#" + dbID).val();
+    $.ajax({
+        type: "PUT",
+        url: baseURL + "/" + id + "/decrease",
+        success: function (data){
+            var listItem = $("#" + htmlID);
+            var htmlData = 'Anzahl: ' + data.stueck + ' Stück / Haltbar: ' + data.tage + ' Tage';
+            listItem.children("p").html(htmlData);
+        }
+    });
+}
+
+function deleteProduct(htmlID, dbID) {
+    var id = $("#" + dbID).val();
     $.ajax({
         type: "DELETE",
         url: baseURL + "/" + id,
-        async: false
+        async: false,
+        success: function (){
+            $("#" + htmlID).remove();
+            Materialize.toast('Produkt gespeichert!', 4000);
+        }
     });
-}
 
-function showModal(){
-    $("#myModal3").modal('toggle');
-    $("#myModal3").modal('show');
 }

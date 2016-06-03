@@ -1,6 +1,7 @@
 package at.htl.tessa.rest;
 
 import at.htl.tessa.business.ProductFacade;
+import at.htl.tessa.entity.Product;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -28,10 +29,9 @@ public class ProductResource {
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response createProduct(JsonObject product) throws URISyntaxException {
+    public JsonObject createProduct(JsonObject product) throws URISyntaxException {
         long id = productFacade.save(product).getId();
-        StringBuffer urlBuffer = request.getRequestURL();
-        return Response.created(new URI(urlBuffer.append("/" + id).toString())).build();
+        return productFacade.findJson(id);
     }
 
     @GET

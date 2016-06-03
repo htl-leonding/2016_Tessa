@@ -113,7 +113,9 @@ public class ProductFacade {
      */
     public void decreaseCount(long id) {
         Product product = find(id);
-        product.setStueck(product.getStueck() - 1);
+        if(product.getStueck() > 1) {
+            product.setStueck(product.getStueck() - 1);
+        }
     }
 
     public boolean isEnough(long barcode, int stueck){
