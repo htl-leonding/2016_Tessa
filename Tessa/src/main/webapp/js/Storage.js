@@ -109,8 +109,8 @@ function addProductEntryToList(product, i) {
         'Anzahl: ' + product.stueck + ' Stück / Haltbar: ' + days + ' Tage' +
         '</p>' +
         '<a class="secondary-content" style="cursor: pointer" onclick="deleteProduct(\'' + id + '\',\'' + dbID + '\')"><i class="medium material-icons">delete</i></a>' +
-        '<a class="secondary-content" style="margin-right: 8vw; cursor: pointer" onclick="raise_number(\'' + id + '\',\'' + dbID + '\')"><i class="medium material-icons">add</i></a>' +
-        '<a class="secondary-content" style="margin-right: 4vw; cursor: pointer" onclick="lower_number(\'' + id + '\',\'' + dbID + '\')"><i class="medium material-icons">remove</i></a>'
+        '<a class="secondary-content" style="margin-right: 150px; cursor: pointer" onclick="raise_number(\'' + id + '\',\'' + dbID + '\')"><i class="medium material-icons">add</i></a>' +
+        '<a class="secondary-content" style="margin-right: 75px; cursor: pointer" onclick="lower_number(\'' + id + '\',\'' + dbID + '\')"><i class="medium material-icons">remove</i></a>'
     );
 }
 
