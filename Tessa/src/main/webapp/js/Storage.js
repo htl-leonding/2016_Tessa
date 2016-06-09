@@ -1,7 +1,6 @@
 var baseURL = "/Tessa/rs/product";
 
 $(function () {
-    //initCarousel();
 
     $('.modal-trigger').leanModal({
         dismissible: false,
@@ -57,10 +56,15 @@ function initCarousel() {
         for (var i = 0; i < images.length && i < names.length; i++) {
             var image = images[i];
             var name = names[i];
-            carousel.append("<a class='carousel-item' onclick='setText(\"" + name + "\")'><img src='" + image + "'/></a>");
+            carousel.append("<a class='carousel-item' href='#1!'><input type='hidden' value='" + name + "'><img src='" + image + "'/></a>");    //onclick='setText(\"" + name + "\")'
         }
 
         carousel.carousel();
+
+        $('.carousel-item').click(function (){
+            var value = $(this).children('input').val();
+            setText(value);
+        });
     }
 }
 
@@ -97,7 +101,7 @@ function addProductEntryToList(product, i) {
         days = "+300";
     }
 
-    list.append('<li class="collection-item avatar" id="' + id + '">' +
+    list.append('<li class="collection-item dismissable avatar" id="' + id + '">' +
         '<i class="material-icons circle ' + iconColor + '" style="font-size: 25px" >add_shopping_cart</i>' +
         '<input type="hidden" id="' + dbID +'" value="' + product.id + '"/>' +
         '<span class="title" style="font-size: 20px">' + product.name + '</span>' +
@@ -228,7 +232,7 @@ function deleteProduct(htmlID, dbID) {
         async: false,
         success: function (){
             $("#" + htmlID).remove();
-            Materialize.toast('Produkt gespeichert!', 4000);
+            Materialize.toast('Produkt gelöscht!', 4000);
         }
     });
 

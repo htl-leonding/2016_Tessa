@@ -4,6 +4,14 @@
 var baseURL = "/Tessa/rs/cooking";
 var searchPage = "RecipeSearch.html";
 
+$(function () {
+    $('.button-collapse').sideNav();
+
+    $('#sendBtn').click(function() {
+        startSearch();
+    });
+});
+
 //Erstellen der Tabelle
 function generateTable(table){
     var tempURL = baseURL + "/c=" + $("#URLPath").text();
@@ -54,7 +62,7 @@ function generateInTable(data, table) {
 }
 
 function searchRecipe(){
-    var query = $("#suchfeld").val();
+    var query = $("#search").val();
     var tempURL = baseURL + "/s=" + query;
     $("#data tr").remove();
     $.getJSON(tempURL, function(data){
@@ -63,7 +71,7 @@ function searchRecipe(){
 }
 
 function startSearch() {
-    var query = $("#suchfeld").val();
+    var query = $("#search").val();
     localStorage.query = query;
 
     if(getCurrentPage() != searchPage){
@@ -87,7 +95,7 @@ $(function () {
 
 $(document).ready(function(){
     if(getCurrentPage() == searchPage) {
-        $("#suchfeld").val(localStorage.query);
+        $("#search").val(localStorage.query);
         localStorage.removeItem("query");
         searchRecipe();
     }

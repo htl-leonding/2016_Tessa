@@ -1,156 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 
-    <script src="js/slideShow.js"></script>
+        <script src="js/jquery-2.1.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+        <script src="js/slideShow.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/RecipeList.js"></script>
 
-    <script src="js/jquery-2.1.4.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/RecipeList.js"></script>
+        <link rel="stylesheet" href="cssBootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="cssBootstrap/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="css/styleRecipePage.css">
+        <link rel="shortcut icon" href="images/recipeIcon.png">
 
-    <link rel="stylesheet" href="cssBootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="cssBootstrap/bootstrap-theme.min.css">
+        <title>Rezepte</title>
+    </head>
+    <body>
 
-    <link rel="stylesheet" href="css/styleRecipePage.css">
-    <link rel="shortcut icon" href="images/recipeIcon.png">
+    <div id="container">
 
-    <title>Rezepte</title>
-</head>
-<body>
+        <nav>
+            <div class="nav-wrapper">
+                <!--<a href="MainPage.html" class="brand-logo right" style="text-decoration: none">Tessa</a>-->
+                <p class="brand-logo center">Rezepteküche</p>
+                <a data-activates="navigation" class="button-collapse show-on-large" style="text-decoration: none"><i class="material-icons">menu</i></a>
+                <div class="input-field" style="margin-left: 65vw; height: 62px; padding-top: 1px; margin-right: 2px">
+                    <input id="search" type="search" placeholder="Rezept suchen..." required>
+                    <label for="search"><i class="material-icons">search</i></label>
+                    <i id="sendBtn" class="material-icons" style="margin-right: 3vw">send</i>
+                    <i class="material-icons">close</i>
+                </div>
+                <ul class="side-nav" id="navigation">
+                    <li><img src="images/tessa2.png" alt="Logo" width="125%" height="125%" style="margin-left: -12.5%"></li>
+                    <li><a href="MainPage.html">Hauptmenü</a></li>
+                    <li><a href="Storage.html">Vorräte</a></li>
+                    <li><a href="PurchaseList.html">Einkaufsliste</a></li>
+                </ul>
+            </div>
+        </nav>
 
-<div id="container">
+        <!--<div class="outer">
 
+            &lt;!&ndash;Searchbar&ndash;&gt;
+            <form class="Suchfeldblock" id="suchfeldBlock">
+                <label>
+                    <input type="text" id="suchfeld" style="width: 49vw; height: 4vh;" placeholder="Rezept suchen..." />
+                </label>
+                <label>
+                    <button class="submit" id="suchen" type="button" style="width: 2.8vw; height: 4vh;">
+                        <span class="glyphicon glyphicon-search inhalt" aria-hidden="true" ></span></button>
+                </label>
+            </form>
 
+            <div class="center-helper">
+                <div class="inner">
+                    <section class="slider">
+                        <div class="flexslider">
+                            <ul class="slides">
+                                <li>
+                                    <img src="images/kitchen_adventurer_cheesecake_brownie.jpg" />
+                                    <p class="flex-caption">Adventurer Cheesecake Brownie</p>
+                                </li>
+                                <li>
+                                    <img src="images/kitchen_adventurer_lemon.jpg" />
+                                    <p class="flex-caption">Adventurer Lemon</p>
+                                </li>
+                                <li>
+                                    <img src="images/kitchen_adventurer_donut.jpg" />
+                                    <p class="flex-caption">Adventurer Donut</p>
+                                </li>
+                                <li>
+                                    <img src="images/kitchen_adventurer_caramel.jpg" />
+                                    <p class="flex-caption">Adventurer Caramel</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                 </div>
 
-        <div id="header">
-            <span class="imgzentriert">
-                <img src="images/tessa2.png" alt="Logo" width="23%" height="50%">
-            </span>
-        </div>
+                    &lt;!&ndash; JavaScript &ndash;&gt;
+                    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+                    <script>window.jQuery || document.write('<script src="js/jquery-2.1.4.min.js">\x3C/script>')</script>
 
-        <div id="bodyMenue">
+                    &lt;!&ndash; FlexSlider &ndash;&gt;
+                    <script defer src="js/jquery.flexslider.js"></script>
 
-            <!--<button type="button" id="insert" style="font-size: 170%;" class="btn btn-default btn-lg" onclick="window.location.href='ReadInWithoutQR.html'">
-                <span class="glyphicon glyphicon-th inhalt" aria-hidden="true"></span> Produkteingabe
-            </button> <br><br>
-            <button type="button" id="scan" style="font-size: 170%;" class="btn btn-default btn-lg" onclick="window.location.href='ReadInWithoutQR.html'">
-                <span class="glyphicon glyphicon-barcode inhalt" aria-hidden="true"></span> Einscannen
-            </button>-->
-            <!--BUTTON 1-->
-            <button class="button" id="home" type="button" onclick="window.location.href='MainPage.html'">
-                <span class="glyphicon glyphicon-home inhalt" aria-hidden="true" ></span> Hauptmenü</button>
-            <br>
-
-            <!--BUTTON 2-->
-            <button class="button" id="scan" type="button" onclick="window.location.href='PurchaseList.html'">
-                <span class="glyphicon glyphicon-shopping-cart inhalt" aria-hidden="true" ></span> Einkaufsliste</button>
-            <br><br><br>
-
-            <!--BUTTON 3-->
-            <button class="button fav" id="favRecipe" type="button"  onclick="window.location.href='Favourits.html'">
-                <span class="glyphicon glyphicon-star inhalt" aria-hidden="true" ></span> Favoriten</button>
-
-        </div>
-
-    <div class="recipeHead">
-        <h1>Rezepteküche</h1>
-    </div>
-
-    <div class="outer">
-
-        <!--Searchbar-->
-        <form class="Suchfeldblock" id="suchfeldBlock">
-            <label>
-                <input type="text" id="suchfeld" style="width: 49vw; height: 4vh;" placeholder="Rezept suchen..." />
-            </label>
-            <label>
-                <button class="submit" id="suchen" type="button" style="width: 2.8vw; height: 4vh;">
-                    <span class="glyphicon glyphicon-search inhalt" aria-hidden="true" ></span></button>
-            </label>
-        </form>
-
-        <div class="center-helper">
-            <div class="inner">
-                <section class="slider">
-                    <div class="flexslider">
-                        <ul class="slides">
-                            <li>
-                                <img src="images/kitchen_adventurer_cheesecake_brownie.jpg" />
-                                <p class="flex-caption">Adventurer Cheesecake Brownie</p>
-                            </li>
-                            <li>
-                                <img src="images/kitchen_adventurer_lemon.jpg" />
-                                <p class="flex-caption">Adventurer Lemon</p>
-                            </li>
-                            <li>
-                                <img src="images/kitchen_adventurer_donut.jpg" />
-                                <p class="flex-caption">Adventurer Donut</p>
-                            </li>
-                            <li>
-                                <img src="images/kitchen_adventurer_caramel.jpg" />
-                                <p class="flex-caption">Adventurer Caramel</p>
-                            </li>
-                        </ul>
-                    </div>
-                </section>
-             </div>
-
-                <!-- JavaScript -->
-                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-                <script>window.jQuery || document.write('<script src="js/jquery-2.1.4.min.js">\x3C/script>')</script>
-
-                <!-- FlexSlider -->
-                <script defer src="js/jquery.flexslider.js"></script>
-
-                <script type="text/javascript">
-                    $(function(){
-                        SyntaxHighlighter.all();
-                    });
-                    $(window).load(function(){
-                        $('.flexslider').flexslider({
-                            animation: "slide",
-                            start: function(slider){
-                                $('body').removeClass('loading');
-                            }
+                    <script type="text/javascript">
+                        $(function(){
+                            SyntaxHighlighter.all();
                         });
-                    });
-                </script>
-        </div>
+                        $(window).load(function(){
+                            $('.flexslider').flexslider({
+                                animation: "slide",
+                                start: function(slider){
+                                    $('body').removeClass('loading');
+                                }
+                            });
+                        });
+                    </script>
+            </div>
 
-        <div  class="GerichtsKategorie Vorspeisen" onclick="window.location.href='RecipeAppetizer.html'">
-            <div class="KategorieName"><p>Vorspeisen</p></div>
-        </div>
+            <div  class="GerichtsKategorie Vorspeisen" onclick="window.location.href='RecipeAppetizer.html'">
+                <div class="KategorieName"><p>Vorspeisen</p></div>
+            </div>
 
-        <div class="GerichtsKategorie Hauptspeisen" onclick="window.location.href='RecipeMainCourse.html'">
-            <div class="KategorieName"><p>Hauptspeisen</p></div>
-        </div>
+            <div class="GerichtsKategorie Hauptspeisen" onclick="window.location.href='RecipeMainCourse.html'">
+                <div class="KategorieName"><p>Hauptspeisen</p></div>
+            </div>
 
-        <div class="GerichtsKategorie Getraenke" onclick="window.location.href='RecipeDrinks.html'">
-            <div class="KategorieName"><p>Getränke</p></div>
-        </div>
+            <div class="GerichtsKategorie Getraenke" onclick="window.location.href='RecipeDrinks.html'">
+                <div class="KategorieName"><p>Getränke</p></div>
+            </div>
 
-        <div class="GerichtsKategorie Desserts" onclick="window.location.href='RecipeDessert.html'">
-            <div class="KategorieName"><p>Nachspeisen</p></div>
-        </div>
+            <div class="GerichtsKategorie Desserts" onclick="window.location.href='RecipeDessert.html'">
+                <div class="KategorieName"><p>Nachspeisen</p></div>
+            </div>
 
-    </div>
-
-
-
-    <div id="footer">
-        <!--<div class = "config" id ="config" onclick="window.location.href='http://www.google.com'">
-            <span class="glyphicon glyphicon-cog inhalt" aria-hidden="false"><div class="text"></div></span>
         </div>-->
-    </div>
-</div>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        generateTable(document.getElementById('data'));
-    });
-</script>
-</body>
+
+
+        <div id="footer">
+            <!--<div class = "config" id ="config" onclick="window.location.href='http://www.google.com'">
+                <span class="glyphicon glyphicon-cog inhalt" aria-hidden="false"><div class="text"></div></span>
+            </div>-->
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            generateTable(document.getElementById('data'));
+        });
+    </script>
+    </body>
 </html>
