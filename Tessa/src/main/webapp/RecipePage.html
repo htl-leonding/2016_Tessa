@@ -3,12 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-        <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+        <!--<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />-->
 
         <script src="js/jquery-2.1.4.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-        <script src="js/slideShow.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <!--<script src="js/slideShow.js"></script>-->
+        <!--<script src="js/bootstrap.min.js"></script>-->
         <script src="js/RecipeList.js"></script>
 
         <link rel="stylesheet" href="cssBootstrap/bootstrap.min.css">
@@ -22,27 +22,33 @@
     </head>
     <body>
 
+    <nav>
+        <div class="nav-wrapper">
+            <!--<a href="MainPage.html" class="brand-logo right" style="text-decoration: none">Tessa</a>-->
+            <p class="brand-logo center">Rezepteküche</p>
+            <a data-activates="navigation" class="button-collapse show-on-large" style="text-decoration: none"><i class="material-icons">menu</i></a>
+            <div class="input-field" style="margin-left: 65vw; height: 62px; padding-top: 1px; margin-right: 2px">
+                <input id="search" type="search" placeholder="Rezept suchen..." required>
+                <label for="search"><i class="material-icons">search</i></label>
+                <i id="sendBtn" class="material-icons" style="margin-right: 3vw">send</i>
+                <i class="material-icons">close</i>
+            </div>
+            <ul class="side-nav" id="navigation">
+                <li><img src="images/tessa2.png" alt="Logo" width="125%" height="125%" style="margin-left: -12.5%"></li>
+                <li><a href="MainPage.html">Hauptmenü</a></li>
+                <li><a href="Storage.html">Vorräte</a></li>
+                <li><a href="PurchaseList.html">Einkaufsliste</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div id="container">
 
-        <nav>
-            <div class="nav-wrapper">
-                <!--<a href="MainPage.html" class="brand-logo right" style="text-decoration: none">Tessa</a>-->
-                <p class="brand-logo center">Rezepteküche</p>
-                <a data-activates="navigation" class="button-collapse show-on-large" style="text-decoration: none"><i class="material-icons">menu</i></a>
-                <div class="input-field" style="margin-left: 65vw; height: 62px; padding-top: 1px; margin-right: 2px">
-                    <input id="search" type="search" placeholder="Rezept suchen..." required>
-                    <label for="search"><i class="material-icons">search</i></label>
-                    <i id="sendBtn" class="material-icons" style="margin-right: 3vw">send</i>
-                    <i class="material-icons">close</i>
-                </div>
-                <ul class="side-nav" id="navigation">
-                    <li><img src="images/tessa2.png" alt="Logo" width="125%" height="125%" style="margin-left: -12.5%"></li>
-                    <li><a href="MainPage.html">Hauptmenü</a></li>
-                    <li><a href="Storage.html">Vorräte</a></li>
-                    <li><a href="PurchaseList.html">Einkaufsliste</a></li>
-                </ul>
-            </div>
-        </nav>
+        <div class="slider" style="width: 440px; margin: 5vw">
+            <ul class="slides">
+
+            </ul>
+        </div>
 
         <!--<div class="outer">
 

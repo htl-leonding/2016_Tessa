@@ -2,7 +2,6 @@ package at.htl.tessa.rest;
 
 import at.htl.tessa.business.CookingRecipeFacade;
 import at.htl.tessa.entity.CookingRecipe;
-import at.htl.tessa.entity.ShoppingListEntry;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -53,6 +52,13 @@ public class CookingRecipeEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public List<CookingRecipe> searchRecipes(@PathParam("query") String query) {
         return facade.searchRecipes(query);
+    }
+
+    @GET
+    @Path("random/{count}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List getRandomProducts(@PathParam("count") int count) {
+        return facade.getRandomRecipes(count);
     }
 
     @GET

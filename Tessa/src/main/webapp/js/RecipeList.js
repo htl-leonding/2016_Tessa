@@ -3,6 +3,7 @@
  */
 var baseURL = "/Tessa/rs/cooking";
 var searchPage = "RecipeSearch.html";
+var sliderCount = 5;
 
 $(function () {
     $('.button-collapse').sideNav();
@@ -10,6 +11,8 @@ $(function () {
     $('#sendBtn').click(function() {
         startSearch();
     });
+
+    generateSlider();
 });
 
 //Erstellen der Tabelle
@@ -58,6 +61,26 @@ function generateInTable(data, table) {
         });
 
         table.appendChild(row);
+    }
+}
+
+function generateSlider() {
+    if(getCurrentPage() == "RecipePage.html"){
+        var slides = $('.slides');
+        var tempUrl = baseURL + "/random/" + sliderCount;
+        $.getJSON(tempUrl, function(data){
+            for(var i = 0; i < data.length; i++) {
+                var recipe = data[i];
+                slides.append('<li>' +
+                    '<img src="data:image/png;base64,' + recipe.picture + '">' +
+                    '<div class="caption left-align">' +
+                    '<h3 class="deep-orange-text text-accent-4">'+ recipe.name + '</h3>' +
+                    '<h5 class="light deep-orange-text text-accent-4">' + recipe.category + '</h5>' +
+                    '</div>' +
+                    '</li>')
+            }
+            $('.slider').slider({full_width: true});
+        });
     }
 }
 

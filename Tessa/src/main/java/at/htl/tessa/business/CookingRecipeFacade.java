@@ -1,12 +1,16 @@
 package at.htl.tessa.business;
 
 import at.htl.tessa.entity.CookingRecipe;
+import at.htl.tessa.entity.Product;
+import at.htl.tessa.util.Util;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Korti on 21.04.2016.
@@ -131,6 +135,27 @@ public class CookingRecipeFacade {
         CookingRecipe oldRecipe = findByName(name);
         recipe.setId(oldRecipe.getId());
         return save(recipe);
+    }
+
+    /**
+     * Gibt eine Liste mit Zufälligen Rezepten zurück.
+     * @param count Anzahl der Produkte.
+     * @return Liste mit Zufälligen Rezepten.
+     * @since 09.06.2016
+     * @author Korti
+     */
+    public List getRandomRecipes(int count) {
+        Random random = new Random(System.currentTimeMillis());
+        long recipeCount = countRecipes() - 1L;
+        List<CookingRecipe> recipes = new LinkedList<>();
+        for (int i = 0; i < count; i++) {
+            long randomId = Util.randomLong(random, recipeCount);
+            CookingRecipe recipe = find(randomId);
+            if(!recipes.contains(recipe)) {
+                recipes.add(find(randomId));
+            }
+        }
+        return recipes;
     }
 
     public long countRecipes() {
