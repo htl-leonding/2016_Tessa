@@ -140,7 +140,7 @@ function Send(){
             success: function(product) {
                 Materialize.toast('Produkt gespeichert!', 4000);
                 addProductEntryToList(product, $("#productList").children().length + 1);
-                Delete();
+                clearInputFields();
             }
         }).fail(function(){
             Materialize.toast('Produkt konnte nicht gespeichert werden!', 4000);
@@ -148,30 +148,7 @@ function Send(){
     }
 }
 
-function TriggerBarcode(e) {
-    if(e.keyCode === 13) {
-        SendBarcode();
-    }
-}
-
-function SendBarcode() {
-    var barcode = document.getElementById("BarcodeEingabe");
-    $.getJSON(baseURL + "/barcode=" + barcode.value, function(data){
-        if(data.hasOwnProperty("id")){
-            var productName = document.getElementById("produktEingabe");
-            var productCount = document.getElementById("anzahlEingabe");
-            var hiddenBarcode = document.getElementById("barcodeField");
-            productName.value = data.name;
-            productCount.value = data.stueck;
-            hiddenBarcode.value = barcode.value;
-            $("#myModal2").modal("hide");
-            $("#myModal").modal("show");
-        }
-        barcode.value = "";
-    });
-}
-
-function Delete(){
+function clearInputFields(){
     $('#productInput').val("");
     $('#countRange').val(1);
     $('#expirationDate').val("");
@@ -179,23 +156,6 @@ function Delete(){
     $('#labelProduct').removeClass("active");
     $('#productInput').removeClass("valid");
 }
-// Change the selector if needed
-var $table = $('table.scroll'),
-    $bodyCells = $table.find('tbody tr:first').children(),
-    colWidth;
-
-// Adjust the width of thead cells when window resizes
-$(window).resize(function() {
-    // Get the tbody columns width array
-    colWidth = $bodyCells.map(function() {
-        return $(this).width();
-    }).get();
-
-    // Set the width of thead columns
-    $table.find('thead tr').children().each(function(i, v) {
-        $(v).width(colWidth[i]);
-    });
-}).resize(); // Trigger resize handler
 
 //Edit a product
 function raise_number(htmlID, dbID){
