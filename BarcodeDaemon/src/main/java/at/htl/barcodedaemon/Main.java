@@ -12,6 +12,7 @@ import javax.ws.rs.core.Response.Status;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -28,6 +29,7 @@ public class Main {
     private static final String PARAM = "barcode=%s";
     private static final String BASE_URL = "http://%s:%s/%s";
     private static final String SEARCH_KEY = "id";
+    private static final String SECOUND_SEARCH_KEY = "tage";
     private static final String DATE_KEY = "date";
 
     private static Client client;
@@ -64,7 +66,7 @@ public class Main {
                 System.out.println(response.getStatusInfo().getReasonPhrase());
             } else {
                 JsonObject object = response.readEntity(JsonObject.class);
-                if (object.containsKey(SEARCH_KEY)) {
+                if (object.containsKey(SEARCH_KEY) && !object.containsKey(SECOUND_SEARCH_KEY)) {
                     target.request().post(Entity.json(recreateJsonObject(object)));
                 }
             }
@@ -78,7 +80,7 @@ public class Main {
             builder.add(entry.getKey(), entry.getValue());
         }
         builder.add(DATE_KEY, LocalDate.now().plusDays(30).
-                format(DateTimeFormatter.ofPattern(config.get(PATTERN_KEY))));
+                format(DateTimeFormatter.ofPattern(config.get(PATTERN_KEY), Locale.US)));
         return builder.build();
     }
 
