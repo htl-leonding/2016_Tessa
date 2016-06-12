@@ -52,7 +52,7 @@ function addRecipeEntryToList(recipe, i) {
 
 
         + '<div class="collapsible-body" style="margin: 10px 20px 5px 20px;">' + '<img src="' + imgsrc + '">'
-        +  recipe.ingredients
+        +  recipe.ingredient
         + '<div style="margin:2% 5% 3% 5%;" >' + recipe.description + '</div>'
         + '</div>'
         + '</li>'
