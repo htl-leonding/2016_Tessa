@@ -24,10 +24,10 @@
                     <!--<img src="images/tessa2.png" alt="Logo" width="23%" height="50%">-->
                 <!--</span>-->
                 <nav>
-                    <div class="nav-wrapper">
+                    <div class="nav-wrapper" style="background-color: #007203">
                         <p class="brand-logo center">Produktübersicht</p>
-                        <a data-activates="navigation" class="button-collapse show-on-large" style="text-decoration: none"><i class="material-icons">menu</i></a>
-                        <ul class="side-nav" id="navigation">
+                        <a data-activates="navigation" class="button-collapse show-on-large" style="text-decoration: none; cursor: pointer"><i class="material-icons">menu</i></a>
+                        <ul class="side-nav" id="navigation" style="background-color: rgba(233, 255, 220, 0.88)">
                             <li><img src="images/tessa2.png" alt="Logo" width="125%" height="125%" style="margin-left: -12.5%"></li>
                             <li><a href="MainPage.html">Hauptmenü</a></li>
                             <li><a href="PurchaseList.html">Einkaufsliste</a></li>
@@ -47,7 +47,7 @@
                                 <div class="row">
                                     <div class="input-field col s6">
                                         <input id="productInput" type="text" class="validate">
-                                        <label id="labelProduct" for="productId" data-error="Bitte Eingabe überprüfen" style="text-align: start">Produkt</label>
+                                        <label id="labelProduct" for="productInput" data-error="Bitte Eingabe überprüfen" style="text-align: start">Produkt</label>
                                     </div>
                                     <div class="col s6">
                                         <form action="#">
@@ -75,32 +75,6 @@
                     </div>
                 </div>
 
-                <!-- Modal -->
-                <div id="myModal3" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
-
-                        <!-- Modal content-->
-                        <div class="modal-content" id="content3">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Produkt bearbeiten</h4>
-                            </div>
-                            <div class="modal-body">
-                                <div >
-                                    <h2 style="font-size:450%" id="modal_product">Produkt bearbeiten</h2>
-                                    <input type="hidden" id="productId" value="">
-                                    <button class="enter glyphicon glyphicon-floppy-disk" id = "closeButton" onclick="window.location='Storage.html'"></button>
-                                    <button class="enter textMinus glyphicon glyphicon-minus" id = "minusButton" onclick="lower_number();"></button>
-                                    <button class="enter" id="contentVar"><p class ="text">4</p></button>
-                                    <button class="enter textPlus glyphicon glyphicon-plus" id = "plusButton" onclick="raise_number();"></button>
-                                    <button class="enter textDelete glyphicon glyphicon-trash" id = "deleteButton" onclick="deleteProduct(); window.location='Storage.html';"></button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
                 <ul class="collection" id="productList">
                 </ul>
 
@@ -112,13 +86,6 @@
                 </div>
             </div>
         </div>
-            <div id="footer">
-                <!--<div class = "config" id ="config" onclick="window.location.href='http://www.google.com'">
-                    <span class="glyphicon glyphicon-cog inhalt" aria-hidden="false"><div class="text"></div></span>
-                </div>-->
-            </div>
-        </div>
-
         <script type="text/javascript">
             $(document).ready(function () {
                 generateTable(document.getElementById('data'));

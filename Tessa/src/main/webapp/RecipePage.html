@@ -26,7 +26,7 @@
         <div class="nav-wrapper" style="background-color: #007203">
             <!--<a href="MainPage.html" class="brand-logo right" style="text-decoration: none">Tessa</a>-->
             <p class="brand-logo center">Rezepteküche</p>
-            <a data-activates="navigation" class="button-collapse show-on-large" style="text-decoration: none"><i class="material-icons">menu</i></a>
+            <a data-activates="navigation" class="button-collapse show-on-large" style="text-decoration: none; cursor: pointer"><i class="material-icons">menu</i></a>
             <div class="input-field" style="margin-left: 65vw; height: 62px; padding-top: 1px; margin-right: 2px">
                 <input id="search" type="search" placeholder="Rezept suchen..." required>
                 <label for="search"><i class="material-icons">search</i></label>
@@ -42,151 +42,64 @@
         </div>
     </nav>
 
-    <div id="container">
-        <!--TODO: Slider auf die Hauptseite verlegen-->
-        <!--<div class="slider" style="width: 440px; margin: 5vw">-->
-            <!--<ul class="slides">-->
+        <div id="container">
+            <!--TODO: Slider auf die Hauptseite verlegen-->
+            <!--<div class="slider" style="width: 440px; margin: 5vw">-->
+                <!--<ul class="slides">-->
 
-            <!--</ul>-->
-        <!--</div>-->
+                <!--</ul>-->
+            <!--</div>-->
 
-        <div class="row">
-            <div class="col s6">
-                <div class="card medium" onclick="location.href='RecipeAppetizer.html'">
-                    <div class="card-image" style="max-height: 80%">
-                        <img src="images/vorspeise.jpg">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title grey-text text-darken-4">Vorspeisen</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col s6">
-                <div class="card medium" onclick="location.href='RecipeMainCourse.html'">
-                    <div class="card-image" style="max-height: 80%">
-                        <img src="images/hauptspeise.jpg">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title grey-text text-darken-4">Hauptspeisen</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s6">
-                <div class="card medium" onclick="location.href='RecipeDessert.html'">
-                    <div class="card-image" style="max-height: 80%">
-                        <img src="images/deserts.jpg" style="margin-top: -100px">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title grey-text text-darken-4">Nachspeisen</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col s6">
-                <div class="card medium" onclick="location.href='RecipeDrinks.html'">
-                    <div class="card-image" style="max-height: 80%">
-                        <img src="images/getraenke.jpg" style="margin-top: -125px">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title grey-text text-darken-4">Getränke</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--<div class="outer">
-
-            &lt;!&ndash;Searchbar&ndash;&gt;
-            <form class="Suchfeldblock" id="suchfeldBlock">
-                <label>
-                    <input type="text" id="suchfeld" style="width: 49vw; height: 4vh;" placeholder="Rezept suchen..." />
-                </label>
-                <label>
-                    <button class="submit" id="suchen" type="button" style="width: 2.8vw; height: 4vh;">
-                        <span class="glyphicon glyphicon-search inhalt" aria-hidden="true" ></span></button>
-                </label>
-            </form>
-
-            <div class="center-helper">
-                <div class="inner">
-                    <section class="slider">
-                        <div class="flexslider">
-                            <ul class="slides">
-                                <li>
-                                    <img src="images/kitchen_adventurer_cheesecake_brownie.jpg" />
-                                    <p class="flex-caption">Adventurer Cheesecake Brownie</p>
-                                </li>
-                                <li>
-                                    <img src="images/kitchen_adventurer_lemon.jpg" />
-                                    <p class="flex-caption">Adventurer Lemon</p>
-                                </li>
-                                <li>
-                                    <img src="images/kitchen_adventurer_donut.jpg" />
-                                    <p class="flex-caption">Adventurer Donut</p>
-                                </li>
-                                <li>
-                                    <img src="images/kitchen_adventurer_caramel.jpg" />
-                                    <p class="flex-caption">Adventurer Caramel</p>
-                                </li>
-                            </ul>
+            <div class="row">
+                <div class="col s6">
+                    <div class="card medium" onclick="location.href='RecipeAppetizer.html'">
+                        <div class="card-image" style="max-height: 80%">
+                            <img src="images/vorspeise.jpg">
                         </div>
-                    </section>
-                 </div>
-
-                    &lt;!&ndash; JavaScript &ndash;&gt;
-                    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-                    <script>window.jQuery || document.write('<script src="js/jquery-2.1.4.min.js">\x3C/script>')</script>
-
-                    &lt;!&ndash; FlexSlider &ndash;&gt;
-                    <script defer src="js/jquery.flexslider.js"></script>
-
-                    <script type="text/javascript">
-                        $(function(){
-                            SyntaxHighlighter.all();
-                        });
-                        $(window).load(function(){
-                            $('.flexslider').flexslider({
-                                animation: "slide",
-                                start: function(slider){
-                                    $('body').removeClass('loading');
-                                }
-                            });
-                        });
-                    </script>
+                        <div class="card-content">
+                            <span class="card-title grey-text text-darken-4">Vorspeisen</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s6">
+                    <div class="card medium" onclick="location.href='RecipeMainCourse.html'">
+                        <div class="card-image" style="max-height: 80%">
+                            <img src="images/hauptspeise.jpg">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title grey-text text-darken-4">Hauptspeisen</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div  class="GerichtsKategorie Vorspeisen" onclick="window.location.href='RecipeAppetizer.html'">
-                <div class="KategorieName"><p>Vorspeisen</p></div>
+            <div class="row" style="margin-bottom: 0px">
+                <div class="col s6">
+                    <div class="card medium" onclick="location.href='RecipeDessert.html'">
+                        <div class="card-image" style="max-height: 80%">
+                            <img src="images/deserts.jpg" style="margin-top: -100px">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title grey-text text-darken-4">Nachspeisen</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s6">
+                    <div class="card medium" onclick="location.href='RecipeDrinks.html'">
+                        <div class="card-image" style="max-height: 80%">
+                            <img src="images/getraenke.jpg" style="margin-top: -125px">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title grey-text text-darken-4">Getränke</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="GerichtsKategorie Hauptspeisen" onclick="window.location.href='RecipeMainCourse.html'">
-                <div class="KategorieName"><p>Hauptspeisen</p></div>
-            </div>
-
-            <div class="GerichtsKategorie Getraenke" onclick="window.location.href='RecipeDrinks.html'">
-                <div class="KategorieName"><p>Getränke</p></div>
-            </div>
-
-            <div class="GerichtsKategorie Desserts" onclick="window.location.href='RecipeDessert.html'">
-                <div class="KategorieName"><p>Nachspeisen</p></div>
-            </div>
-
-        </div>-->
-
-
-
-        <div id="footer">
-            <!--<div class = "config" id ="config" onclick="window.location.href='http://www.google.com'">
-                <span class="glyphicon glyphicon-cog inhalt" aria-hidden="false"><div class="text"></div></span>
-            </div>-->
         </div>
-    </div>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            generateTable(document.getElementById('data'));
-        });
-    </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                generateTable(document.getElementById('data'));
+            });
+        </script>
     </body>
 </html>
