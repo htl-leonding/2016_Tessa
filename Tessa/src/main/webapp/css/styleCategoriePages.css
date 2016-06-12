@@ -60,72 +60,20 @@ body p{
 }
 
 /*Body*/
-
-.recipeHead{
-    float: left;
-    position: absolute;
-    margin-left: 30vw;
-    margin-top: 2%;
-    font-family: inherit;
-}
-
 .Suchfeldblock{
     float: left;
     margin-top: -10%;
     margin-left: 50%;
 }
 
-table{
-    border-style: none;
-    border-color: transparent;
-    border-width: 3px;
-    width: 50vw;
-    margin-left: 15%;
-    margin-top: -2%;
-}
-tr{
-    font-size: 150%;
-    text-align: center;
-    color: black;
-    height: 8vh;
-
-}
-
-
-/*MakeItScrollable*/
-#tableSide table.scroll {
-    border-spacing: 0;
-}
-#tableSide table.scroll tbody,
-#tableSide table.scroll thead { display: block; }
-
-#tableSide table.scroll tbody {
-    height: 56vh;
+#recipeList{
     overflow-y: auto;
     overflow-x: hidden;
+    margin: 2vh 5vw 0 5vw;
+    height: 85vh;
+    opacity: 0.9;
+    border-color: transparent;
 }
-
-
-/*Footer*/
-#footer {
-    position:absolute;
-    bottom:0;
-    width:100vw;
-    height:10vh;
-}
-.config{
-    position: fixed;
-    background-color: white;
-    font-size: 500%;
-    height:5vh;
-    width: 5vw;
-    text-align: center;
-    margin-left:1%;
-    display: block;
-    text-align: center;
-}
-
-
 
 .invis{
     display: none;

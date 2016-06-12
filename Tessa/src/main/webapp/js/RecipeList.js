@@ -30,11 +30,31 @@ function generateTable(){
 function addRecipeEntryToList(recipe, i) {
     var list = $('#recipeList');
     var id = "recipeListItem_" + i;
+    var imgsrc = "data:image/png;base64," + recipe.picture;
+    var icon;
+    var favour = false;
 
+
+    if(getCurrentPage() == "RecipeDrinks.html"){
+        icon = "local_bar";
+    } else if (getCurrentPage() == "RecipeDessert.html"){
+        icon = "room_service";
+    } else{
+        icon = "restaurant";
+    }
 
     list.append('<li id="' + id + '">' +
-        '<div class="collapsible-header">' +  recipe.name + '</div>' +
-        '<div class="collapsible-body">' + recipe.description + '</div>'
+        '<div class="collapsible-header" style="font-size: 30px;">'
+        + '<i class="material-icons" style="font-size: 30px;">' + icon + '</i>'
+        +  recipe.name
+        + '<a class="secondary-content" style="cursor: pointer; color: #000000;"><i class="medium material-icons" style="font-size: 45px;">star_border</i></a>'
+        + '</div>'
+
+
+        + '<div class="collapsible-body" style="margin: 10px 20px 5px 20px;">' + '<img src="' + imgsrc + '">'
+        +  recipe.ingredients
+        + '<div style="margin:2% 5% 3% 5%;" >' + recipe.description + '</div>'
+        + '</div>'
         + '</li>'
     );
 }
