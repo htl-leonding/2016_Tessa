@@ -26,24 +26,6 @@
 <div style="display: none" id="URLPath">Drink</div>
 <div id="container">
 
-
-    <!--**********************************
-                pop-up -window
-     hier werden die Rezeptinformationen
-     des ausgewählten Rezepts angezeigt
-    *************************************-->
-    <div class="invis" id="avgrund-popup">
-        <div class="recipe-details">
-            <p id="name"></p>
-            <img src="" alt="not loaded yet">
-            <p id="ingredients">Hier könnten Ihre Zutaten stehen!</p>
-            <br>
-            <p id="description"></p>
-        </div>
-    </div>
-
-
-
     <!--******************
            Navigation
     *********************-->
@@ -87,20 +69,20 @@
         </form>
 
 
-        <div id="tableSide">
-            <div class="container">
-                <table id="dataTable" class="scroll  table-bordered table-collapsed">
-                    <thead class="thead">
-                    <!--<tr>
-                        <th id="bild"></th>
-                        <th id="name"></th>
-                        <th id="description"></th>
-                    </tr>-->
-                    </thead>
-                    <tbody id="data"/>
-                </table>
-            </div>
-        </div>
+        <ul class="collapsible popout" data-collapsible="accordion" id="recipeList">
+            <li>
+                <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li>
+        </ul>
     </div>
 
     <div id="footer">

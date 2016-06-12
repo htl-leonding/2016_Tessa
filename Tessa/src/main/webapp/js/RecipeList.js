@@ -16,6 +16,30 @@ $(function () {
 });
 
 //Erstellen der Tabelle
+function generateTable(){
+    var tempURL = baseURL + "/c=" + $("#URLPath").text();
+
+    $.getJSON(tempURL, function(data){
+        for(var i = 0; i < data.length; i++) {
+            var recipe = data[i];
+            addRecipeEntryToList(recipe, i)
+        }
+    });
+}
+
+function addRecipeEntryToList(recipe, i) {
+    var list = $('#recipeList');
+    var id = "recipeListItem_" + i;
+
+
+    list.append('<li id="' + id + '">' +
+        '<div class="collapsible-header">' +  recipe.name + '</div>' +
+        '<div class="collapsible-body">' + recipe.description + '</div>'
+        + '</li>'
+    );
+}
+
+/*
 function generateTable(table){
     var tempURL = baseURL + "/c=" + $("#URLPath").text();
 
@@ -45,9 +69,6 @@ function generateInTable(data, table) {
         cellName.innerHTML = recipe.name;
         row.appendChild(cellName);
 
-        /*
-            POP-Up um das ausgewählte Rezept anzuzeigen
-         */
         var temp = $('#avgrund-popup');
         temp.find('img')[0].src="data:image/png;base64," + recipe.picture;
         temp.find('#name').text(recipe.name);
@@ -62,7 +83,7 @@ function generateInTable(data, table) {
 
         table.appendChild(row);
     }
-}
+}*/
 
 function generateSlider() {
     if(getCurrentPage() == "RecipePage.html"){

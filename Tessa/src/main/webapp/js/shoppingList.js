@@ -1,4 +1,10 @@
 var baseURL = "/Tessa/rs/shoppinglist";
+
+$(function () {
+    $('.button-collapse').sideNav();
+});
+
+//Erstellen des Tables
 function generateTable(table){
     $.getJSON("/Tessa/rs/shoppinglist", function(data){
         for(var i = 0; i < data.length; i++) {
