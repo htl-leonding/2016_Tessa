@@ -68,7 +68,7 @@ public class ProductFacade {
             return parseJson(new Product(0, name, barcode, 1, null));
         } else {
             product.setStueck(product.getStueck() + 1);
-            return Json.createObjectBuilder().build();
+            return parseJson(product);
         }
     }
 
@@ -116,16 +116,6 @@ public class ProductFacade {
         if(product.getStueck() > 1) {
             product.setStueck(product.getStueck() - 1);
         }
-    }
-
-    public boolean isEnough(long barcode, int stueck){
-
-        Product product = findByBarcode(barcode);
-        if((stueck/2) >=  product.getStueck()){
-            return  false;
-        }
-
-        return true;
     }
 
     /**

@@ -29,15 +29,7 @@ public class ShoppingListFacade {
     }
 
     public List<ShoppingListEntry> findAll() {
-
         List<ShoppingListEntry> entries = em.createNamedQuery("ShoppingListEntry.findAll", ShoppingListEntry.class).getResultList();
-
-        for (ShoppingListEntry entry : entries){
-            if(entry.isPermanent() && facade.isEnough(entry.getBarcode(), entry.getStueck())){
-                entries.remove(entry);
-            }
-        }
-
         return entries;
     }
 

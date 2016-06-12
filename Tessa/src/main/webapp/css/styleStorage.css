@@ -9,6 +9,10 @@ body{
     background-size: 100vw 100vh;
 }
 
+.brand-logo{
+    margin: 0 0 10px;
+}
+
 #container {
     height:100vh;
 }
