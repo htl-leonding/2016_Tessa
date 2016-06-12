@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/stylePurchaseList.css">
-    <link rel="stylesheet" href="css/styleReadInShoppingList.css">
     <link rel="shortcut icon" href="images/einkaufswagen.png">
     <title>Einkaufsliste</title>
 </head>
@@ -18,9 +17,6 @@
 <body>
 <div id="container">
     <div id="header">
-        <!--<span class="imgzentriert">-->
-        <!--<img src="images/tessa2.png" alt="Logo" width="23%" height="50%">-->
-        <!--</span>-->
         <nav>
             <div class="nav-wrapper" style="background-color: #007203">
                 <p class="brand-logo center">Einkaufsliste</p>
@@ -39,54 +35,35 @@
     </div>
 
     <div id="body">
-        <!--<div id="bodyMenue">
-            &lt;!&ndash;BUTTON 1&ndash;&gt;
-            <button class="button" id="home" type="button" onclick="window.location.href='MainPage.html'">
-                <span class="glyphicon glyphicon-home inhalt" aria-hidden="true" ></span> Hauptmenü</button>
-            <br>
-
-            &lt;!&ndash;BUTTON 2&ndash;&gt;
-            <button class="button" id="scan" type="button" onclick="window.location.href='Storage.html'">
-                <span class="glyphicon glyphicon-list inhalt" aria-hidden="true" ></span> Vorräte</button>
-            <br>
-
-            &lt;!&ndash;BUTTON Hinzufügen&ndash;&gt;
-            <button class="button" id="insert" type="button"  data-toggle="modal" data-target="#myModal">
-                <span class="glyphicon glyphicon-plus inhalt" aria-hidden="true" ></span> Produkt zur Liste hinzufügen</button>
-            <br>
-
-            &lt;!&ndash; Modal &ndash;&gt;
-            <div id="myModal" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-
-                    &lt;!&ndash; Modal content&ndash;&gt;
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Produkt zur Einkaufsliste hinzufügen</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div >
-                                <p id="errorProdukt" class="inputfields">Bitte Eingabe überprüfen</p>
-                                <p class="inputtext">Produkt:</p> <input type="text" class="inputs" placeholder=" Produkt" id="produktEingabe">
+        <div id="inputModal" class="modal">
+            <div class="modal-content">
+                <h4>Eintrag</h4>
+                <div class="row">
+                    <div class="col s12">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="productInput" type="text" class="validate">
+                                <label id="labelProduct" for="productInput" data-error="Bitte Eingabe überprüften">Produkt</label>
                             </div>
-
-                            <div >
-                                <p id="errorAnzahl" class="inputfields">Bitte Eingabe überprüfen</p>
-                                <p class="inputtext">Anzahl:</p> <input type="text" class="inputs" placeholder=" Anzahl" id="anzahlEingabe">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="footer-buttongroup">
-                                <button class="button" type="button" onclick="Send()">Hinzufügen</button>
-                                <button class="button" onclick="window.location='PurchaseList.html'" type="button" data-dismiss="modal">Schließen</button>
+                            <div class="col s6">
+                                <form action="#">
+                                    <p class="range-field">
+                                        <label for="countRange">Anzahl</label>
+                                        <input type="range" id="countRange" min="1" max="30" value="1">
+                                    </p>
+                                </form>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-        </div>-->
+            <div class="modal-footer">
+                <a class="waves-effect waves-red btn modal-action modal-close tooltipped" href="#!"
+                   data-position="bottom" data-tooltip="Schließen"><i class="material-icons">close</i></a>
+                <a class="waves-effect waves-green btn tooltipped" data-position="bottom" href="#!"
+                   data-tooltip="Speichern" style="margin-right: 5px" onclick="Send();"><i class="material-icons">save</i></a>
+            </div>
+        </div>
 
         <div id="tableSide">
             <div class="container">
@@ -102,12 +79,13 @@
                 </table>
             </div>
         </div>
-    </div>
 
-    <div id="footer">
-        <!--<div class = "config" id ="config" onclick="window.location.href='http://www.google.com'">
-            <span class="glyphicon glyphicon-cog inhalt" aria-hidden="false"><div class="text"></div></span>
-        </div>-->
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large waves-effect waves-light red modal-trigger"
+               data-target="inputModal" style="height: 75.5px; width: 75.5px">
+                <i class="material-icons" style="font-size: 50px; line-height: 75.5px">add</i>
+            </a>
+        </div>
     </div>
 </div>
 
