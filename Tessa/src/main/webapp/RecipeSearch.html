@@ -9,9 +9,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
     <script src="js/RecipeList.js"></script>
 
-    <script src="js/jquery.avgrund.min.js"></script>
-    <link rel="stylesheet" href="css/avgrund.css"/>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/styleCategoriePages.css">
@@ -21,20 +18,6 @@
 </head>
 <body>
 <div id="container">
-
-    <!--**********************************
-                pop-up -window
-     hier werden die Rezeptinformationen
-     des ausgewählten Rezepts angezeigt
-    *************************************-->
-    <div class="invis" id="avgrund-popup" >
-        <div class="recipe-details">
-            <img src="" alt="not loaded yet">
-            <p id="name"></p>
-            <p id="description"></p>
-            <p id="ingredients">Hier könnten Ihre Zutaten stehen!</p>
-        </div>
-    </div>
 
 
     <!--******************
@@ -53,10 +36,15 @@
             </div>
             <ul class="side-nav" id="navigation" style="background-color: rgba(233, 255, 220, 0.88)">
                 <li><img src="images/tessa2.png" alt="Logo" width="125%" height="125%" style="margin-left: -12.5%"></li>
-                <li><a href="MainPage.html">Hauptmenü</a></li>
-                <li><a href="Storage.html">Vorräte</a></li>
-                <li><a href="PurchaseList.html">Einkaufsliste</a></li>
-                <li><a href="RecipePage.html">Kategorieübersicht</a></li>
+                <li><i class="medium material-icons" style="color: black; float:left; margin: 0 5px 0 5px;">home</i>
+                    <a href="MainPage.html">Hauptmenü</a></li>
+                <li><i class="medium material-icons" style="color: black; float:left; margin: 0 5px 0 5px;">storage</i>
+                    <a href="Storage.html">Vorräte</a></li>
+                <li><i class="medium material-icons" style="color: black; float:left; margin: 0 5px 0 5px;">shopping_cart</i>
+                    <a href="PurchaseList.html">Einkaufsliste</a></li>
+                <li><i class="medium material-icons" style="color: black; float:left; margin: 0 5px 0 5px;">view_list</i>
+                    <a href="RecipePage.html">Kategorieübersicht</a></li>
+
             </ul>
         </div>
     </nav>
@@ -65,22 +53,9 @@
     <!--******************
           Body-Content
     *********************-->
-    <div class="outer">
-        <div id="tableSide">
-            <div class="container">
-                <table id="dataTable" class="scroll  table-bordered table-collapsed">
-                    <thead class="thead">
-                    <!--<tr>
-                        <th id="bild"></th>
-                        <th id="name"></th>
-                        <th id="description"></th>
-                    </tr>-->
-                    </thead>
-                    <tbody id="data"/>
-                </table>
-            </div>
-        </div>
-    </div>
+    <!--Table erstellen-->
+    <ul class="collapsible popout" data-collapsible="accordion" id="recipeList">
+    </ul>
 </div>
 
 </body>

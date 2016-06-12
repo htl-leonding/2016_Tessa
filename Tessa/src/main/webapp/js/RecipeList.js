@@ -35,9 +35,9 @@ function addRecipeEntryToList(recipe, i) {
     var favour = false;
 
 
-    if(getCurrentPage() == "RecipeDrinks.html"){
+    if(recipe.category == "Drink"){
         icon = "local_bar";
-    } else if (getCurrentPage() == "RecipeDessert.html"){
+    } else if (recipe.category == "Nachspeise"){
         icon = "room_service";
     } else{
         icon = "restaurant";
@@ -58,52 +58,6 @@ function addRecipeEntryToList(recipe, i) {
         + '</li>'
     );
 }
-
-/*
-function generateTable(table){
-    var tempURL = baseURL + "/c=" + $("#URLPath").text();
-
-    $.getJSON(tempURL, function(data){
-        generateInTable(data, table);
-    });
-}
-
-function generateInTable(data, table) {
-    for(var i = 0; i < data.length; i++) {
-        var recipe = data[i];
-        var row = document.createElement("tr");
-        row.id = "recipe_" + recipe.id;
-
-        var cellImg = document.createElement("td");
-        cellImg.id = "RecipeImg";
-        //cellImg.rowSpan = "2";
-
-        var img = document.createElement("img");
-        img.src ="data:image/png;base64," + recipe.picture;
-        img.id = "img_" + recipe.id;
-        cellImg.appendChild(img);
-        row.appendChild(cellImg);
-        var cellName = document.createElement("td");
-        cellName.id="cellName";
-        cellName.width = "100%";
-        cellName.innerHTML = recipe.name;
-        row.appendChild(cellName);
-
-        var temp = $('#avgrund-popup');
-        temp.find('img')[0].src="data:image/png;base64," + recipe.picture;
-        temp.find('#name').text(recipe.name);
-        temp.find('#description').text(recipe.description);
-        temp.find('#ingredients').text(recipe.ingredients);
-
-        $(row).avgrund({
-            template: temp.html(),
-            width: 900,
-            height: 500
-        });
-
-        table.appendChild(row);
-    }
-}*/
 
 function generateSlider() {
     if(getCurrentPage() == "RecipePage.html"){
@@ -128,9 +82,13 @@ function generateSlider() {
 function searchRecipe(){
     var query = $("#search").val();
     var tempURL = baseURL + "/s=" + query;
-    $("#data tr").remove();
+
+    $('#recipeList li').remove();
     $.getJSON(tempURL, function(data){
-        generateInTable(data, $("#data").get(0));
+        for(var i = 0; i < data.length; i++) {
+            var recipe = data[i];
+            addRecipeEntryToList(recipe, i)
+        }
     });
 }
 
