@@ -33,6 +33,7 @@ function addRecipeEntryToList(recipe, i) {
     var imgsrc = "data:image/png;base64," + recipe.picture;
     var icon;
     var favour = false;
+    var ingredients = recipe.ingredient.split(";");
 
 
     if(recipe.category == "Drink"){
@@ -41,6 +42,11 @@ function addRecipeEntryToList(recipe, i) {
         icon = "room_service";
     } else{
         icon = "restaurant";
+    }
+
+    let ingredientString = '';
+    for(let ing of ingredients){
+        ingredientString+=('<p>' + ing + '</p>');
     }
 
     list.append('<li id="' + id + '">' +
@@ -52,7 +58,7 @@ function addRecipeEntryToList(recipe, i) {
 
 
         + '<div class="collapsible-body" style="margin: 10px 20px 5px 20px;">' + '<img src="' + imgsrc + '">'
-        +  recipe.ingredient
+        +  ingredientString
         + '<div style="margin:2% 5% 3% 5%;" >' + recipe.description + '</div>'
         + '</div>'
         + '</li>'
