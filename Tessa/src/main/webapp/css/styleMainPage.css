@@ -7,24 +7,15 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
-#container {
-    height:50vh;
-    width: 100vw;
-    margin-top: 5vh;
-    position:fixed;
-}
-#header .imgzentriert {
+
+.button-content{
     display: block;
     text-align: center;
-}
-#body{
-    height: 30vh;
-    display: block;
-    text-align: center;
+    margin: 6vh 10vw 0 0;
 }
 .button{
     height: 50px;
-    width: 35%;
+    width: 60%;
     margin-top: 0.5%;
     background-color: white;
     font-size: 170%;
@@ -36,48 +27,16 @@ body{
 .button:hover{
     background-color: aliceblue;
 }
-#footer {
-    position:absolute;
+
+.clock{
+    margin: 3vh 0 0 5vw;
 }
-.config{
-    position: fixed;
-    background-color: white;
-    font-size: 500%;
-    height:5vh;
-    width: 5vw;
-    text-align: center;
-    margin-left:1%;
-    display: block;
-    text-align: center;
+
+.slider-content{
+    width: 70%;
+    margin: 9vh 0 0 5vw;
 }
-/*
-.box {
-    height: 45%;
-    width: 35%;
-    background-color: white;
-    color: gray;
-    font-size: 300%;
-    font-weight: bold;
-    font-family: sans-serif;
-    margin-left: 50vw;
-    text-align: center;
-    border-style: solid;
-    border-color: gray;
-    border-bottom-color: gray;
-    border-bottom-width: 2px;
-    margin-left:0.33%;
+.slider-content h3{
+    color: azure;
+    opacity: 0.8;
 }
-.box:hover{
-    background-color: aliceblue;
-}
-.box:active{
-    background-color: aliceblue;
-}
-.inhalt{
-    display: block;
-    width:100%;
-    text-align: center;
-}
-#text{
-    margin-top: -10%;
-}*/

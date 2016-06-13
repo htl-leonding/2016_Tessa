@@ -3,41 +3,63 @@
 <head>
     <link rel="stylesheet" href="css/styleMainPage.css"/>
 
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script src="js/MainPage.js"></script>
+
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <script src="js/jquery-2.1.4.min.js"></script>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="images/tessa2.png">
     <title>Hauptseite</title>
 </head>
 <body>
-    <div id="container">
-        <div id="header">
+
+        <div class="row">
+
+            <div class="col s12 m4">
+                <div class="clock">
+                    <a id="416402818">Weiter Uhr HTML</a>
+                    <script src="http://www.uhr-homepage.de/data.php?i=416402818&h=122&w=274" type="text/javascript"></script>
+                </div>
+
+                <div class="slider-content">
+                    <h3>Zufällige Rezepte</h3>
+                    <div class="slider">
+                        <ul class="slides">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 m8">
+                <div class="button-content">
                     <span class="imgzentriert">
-                    <img src="images/tessa2.png" alt="Logo" width="40%" height="40%">
-                </span>
-        </div>
-        <div id="body">
-            <br>
-            <button class="button"type="button" onclick="window.location.href='Storage.html'">
-                <span class="large material-icons" aria-hidden="true">storage</span> Vorräte</button>
-            <br>
-            <button class="button"type="button" onclick="window.location.href='PurchaseList.html'">
-                <span class="large material-icons" aria-hidden="true">shopping_cart</span> Einkaufsliste</button>
-            <br>
-            <button class="button"type="button" onclick="window.location.href='RecipePage.html'">
-                <span class="large material-icons" aria-hidden="true">local_library</span> Rezepte</button>
-            <br>
+                        <img src="images/tessa2.png" alt="Logo" width="70%" height="70%">
+                    </span>
+
+                    <br>
+                    <button class="button"type="button" onclick="window.location.href='Storage.html'">
+                        <span class="large material-icons" aria-hidden="true">storage</span> Vorräte</button>
+                    <br>
+                    <button class="button"type="button" onclick="window.location.href='PurchaseList.html'">
+                        <span class="large material-icons" aria-hidden="true">shopping_cart</span> Einkaufsliste</button>
+                    <br>
+                    <button class="button"type="button" onclick="window.location.href='RecipePage.html'">
+                        <span class="large material-icons" aria-hidden="true">local_library</span> Rezepte</button>
+                    <br>
+                </div>
+            </div>
+
         </div>
 
 
-            <!--http://www.cuisine.at/recipes/recipealphabet.php?from=A -->
-        <div id="footer">
-            <!--<div class = "config" id ="config" onclick="window.location.href='http://www.google.com'">
-                <span class="glyphicon glyphicon-cog inhalt" aria-hidden="false"><div class="text"></div></span>
-            </div>-->
-        </div>
-    </div>
+
+
+
+
+
 </body>
 </html>
