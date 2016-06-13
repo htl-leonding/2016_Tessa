@@ -10,28 +10,29 @@ $(function () {
 });
 
 //Erstellen des Tables
-function generateTable(table){
+function generateTable(){
     $.getJSON("/Tessa/rs/shoppinglist", function(data){
         for(var i = 0; i < data.length; i++) {
-            var product = data[i];
-            var row = document.createElement("tr");
-
-            var cellName = document.createElement("td");
-            cellName.innerHTML = product.name;
-            row.appendChild(cellName);
-            var cellCount = document.createElement("td");
-            cellCount.innerHTML = product.stueck;
-            row.appendChild(cellCount);
-            //var cellBtn = document.createElement("td");
-            //cellBtn.id = "cellBtnEdit"
-            //var btn = document.createElement("BUTTON");
-            //btn.setAttribute('class', 'glyphicon glyphicon-edit');
-            //btn.id = product.id;
-            //cellBtn.appendChild(btn);
-            //row.appendChild(cellBtn);
-            table.appendChild(row);
+            var entry = data[i];
+            addEntryToList(entry, i);
         }
     });
+}
+
+function addEntryToList(entry, i){
+    var list = $('#entryList');
+    var dbID = "entryListItemDB_" + i;
+    var id = "entryListItem_" + i;
+
+    list.append('<li class="collection-item dismissable avatar" id="' + id + '">' +
+        '<i class="material-icons circle" style="font-size: 25px">shopping_cart</i>' +
+        '<input type="hidden" id="' + dbID + '" value="' + entry.id + '">' +
+        '<span class="title" style="font-size: 20px">' + entry.name + '</span>' +
+        '<p>' +
+        'Anzahl: ' + entry.stueck + ' Stück' +
+        '</p>' +
+        '</li>'
+    );
 }
 
 function Send(){
@@ -57,9 +58,9 @@ function Send(){
             url: baseURL,
             data: JSON.stringify(request),
             contentType: "application/json",
-            success: function(eintrag) {
+            success: function(entry) {
                 Materialize.toast('Eintrag gespeichert!', 4000);
-                //addProductEntryToList(product, $("#productList").children().length + 1);
+                addEntryToList(entry, $("#entryList").children().length + 1);
                 clearInputFields();
             }
         }).fail(function(){
