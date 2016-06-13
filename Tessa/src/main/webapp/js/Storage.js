@@ -47,7 +47,7 @@ function initCarousel() {
         var names = [
             "Apfel",
             "Birne",
-            "Krischen",
+            "Kirschen",
             "Erdbeeren",
             "Ananas",
             "Bananen"
