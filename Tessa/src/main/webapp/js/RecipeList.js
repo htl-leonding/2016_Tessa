@@ -46,7 +46,7 @@ function addRecipeEntryToList(recipe, i) {
 
     let ingredientString = '';
     for(let ing of ingredients){
-        ingredientString+=('<p>' + ing + '</p>');
+        ingredientString+=('<ul>' + ing + '</ul>');
     }
 
     list.append('<li id="' + id + '">' +
@@ -57,9 +57,16 @@ function addRecipeEntryToList(recipe, i) {
         + '</div>'
 
 
-        + '<div class="collapsible-body" style="margin: 10px 20px 5px 20px;">' + '<img src="' + imgsrc + '">'
-        +  ingredientString
-        + '<div style="margin:2% 5% 3% 5%;" >' + recipe.description + '</div>'
+        + '<div class="collapsible-body"  style="margin: 5px 5px 5px 5px;" >'
+            + '<div style="float:left; display:block; height: 30vh; width: 10%; margin: 0 5% 0 5%;"><img src="' + imgsrc + '"></div>'
+            + '<div style="margin:2% 15% 3% 20%;" >'
+                + '<h4>Zutaten: </h4></br>'
+                + ingredientString
+            + '</div>'
+            + '<div style="margin:2% 15% 3% 20%;" >'
+                + '<h4>Zubereitung: </h4></br>'
+                + recipe.description
+            + '</div>'
         + '</div>'
         + '</li>'
     );

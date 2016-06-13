@@ -29,3 +29,25 @@ body{
     opacity: 0.9;
     border-color: transparent;
 }
+
+/*Nav-Bar*/
+.nav-wrapper .button-collapse .material-icons{
+    margin-left:10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.side-nav{
+    width:18vw;
+    background-color: rgba(233, 255, 220, 0.88);
+}
+
+.side-nav li .material-icons{
+    color: black;
+    float:left;
+    margin: 0 5px 0 15px;
+}
+
+.side-nav li a{
+    font-size: 25px;
+}

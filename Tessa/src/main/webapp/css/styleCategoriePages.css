@@ -22,49 +22,34 @@ body p{
     position:relative;
 }
 
-/*Menü*/
-.imgzentriert {
-    display: block;
-    text-align: left;
-    float:left
-
+.nav-wrapper .input-field{
+    margin-left: 65vw;
+    height: 62px;
+    padding-top: 1px;
+    margin-right: 2px
 }
 
-#bodyMenue{
-    position: relative;
-    display: block;
-    text-align: center;
-    float: left;
-    width: 20vw;
-    height: 50vh;
-    margin-top: 1vh;
-}
-#bodyMenue .button{
-    height: 5vh;
-    width: 15vw;
-    margin-bottom: 1vh;
-    background-color: #f9f9f9;
-    font-size: 120%;
-    border-style: solid;
-    border-color: grey;
-    border-width: 3px;
-    margin-left: 3vw;
+.nav-wrapper .button-collapse .material-icons{
+    margin-left:10px;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-#bodyMenue .fav{
-    margin-left: 2.7vw;
+.side-nav{
+    width:18vw;
+    background-color: rgba(233, 255, 220, 0.88);
 }
 
-#bodyMenue .button:hover{
-    background-color: aliceblue;
+.side-nav li .material-icons{
+    color: black;
+    float:left;
+    margin: 0 5px 0 15px;
 }
 
-/*Body*/
-.Suchfeldblock{
-    float: left;
-    margin-top: -10%;
-    margin-left: 50%;
+.side-nav li a{
+    font-size: 25px;
 }
+
 
 #recipeList{
     overflow-y: auto;
@@ -79,42 +64,4 @@ body p{
     display: none;
 }
 
-.recipe-details{
-    margin: 0;
-}
-.recipe-details #name{
-    width: 100%;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-}
 
-.recipe-details img{
-    float: left;
-    width: 200px;
-    height: 200px;
-    position: relative;
-    text-align: left;
-    margin-left: 20px;
-}
-
-.recipe-details #ingredients{
-    float: left;
-    position: relative;
-    text-align: left;
-    margin-left: 10px;
-    margin-top: 10px;
-}
-.recipe-details #description{
-    float: left;
-    position: relative;
-    margin-top: 10px;
-    height: 220px;
-    overflow-y: scroll;
-}
-
-/*
-<p id="name"></p>
-<img src="" alt="not loaded yet">
-<p id="description"></p>
-<p id="ingredients">Hier könnten Ihre Zutaten stehen!</p>*/
