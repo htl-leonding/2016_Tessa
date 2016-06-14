@@ -6,12 +6,13 @@ body{
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    overflow: hidden;
 }
 
 .button-content{
     display: block;
     text-align: center;
-    margin: 6vh 10vw 0 0;
+    margin: 0 auto;
 }
 .button{
     height: 50px;
@@ -29,7 +30,7 @@ body{
 }
 
 .clock{
-    margin: 3vh 0 0 5vw;
+    color: black;
 }
 
 .slider-content{
@@ -39,4 +40,52 @@ body{
 .slider-content h3{
     color: azure;
     opacity: 0.8;
+}
+
+.leftDiv{
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    -webkit-box-shadow: 10px 10px 10px 20px black;
+    -moz-box-shadow: 10px 10px   10px 20px black;
+    box-shadow: 10px 10px 10px 20px black;
+    margin: 2.5% 2% 2.5% 5%;
+    float: left;
+    display: block;
+    height: 88%;
+    width: 39%;
+
+    text-align: center;
+}
+
+img{
+    display: inline-block;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.clock{
+    display: inline-block;
+    margin: 0 auto;
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    transform: scale(1.5);
+}
+
+.rightDiv{
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    -webkit-box-shadow: 10px 10px 10px 20px black;
+    -moz-box-shadow: 10px 10px   10px 20px black;
+    box-shadow: 10px 10px 10px 20px black;
+    margin: 2.5% 5% 2.5% 2%;
+    float: right;
+    display: block;
+    height: 88%;
+    width: 39%;
 }

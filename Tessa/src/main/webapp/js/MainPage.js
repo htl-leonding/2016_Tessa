@@ -4,8 +4,15 @@
 var baseURL = "/Tessa/rs/cooking";
 var sliderCount = 5;
 
+function updateClock(){
+    $('#time').text(new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds());
+}
+
 $(function () {
+    $('#date').text(new Date().getDate() + ". " + (new Date().getMonth()+1) + ". " + (new Date().getYear()+1900));
+
     generateSlider();
+    setInterval(updateClock, 1000);
 });
 
 function generateSlider() {
