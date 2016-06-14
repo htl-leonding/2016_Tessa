@@ -27,7 +27,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
-
     private RecyclerView recyclerView;
     private ProductAdapter productAdapter;
     private SearchView searchView;
@@ -63,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             @Override
             public void onClick(View view, int position) {
                 Product product = productAdapter.getItem(position);
-                Toast.makeText(getApplicationContext(), product.getTitle() +" is selected!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), product.getTitle() +" is selected!", Toast.LENGTH_SHORT).show();
                 searchView.clearFocus();
                hideKeyboard((View) view.getParent());
             }
@@ -189,6 +188,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     public boolean onQueryTextChange(String query) {
         productAdapter.setFilter(query);
         recyclerView.scrollToPosition(0);
+
 
         return true;
     }
