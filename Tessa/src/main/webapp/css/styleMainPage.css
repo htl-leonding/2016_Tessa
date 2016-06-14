@@ -40,12 +40,17 @@ body{
 .slider-content h4{
     color: black;
     opacity: 0.8;
+    margin: 0 0 0 3vw;
 }
 
 .list-content{
     height: 50%;
     margin: 2vh 3vw 0 3vw;
 }
+.list-content h5{
+    margin: 0 0 0 3vw;
+}
+
 .list-content #productList{
     overflow-y: auto;
     overflow-x: hidden;
