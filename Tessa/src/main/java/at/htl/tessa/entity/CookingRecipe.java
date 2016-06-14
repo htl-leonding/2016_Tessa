@@ -13,7 +13,8 @@ import java.util.List;
         @NamedQuery(name = "CookingRecipe.GetAll", query = "select r from CookingRecipe r"),
         @NamedQuery(name = "CookingRecipe.FindByCategory", query = "select r from CookingRecipe r where r.category = :CATEGORY"),
         @NamedQuery(name = "CookingRecipe.Count", query = "select count(r) from CookingRecipe r"),
-        @NamedQuery(name = "CookingRecipe.Search", query = "select r from CookingRecipe r where LOWER(r.name) like :SEARCH")
+        @NamedQuery(name = "CookingRecipe.Search", query = "select r from CookingRecipe r where LOWER(r.name) like :SEARCH"),
+        @NamedQuery(name = "CookingRecipe.Favourites", query = "select r from CookingRecipe r where r.favourite = true")
 })
 public class CookingRecipe {
 
@@ -30,24 +31,21 @@ public class CookingRecipe {
 
     @Column(columnDefinition = "LONG VARCHAR")
     private String ingredient;
-
-
+    private boolean favourite;
     @Lob
     private byte[] picture;
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Product> ingredients;
 
     public CookingRecipe() {
 
     }
 
-    public CookingRecipe(String name, String description, String category, byte[] picture, String ingredient) {
+    public CookingRecipe(String name, String description, String category, byte[] picture, String ingredient, boolean favourite) {
         this.name = name;
         this.description = description;
         this.category = category;
         this.picture = picture;
         this.ingredient = ingredient;
-
+        this.favourite = favourite;
     }
 
     //region Getter and Setter
@@ -99,12 +97,12 @@ public class CookingRecipe {
         this.picture = picture;
     }
 
-//    public List<Product> getIngredients() {
-//        return ingredients;
-//    }
-//
-//    public void setIngredients(List<Product> ingredients) {
-//        this.ingredients = ingredients;
-//    }
+    public boolean isFavourite() {
+        return favourite;
+    }
+
+    public void setFavourite(boolean favourite) {
+        this.favourite = favourite;
+    }
     //endregion
 }

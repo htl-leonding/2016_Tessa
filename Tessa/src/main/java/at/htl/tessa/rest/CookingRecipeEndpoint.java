@@ -68,6 +68,13 @@ public class CookingRecipeEndpoint {
         return facade.findByCategory(category);
     }
 
+    @GET
+    @Path("favourites")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<CookingRecipe> getFavouritesRecipes() {
+        return facade.findFavourites();
+    }
+
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Response saveRecipe(CookingRecipe recipe) throws URISyntaxException {

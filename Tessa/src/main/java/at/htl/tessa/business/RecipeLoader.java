@@ -139,7 +139,7 @@ public class RecipeLoader {
                 ingredient += str + ";";
             }
 
-            recipes.add(new CookingRecipe(recipeName, description, category, image, ingredient));
+            recipes.add(new CookingRecipe(recipeName, description, category, image, ingredient, false));
         }
 
         facade.save(recipes);

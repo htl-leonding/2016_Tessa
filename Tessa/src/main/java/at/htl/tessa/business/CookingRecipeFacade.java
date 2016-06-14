@@ -96,6 +96,20 @@ public class CookingRecipeFacade {
     }
 
     /**
+     * Gibt alle Favourisierten Rezepte aus der Datenbank zurück.
+     * @return Liste aller Favourisierten Rezepte.
+     * @since 14.06.2016
+     * @author Korti
+     */
+    public List<CookingRecipe> findFavourites(){
+        try {
+            return entityManager.createNamedQuery("CookingRecipe.Favourites", CookingRecipe.class).getResultList();
+        } catch (NoResultException e){
+            return null;
+        }
+    }
+
+    /**
      * Gibt alle Rezpte aus der gewählten Kategorie, die in der Datenbank gespeichert sind.
      * @return Liste aller Kochrezepte einer Kategorie.
      * @since 18.05.2016
