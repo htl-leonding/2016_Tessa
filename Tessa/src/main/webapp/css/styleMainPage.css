@@ -34,12 +34,24 @@ body{
 }
 
 .slider-content{
-    width: 70%;
-    margin: 9vh 0 0 5vw;
+    color: black;
+    margin: 2vh 3vw 0 3vw;
 }
-.slider-content h3{
-    color: azure;
+.slider-content h4{
+    color: black;
     opacity: 0.8;
+}
+
+.list-content{
+    height: 50%;
+    margin: 2vh 3vw 0 3vw;
+}
+.list-content #productList{
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 60%;
+    opacity: 0.9;
+    border-color: transparent;
 }
 
 .leftDiv{

@@ -91,12 +91,11 @@ function addProductEntryToList(product, i) {
     var dbID = "productListItemDB_" + i;
     var id = "productListItem_" + i;
 
-    if(product.tage <= 4){
+    if(product.tage <= 2){
+        iconColor = "red";
+    } else if(product.tage <= 4){
         iconColor = "orange";
-    } else if(product.tage <= 2){
-        iconColor = "rot";
     }
-
     if(days > 300) {
         days = "+300";
     }
