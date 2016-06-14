@@ -5,11 +5,11 @@ var baseURL = "/Tessa/rs/cooking";
 var sliderCount = 5;
 
 function updateClock(){
-    $('#time').text(new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds());
+    $('#time').text(new Date().toLocaleTimeString().toLowerCase());
 }
 
 $(function () {
-    $('#date').text(new Date().getDate() + ". " + (new Date().getMonth()+1) + ". " + (new Date().getYear()+1900));
+    $('#date').text($.datepicker.formatDate('DD, d MM, yy', new Date()));
 
     generateSlider();
     setInterval(updateClock, 1000);
