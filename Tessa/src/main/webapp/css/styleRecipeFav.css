@@ -1,0 +1,66 @@
+
+/*---------------------------
+*    Style-RECIPE-List
+-----------------------------*/
+body{
+    height: 100vh;
+    width: 100vw;
+    background-image: url("../images/recipeFav.png");
+    position: fixed;
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+}
+
+body p{
+    margin: 0 0 10px;
+}
+
+#container {
+    height:100vh;
+    width: 100vw;
+    float: left;
+    position:relative;
+}
+
+.nav-wrapper .input-field{
+    margin-left: 65vw;
+    height: 62px;
+    padding-top: 1px;
+    margin-right: 2px
+}
+
+.nav-wrapper .button-collapse .material-icons{
+    margin-left:10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.side-nav{
+    width:18vw;
+    background-color: rgba(233, 255, 220, 0.88);
+}
+
+.side-nav li .material-icons{
+    color: black;
+    float:left;
+    margin: 0 5px 0 15px;
+}
+
+.side-nav li a{
+    font-size: 25px;
+}
+
+
+#recipeList{
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 2vh 5vw 0 5vw;
+    height: 85vh;
+    opacity: 0.9;
+
+}
+
+.brand-logo{
+    margin-left: -30px;
+}
+

@@ -10,22 +10,21 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="css/styleCategoriePages.css">
+    <link rel="stylesheet" href="css/styleRecipeFav.css">
     <link rel="shortcut icon" href="images/recipeIcon.png">
 
-    <title>Nachspeisen</title>
+    <title>Hauptspeisen</title>
 </head>
 <body>
-<div style="display: none" id="URLPath">Nachspeise</div>
+<div style="display: none" id="URLPath">Favorits</div>
 <div id="container">
-
     <!--******************
-           Navigation
+          Navigation
     *********************-->
     <nav>
         <div class="nav-wrapper" style="background-color: #007203">
             <!--<a href="MainPage.html" class="brand-logo right" style="text-decoration: none">Tessa</a>-->
-            <p class="brand-logo center">Nachspeisen</p>
+            <p class="brand-logo center">Favorits</p>
             <a data-activates="navigation" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
             <div class="input-field">
                 <input id="search" type="search" placeholder="Rezept suchen..." required>
@@ -41,8 +40,6 @@
                     <a href="Storage.html">Vorräte</a></li>
                 <li><i class="medium material-icons">shopping_cart</i>
                     <a href="PurchaseList.html">Einkaufsliste</a></li>
-                <li><i class="medium material-icons">star</i>
-                    <a href="RecipeFavorit.html">Favoriten</a></li>
                 <li><i class="medium material-icons">view_list</i>
                     <a href="RecipePage.html">Kategorieübersicht</a></li>
             </ul>
@@ -54,7 +51,6 @@
           Body-Content
     *********************-->
     <div class="outer">
-
         <!--Table erstellen-->
         <ul class="collapsible popout" data-collapsible="accordion" id="recipeList">
         </ul>
