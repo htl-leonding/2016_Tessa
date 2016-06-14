@@ -102,7 +102,7 @@ function addProductEntryToList(product, i) {
     }
 
     list.append('<li class="collection-item dismissable avatar" id="' + id + '">' +
-        '<i class="material-icons circle ' + iconColor + '" style="font-size: 25px" >add_shopping_cart</i>' +
+        '<i class="material-icons circle ' + iconColor + '" onclick="sendToShoppingList(\'' + product.name + '\')" style="font-size: 25px; cursor: pointer" >add_shopping_cart</i>' +
         '<input type="hidden" id="' + dbID +'" value="' + product.id + '"/>' +
         '<span class="title" style="font-size: 20px">' + product.name + '</span>' +
         '<p>' +
@@ -150,6 +150,26 @@ function Send(){
             Materialize.toast('Produkt konnte nicht gespeichert werden!', 4000);
         });
     }
+}
+
+function sendToShoppingList(name){
+    var request = {};
+
+    request.name = name;
+    request.stueck = 1;
+    request.permanent = false;
+
+    $.ajax({
+        type: "POST",
+        url: "/Tessa/rs/shoppinglist",
+        data: JSON.stringify(request),
+        contentType: "application/json",
+        success: function(){
+            Materialize.toast('Eintrag in die Einkaufsliste gespeichert!', 4000);
+        }
+    }).fail(function (){
+        Materialize.toast('Eintrag konnte nicht in die Einkaufsliste gespeichert werden!', 4000);
+    })
 }
 
 function clearInputFields(){
