@@ -46,6 +46,34 @@ public class ShoppingListFacade {
     }
 
     /**
+     * Die Stückanzahl eines Eintrages wird um 1 erhöht.
+     * @param id ID des Listeintrages.
+     * @return Aktualisierter Eintrag.
+     * @since 14.06.2016
+     * @author Korti
+     */
+    public ShoppingListEntry increaseCount(long id){
+        ShoppingListEntry entry = find(id);
+        entry.setStueck(entry.getStueck() + 1);
+        return entry;
+    }
+
+    /**
+     * Die Stückanzahl eines Eintrages wird um 1 veringert.
+     * @param id ID des Listeintrages.
+     * @return Aktualisierter Eintrag.
+     * @since 14.06.2016
+     * @author Korti
+     */
+    public ShoppingListEntry decreaseCount(long id){
+        ShoppingListEntry entry = find(id);
+        if(entry.getStueck() > 1) {
+            entry.setStueck(entry.getStueck() - 1);
+        }
+        return entry;
+    }
+
+    /**
      * Löscht einen Shopping List Eintrag aus der Datenbank über die ID.
      * @param id ID des List Eintrages.
      * @since 03.01.2016

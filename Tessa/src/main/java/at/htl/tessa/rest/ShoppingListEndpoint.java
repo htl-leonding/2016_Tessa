@@ -41,12 +41,8 @@ public class ShoppingListEndpoint {
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response saveEntry(ShoppingListEntry entry) throws URISyntaxException {
-        long id = facade.save(entry).getId();
-        StringBuffer url = request.getRequestURL();
-
-        return Response.created(new URI(url.append("/" + id).toString())).build();
-
+    public ShoppingListEntry saveEntry(ShoppingListEntry entry) throws URISyntaxException {
+        return facade.save(entry);
     }
 
     @PUT
@@ -55,6 +51,34 @@ public class ShoppingListEndpoint {
     public Response updateEntry(@PathParam("id") long id, ShoppingListEntry entry) {
         entry = facade.update(id, entry);
         return Response.accepted(entry).build();
+    }
+
+    /**
+     * REST Service um die Stückanzahl eines Eintrages um 1 zu erhöhen
+     * @param id ID des Listeintrages
+     * @return Response mit dem aktualisierten Eintrag.
+     * @since 14.06.2016
+     * @author Korti
+     */
+    @PUT
+    @Path("{id}/increase")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response increaseEntryCount(@PathParam("id") long id){
+        return Response.accepted(facade.increaseCount(id)).build();
+    }
+
+    /**
+     * REST Service um die Stückanzahl eines Eintrages um 1 zu verringern.
+     * @param id ID des Listeintrages.
+     * @return Response mit dem aktualisierten Eintrag.
+     * @since 14.06.2016
+     * @author Korti
+     */
+    @PUT
+    @Path("{id}/decrease")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response decreaseEntryCount(@PathParam("id") long id){
+        return Response.accepted(facade.decreaseCount(id)).build();
     }
 
     /**

@@ -31,6 +31,12 @@ function addEntryToList(entry, i){
         '<p>' +
         'Anzahl: ' + entry.stueck + ' Stück' +
         '</p>' +
+        '<a class="secondary-content" style="cursor: pointer" onclick="deleteProduct(\''
+        + id + '\',\'' + dbID + '\')"><i class="medium material-icons">delete</i></a>' +
+        '<a class="secondary-content" style="margin-right: 150px; cursor: pointer" onclick="raise_number(\''
+        + id + '\',\'' + dbID + '\')"><i class="medium material-icons">add</i></a>' +
+        '<a class="secondary-content" style="margin-right: 75px; cursor: pointer" onclick="lower_number(\''
+        + id + '\',\'' + dbID + '\')"><i class="medium material-icons">remove</i></a>' +
         '</li>'
     );
 }
@@ -76,4 +82,43 @@ function clearInputFields(){
 
     $('#labelProduct').removeClass("active");
     $('#productInput').removeClass("valid");
+}
+
+function raise_number(htmlID, dbID){
+    var id = $("#" + dbID).val();
+    $.ajax({
+        type: "PUT",
+        url: baseURL + "/" + id + "/increase",
+        success: function (data){
+            var listItem = $("#" + htmlID);
+            var htmlData = 'Anzahl: ' + data.stueck + ' Stück';
+            listItem.children("p").html(htmlData);
+        }
+    });
+}
+
+function lower_number(htmlID, dbID){
+    var id = $("#" + dbID).val();
+    $.ajax({
+        type: "PUT",
+        url: baseURL + "/" + id + "/decrease",
+        success: function (data){
+            var listItem = $("#" + htmlID);
+            var htmlData = 'Anzahl: ' + data.stueck + ' Stück';
+            listItem.children("p").html(htmlData);
+        }
+    });
+}
+
+function deleteProduct(htmlID, dbID) {
+    var id = $("#" + dbID).val();
+    $.ajax({
+        type: "DELETE",
+        url: baseURL + "/" + id,
+        async: false,
+        success: function (){
+            $("#" + htmlID).remove();
+            Materialize.toast('Eintrag gelöscht!', 4000);
+        }
+    });
 }
