@@ -1,6 +1,7 @@
 package at.htl.tessa.business;
 
 import at.htl.tessa.entity.Product;
+import at.htl.tessa.util.Util;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -11,6 +12,8 @@ import javax.persistence.PersistenceContext;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
@@ -79,6 +82,8 @@ public class ProductFacade {
     //Ruft NamedQuery von Product-Entity auf (Product.GetAll)
     public JsonArray getAll() {
         List<Product> products = entityManager.createNamedQuery("Product.GetAll", Product.class).getResultList();
+        Collections.sort(products, (o1, o2) -> ((Long)Util.calculateDays(o1.getDate())).
+                compareTo(Util.calculateDays(o2.getDate())));
         JsonArrayBuilder builder = Json.createArrayBuilder();
         for (Product product : products) {
             builder.add(parseJson(product));
@@ -164,7 +169,7 @@ public class ProductFacade {
         builder.add("name", product.getName());
         builder.add("stueck", product.getStueck());
         if(product.getDate() != null) {
-            builder.add("tage", ChronoUnit.DAYS.between(LocalDate.now(), product.getDate()));
+            builder.add("tage", Util.calculateDays(product.getDate()));
         }
         return builder.build();
     }

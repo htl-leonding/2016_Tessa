@@ -1,5 +1,7 @@
 package at.htl.tessa.util;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Random;
 
 /**
@@ -14,6 +16,10 @@ public class Util {
             val = bits % n;
         } while (bits - val + (n - 1) < 0L);
         return val;
+    }
+
+    public static long calculateDays(LocalDate date) {
+        return ChronoUnit.DAYS.between(LocalDate.now(), date);
     }
 
 }
