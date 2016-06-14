@@ -97,4 +97,11 @@ public class CookingRecipeEndpoint {
         return facade.update(name, recipe);
     }
 
+    @PUT
+    @Path("favourite/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public CookingRecipe changeFavouriteRecipe(@PathParam("id") long id){
+        return facade.changeFavouriteRecipe(id);
+    }
+
 }

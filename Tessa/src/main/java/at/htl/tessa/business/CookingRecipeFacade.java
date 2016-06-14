@@ -96,8 +96,8 @@ public class CookingRecipeFacade {
     }
 
     /**
-     * Gibt alle Favourisierten Rezepte aus der Datenbank zurück.
-     * @return Liste aller Favourisierten Rezepte.
+     * Gibt alle Favorisierten Rezepte aus der Datenbank zurück.
+     * @return Liste aller Favorisierten Rezepte.
      * @since 14.06.2016
      * @author Korti
      */
@@ -178,5 +178,23 @@ public class CookingRecipeFacade {
         } catch (NoResultException e) {
             return -1;
         }
+    }
+
+    /**
+     * Favorisiert oder Un-Favorisiert das Rezept.
+     * Je nachdem ob das Rezept schon Favorisiert ist oder nicht.
+     * @param id ID des Rezeptes.
+     * @return Aktualisiertes Rezept.
+     * @since 14.06.2016
+     * @author Korti
+     */
+    public CookingRecipe changeFavouriteRecipe(long id){
+        CookingRecipe recipe = find(id);
+        if(recipe.isFavourite()){
+            recipe.setFavourite(false);
+        } else {
+            recipe.setFavourite(true);
+        }
+        return save(recipe);
     }
 }
