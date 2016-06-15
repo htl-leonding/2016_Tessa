@@ -31,8 +31,8 @@ function addEntryToList(entry, i){
         '<p>' +
         'Anzahl: ' + entry.stueck + ' Stück' +
         '</p>' +
-        '<a class="secondary-content" style="cursor: pointer" onclick="deleteProduct(\''
-        + id + '\',\'' + dbID + '\')"><i class="medium material-icons">delete</i></a>' +
+        '<a class="secondary-content" style="cursor: pointer" onclick="showDeleteConfirmModal(\''
+        + id + '\',\'' + dbID + '\',\'' + entry.name + '\')"><i class="medium material-icons">delete</i></a>' +
         '<a class="secondary-content" style="margin-right: 150px; cursor: pointer" onclick="raise_number(\''
         + id + '\',\'' + dbID + '\')"><i class="medium material-icons">add</i></a>' +
         '<a class="secondary-content" style="margin-right: 75px; cursor: pointer" onclick="lower_number(\''
@@ -82,6 +82,15 @@ function clearInputFields(){
 
     $('#labelProduct').removeClass("active");
     $('#productInput').removeClass("valid");
+}
+
+function showDeleteConfirmModal(htmlID, dbID, name){
+    $('#deleteConfirm').openModal({
+        dismissible: false
+    });
+    $('#deleteID').val(dbID);
+    $('#deleteHtmlID').val(htmlID);
+    $('#deleteInfo').text('Wollen Sie den Eintrag "' + name + '" wirklich löschen ?');
 }
 
 function raise_number(htmlID, dbID){

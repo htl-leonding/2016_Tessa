@@ -30,6 +30,17 @@ body{
     border-color: transparent;
 }
 
+#deleteConfirm{
+    width: 21%;
+    text-align: center;
+    line-height: 64px;
+}
+
+#deleteConfirm .modal-footer a{
+    margin: 5px;
+    width: 185px;
+}
+
 /*Nav-Bar*/
 .nav-wrapper .button-collapse .material-icons{
     margin-left:10px;
