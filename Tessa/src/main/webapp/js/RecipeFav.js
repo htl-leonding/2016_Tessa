@@ -2,6 +2,8 @@
  * Created by Daniel on 14.06.2016.
  */
 //Erstellen der Tabelle
+var baseURL = "/Tessa/rs/cooking";
+var searchPage = "RecipeSearch.html";
 
 $(function () {
     $('.button-collapse').sideNav();
@@ -13,7 +15,7 @@ $(function () {
 
 
 function generateTable(){
-    var tempURL = baseURL + "/c=" + $("#URLPath").text();
+    var tempURL = baseURL + "/favourites";
 
     $.getJSON(tempURL, function(data){
         for(var i = 0; i < data.length; i++) {
@@ -21,6 +23,23 @@ function generateTable(){
             addRecipeEntryToList(recipe, i)
         }
     });
+}
+
+function favouriteRecipe(e, id, icon){
+    e.preventDefault();
+    e.stopPropagation();
+    $.ajax({
+        type: "PUT",
+        url: baseURL + "/favourite/" + id,
+        contentType: "application/json",
+        success: function(recipe){
+            if(recipe.favourite) {
+                icon.innerHTML = "star";
+            } else {
+                icon.innerHTML = "star_border";
+            }
+        }
+    })
 }
 
 function addRecipeEntryToList(recipe, i) {
@@ -52,7 +71,7 @@ function addRecipeEntryToList(recipe, i) {
             + '<i class="material-icons" style="font-size: 30px;">' + icon + '</i>'
             +  recipe.name
             + '<a class="secondary-content" style="cursor: pointer; color: #000000;">'
-            + '<i class="medium material-icons" style="font-size: 45px;" onclick="this.recipe.favourite = true">' + favour + '</i></a>'
+            + '<i class="medium material-icons" style="font-size: 45px;" onclick="favouriteRecipe(event,\'' + recipe.id + '\',this)">' + favour + '</i></a>'
             + '</div>'
 
 

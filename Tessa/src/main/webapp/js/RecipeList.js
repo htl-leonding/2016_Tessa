@@ -27,6 +27,23 @@ function generateTable(){
     });
 }
 
+function favouriteRecipe(e, id, icon){
+    e.preventDefault();
+    e.stopPropagation();
+    $.ajax({
+        type: "PUT",
+        url: baseURL + "/favourite/" + id,
+        contentType: "application/json",
+        success: function(recipe){
+            if(recipe.favourite) {
+                icon.innerHTML = "star";
+            } else {
+                icon.innerHTML = "star_border";
+            }
+        }
+    })
+}
+
 function addRecipeEntryToList(recipe, i) {
     var list = $('#recipeList');
     var id = "recipeListItem_" + i;
@@ -57,7 +74,7 @@ function addRecipeEntryToList(recipe, i) {
         + '<i class="material-icons" style="font-size: 30px;">' + icon + '</i>'
         +  recipe.name
         + '<a class="secondary-content" style="cursor: pointer; color: #000000;">'
-            + '<i class="medium material-icons" style="font-size: 45px;" onclick="this.recipe.favourite = true">' + favour + '</i></a>'
+            + '<i class="medium material-icons" style="font-size: 45px;" onclick="favouriteRecipe(event,\'' + recipe.id + '\',this)">' + favour + '</i></a>'
         + '</div>'
 
 
