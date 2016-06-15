@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     private RecyclerView recyclerView;
     private ProductAdapter productAdapter;
     private SearchView searchView;
-    private static String BASE_URL="";
+    private static String BASE_URL="http://"+BuildConfig.LOCAL_IP+":8080/Tessa/rs/shoppinglist";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,9 +56,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(MainActivity.this,InputActivity.class);
+                Intent intent= new Intent(getBaseContext(),InputActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-
                 startActivity(intent);
             }
         });
@@ -201,11 +200,11 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         return true;
     }
 
-    private class GetProductTask extends AsyncTask<URL,Void, JSONObject>{
+    private class GetProductTask extends AsyncTask<URL,Void, JSONArray>{
 
         @TargetApi(Build.VERSION_CODES.KITKAT)
         @Override
-        protected JSONObject doInBackground(URL... params) {
+        protected JSONArray doInBackground(URL... params) {
             HttpURLConnection connection = null;
             try {
                 connection = (HttpURLConnection) params[0].openConnection();
@@ -221,7 +220,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                     } catch (IOException e) {
                         Toast.makeText(getApplicationContext(),"Reader Error", Toast.LENGTH_SHORT).show();
                     }
-                    return new JSONObject(builder.toString());
+                    return new JSONArray(builder.toString());
                 }
                 else
                 {
@@ -237,18 +236,17 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         }
 
         @Override
-        protected void onPostExecute(JSONObject products) {
+        protected void onPostExecute(JSONArray products) {
             convertJsonToArray(products);
             productAdapter.notifyDataSetChanged();
             recyclerView.scrollToPosition(0);
         }
     }
 
-    private void convertJsonToArray(JSONObject forecast) {
+    private void convertJsonToArray(JSONArray forecast) {
         try {
-            JSONArray list = forecast.getJSONArray("list");
-            for (int i = 0; i < list.length(); i++) {
-                JSONObject obj = list.getJSONObject(i);
+            for (int i = 0; i < forecast.length(); i++) {
+                JSONObject obj = forecast.getJSONObject(i);
                 productAdapter.addItem(new Product(
                         obj.getString("name"),
                         obj.getString("stueck")

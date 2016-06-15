@@ -10,6 +10,7 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        buildConfigField "String", "LOCAL_IP", '\"' + getLocalIp("en0") + '\"'
     }
     buildTypes {
         release {
@@ -29,4 +30,15 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.android.support:design:23.3.0'
     compile 'com.android.support:recyclerview-v7:23.3.0'
+}
+
+// Get the ip address by interface name
+def getLocalIp(String interfaceName) {
+    NetworkInterface iface =  NetworkInterface.getByName(interfaceName);
+    for (InterfaceAddress address : iface.getInterfaceAddresses()) {
+        String ip =  address.getAddress().getHostAddress()
+        if (ip.length() <= 15) {
+            return ip;
+        }
+    }
 }
