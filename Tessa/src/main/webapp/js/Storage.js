@@ -12,7 +12,8 @@ $(function () {
         today: '<i class="material-icons">today</i>',
         clear: '<i class="material-icons">delete</i>',
         close: '<i class="material-icons">close</i>',
-        min: new Date()
+        min: new Date(),
+        format: "dd mmmm, yyyy"
     });
 
     $('.button-collapse').sideNav();
