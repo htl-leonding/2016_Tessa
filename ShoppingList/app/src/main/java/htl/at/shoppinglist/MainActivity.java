@@ -1,7 +1,10 @@
 package htl.at.shoppinglist;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -22,6 +25,16 @@ import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -30,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     private RecyclerView recyclerView;
     private ProductAdapter productAdapter;
     private SearchView searchView;
-
+    private static String BASE_URL="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -139,18 +152,15 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     }
 
     private void prepareProductData() {
-        Product product = new Product("Milch", "5");
-        productAdapter.addItem(product);
-
-        productAdapter.addItem(new Product("Apfel", "4"));
-        productAdapter.addItem(new Product("Birnen", "10"));
-        productAdapter.addItem(new Product("Himbeeren", "1"));
-        productAdapter.addItem(new Product("Cola", "6"));
-        productAdapter.addItem(new Product("Bier", "12"));
-        productAdapter.addItem(new Product("Bananen", "3"));
-        productAdapter.addItem(new Product("Käse", "1"));
-        productAdapter.addItem(new Product("Gurken", "2"));
-        productAdapter.addItem(new Product("Zuchini", "4"));
+        try {
+            URL url = new URL(BASE_URL);
+            if (url != null) {
+                GetProductTask productTask = new GetProductTask();
+                productTask.execute(url);
+            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -188,10 +198,68 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     public boolean onQueryTextChange(String query) {
         productAdapter.setFilter(query);
         recyclerView.scrollToPosition(0);
-
-
         return true;
     }
+
+    private class GetProductTask extends AsyncTask<URL,Void, JSONObject>{
+
+        @TargetApi(Build.VERSION_CODES.KITKAT)
+        @Override
+        protected JSONObject doInBackground(URL... params) {
+            HttpURLConnection connection = null;
+            try {
+                connection = (HttpURLConnection) params[0].openConnection();
+                int response = connection.getResponseCode();
+                if (response == HttpURLConnection.HTTP_OK) {
+                    StringBuilder builder = new StringBuilder();
+
+                    try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+                        String line;
+                        while ((line = reader.readLine()) != null) {
+                            builder.append(line);
+                        }
+                    } catch (IOException e) {
+                        Toast.makeText(getApplicationContext(),"Reader Error", Toast.LENGTH_SHORT).show();
+                    }
+                    return new JSONObject(builder.toString());
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), "Connection Failed", Toast.LENGTH_SHORT).show();
+                }
+
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "Connection Failed", Toast.LENGTH_SHORT).show();
+            }finally {
+                connection.disconnect();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(JSONObject products) {
+            convertJsonToArray(products);
+            productAdapter.notifyDataSetChanged();
+            recyclerView.scrollToPosition(0);
+        }
+    }
+
+    private void convertJsonToArray(JSONObject forecast) {
+        try {
+            JSONArray list = forecast.getJSONArray("list");
+            for (int i = 0; i < list.length(); i++) {
+                JSONObject obj = list.getJSONObject(i);
+                productAdapter.addItem(new Product(
+                        obj.getString("name"),
+                        obj.getString("stueck")
+                ));
+
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 }
