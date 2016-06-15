@@ -74,11 +74,31 @@
                     </div>
                 </div>
 
+                <div id="deleteConfirm" class="modal">
+                    <div class="modal-content">
+                        <h4>Löschen ?</h4>
+                        <p id="deleteInfo">
+
+                        </p>
+                        <input type="hidden" id="deleteID">
+                        <input type="hidden" id="deleteHtmlID">
+                    </div>
+                    <div class="modal-footer">
+                        <a class="waves-effect waves-green btn modal-action modal-close" data-position="bottom">
+                            <i class="material-icons left">close</i> Abbrechen
+                        </a>
+                        <a class="waves-effect waves-red btn modal-action modal-close" data-position="bottom"
+                           onclick="deleteProduct($('#deleteHtmlID').val(), $('#deleteID').val())">
+                            <i class="material-icons left">delete</i> Löschen
+                        </a>
+                    </div>
+                </div>
+
                 <ul class="collection" id="productList">
                 </ul>
 
                 <div class="fixed-action-btn">
-                    <a class="btn-floating btn-large waves-effect waves-light red modal-trigger"
+                    <a id="inputModalTrigger" class="btn-floating btn-large waves-effect waves-light red modal-trigger"
                        data-target="inputModal" style="height: 75.5px; width: 75.5px">
                         <i class="material-icons" style="font-size: 50px; line-height: 75.5px">add</i>
                     </a>

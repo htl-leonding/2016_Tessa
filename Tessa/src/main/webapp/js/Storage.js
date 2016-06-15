@@ -2,7 +2,7 @@ var baseURL = "/Tessa/rs/product";
 
 $(function () {
 
-    $('.modal-trigger').leanModal({
+    $('#inputModalTrigger').leanModal({
         dismissible: false,
         ready: initCarousel
     });
@@ -107,8 +107,8 @@ function addProductEntryToList(product, i) {
         '<p>' +
         'Anzahl: ' + product.stueck + ' Stück / Haltbar: ' + days + ' Tage' +
         '</p>' +
-        '<a class="secondary-content" style="cursor: pointer" onclick="deleteProduct(\''
-            + id + '\',\'' + dbID + '\')"><i class="medium material-icons">delete</i></a>' +
+        '<a class="secondary-content" style="cursor: pointer" onclick="showDeleteConfirmModal(\''
+            + id + '\',\'' + dbID + '\',\'' + product.name + '\')"><i class="medium material-icons">delete</i></a>' +
         '<a class="secondary-content" style="margin-right: 150px; cursor: pointer" onclick="raise_number(\''
             + id + '\',\'' + dbID + '\')"><i class="medium material-icons">add</i></a>' +
         '<a class="secondary-content" style="margin-right: 75px; cursor: pointer" onclick="lower_number(\''
@@ -181,6 +181,15 @@ function clearInputFields(){
 }
 
 //Edit a product
+function showDeleteConfirmModal(htmlID, dbID, name){
+    $('#deleteConfirm').openModal({
+        dismissible: false
+    });
+    $('#deleteID').val(dbID);
+    $('#deleteHtmlID').val(htmlID);
+    $('#deleteInfo').text('Wollen Sie das Produkt "' + name + '" wirklich löschen ?');
+}
+
 function raise_number(htmlID, dbID){
     var id = $("#" + dbID).val();
     $.ajax({
