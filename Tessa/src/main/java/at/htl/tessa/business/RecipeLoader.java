@@ -112,12 +112,13 @@ public class RecipeLoader {
             imageName = imageName.substring(imageName.lastIndexOf("/") + 1);
             String description = "";
             List<String> ingredientList = new ArrayList<>();
-            description = recipe.select("div").last().text();
-            String workingtime = description.substring(description.indexOf("Arbeitszeit")+17);
-            description = description.substring(description.indexOf("Zubereitung:")+12, description.indexOf("Arbeitszeit")-1);
+            description = recipe.select("div").last().html();
+            description = description.substring(description.indexOf("Zubereitung:")+12);
+            description.replace("<br/>", "\n");
             String ingredients = recipe.select("div").html();
             ingredients = ingredients.substring(ingredients.indexOf("<h3>Zutaten:</h3>") + 17, ingredients.indexOf("</div>\n" + "<div class=\"Zubereitung\">"));
             String ingredient = "";
+
             for (int i = 0; i < ingredients.length(); i++) {
 
                 if(ingredients.charAt(i) != '\n'){
