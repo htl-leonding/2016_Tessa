@@ -6,8 +6,10 @@ package htl.at.shoppinglist;
 public class Product implements Comparable<Product> {
     String pieces;
     String title;
+    private long dbID;
 
-    public Product(String title,String pieces) {
+    public Product(long dbID,String title,String pieces) {
+        this.dbID = dbID;
         this.pieces = pieces;
         this.title = title;
     }
@@ -28,8 +30,20 @@ public class Product implements Comparable<Product> {
         this.title = title;
     }
 
+    public long getDbID() {
+        return dbID;
+    }
+
+    public void setDbID(long dbID) {
+        this.dbID = dbID;
+    }
+
     @Override
     public int compareTo(Product another) {
        return this.getTitle().compareTo(another.getTitle());
+    }
+
+    public String toJsonString() {
+        return "{"+"\"name\":\""+title+"\"," + "\"stueck\":"+pieces+","+"\"permanent\":"+"true"+"}";
     }
 }

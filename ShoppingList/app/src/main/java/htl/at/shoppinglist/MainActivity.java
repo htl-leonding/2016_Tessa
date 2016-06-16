@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
             }
         }));
-            prepareProductData();
 
         /*recyclerView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -200,6 +199,13 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         return true;
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        productAdapter.clearList();
+        prepareProductData();
+    }
+
     private class GetProductTask extends AsyncTask<URL,Void, JSONArray>{
 
         @TargetApi(Build.VERSION_CODES.KITKAT)
@@ -247,7 +253,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         try {
             for (int i = 0; i < forecast.length(); i++) {
                 JSONObject obj = forecast.getJSONObject(i);
-                productAdapter.addItem(new Product(
+                productAdapter.addItem(new Product(obj.getLong("id"),
                         obj.getString("name"),
                         obj.getString("stueck")
                 ));

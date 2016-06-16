@@ -1,6 +1,7 @@
 package htl.at.shoppinglist;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.text.Layout;
@@ -13,6 +14,10 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,7 +26,7 @@ import java.util.List;
  * Created by pautzi on 15.05.16.
  */
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHolder> {
-
+    private static String BASE_URL="http://"+BuildConfig.LOCAL_IP+":8080/Tessa/rs/shoppinglist";
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         public TextView title,pieces;
@@ -58,6 +63,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         Product product = filteredList.remove(position);
         productList.remove(product);
         notifyItemRemoved(position);
+        try {
+            URL url = new URL(BASE_URL + "/" + product.getDbID());
+            DeleteTask task = new DeleteTask();
+            task.execute(url);
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
         return product;
     }
 
@@ -83,6 +96,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
 
     public Product getItem(int position) {
         return filteredList.get(position);
+    }
+
+    public void clearList(){
+        filteredList.clear();
+        productList.clear();
+        notifyDataSetChanged();
     }
 
     @Override
@@ -127,5 +146,29 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         }
     }
 
+    public class DeleteTask extends AsyncTask<URL, Void, Void> {
+
+        @Override
+        protected Void doInBackground(URL... params) {
+            HttpURLConnection connection = null;
+            try{
+                connection = (HttpURLConnection) params[0].openConnection();
+                int responseCode = connection.getResponseCode();
+                if(responseCode == 200) {
+                    connection.disconnect();
+                    connection.setRequestMethod("DELETE");
+                    //connection.setUseCaches(false);
+                    connection.connect();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if(connection != null){
+                    connection.disconnect();
+                }
+            }
+            return null;
+        }
+    }
 
 }
