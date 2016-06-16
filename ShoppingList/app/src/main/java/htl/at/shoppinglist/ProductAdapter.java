@@ -63,14 +63,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         Product product = filteredList.remove(position);
         productList.remove(product);
         notifyItemRemoved(position);
-        try {
-            URL url = new URL(BASE_URL + "/" + product.getDbID());
-            DeleteTask task = new DeleteTask();
-            task.execute(url);
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+        DeleteTask task = new DeleteTask();
+        task.execute(product.getDbID());
         return product;
     }
 
@@ -146,20 +140,21 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         }
     }
 
-    public class DeleteTask extends AsyncTask<URL, Void, Void> {
+    public class DeleteTask extends AsyncTask<Long, Void, Void> {
 
         @Override
-        protected Void doInBackground(URL... params) {
+        protected Void doInBackground(Long... params) {
+            URL url;
             HttpURLConnection connection = null;
             try{
-                connection = (HttpURLConnection) params[0].openConnection();
-                int responseCode = connection.getResponseCode();
-                if(responseCode == 200) {
-                    connection.disconnect();
-                    connection.setRequestMethod("DELETE");
-                    //connection.setUseCaches(false);
-                    connection.connect();
-                }
+                url = new URL(BASE_URL + "/" + params[0]);
+                connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("DELETE");
+                connection.setRequestProperty("Content-Type","application/json");
+                connection.setConnectTimeout(1000);
+                //connection.setUseCaches(false);
+                //connection.connect();
+                connection.getResponseCode();
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
